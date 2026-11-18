@@ -1,0 +1,38 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {completionBlocks} from '../companion/douyin-model.mjs';
+import {makeDouyinPublisher} from '../companion/douyin-publisher.mjs';
+const home=fs.mkdtempSync(path.join(os.tmpdir(),'qq-douyin-'));
+try {
+  assert.equal(completionBlocks([{role:'user',content:'hello'}]).at(-1).text,'hello');
+  assert.throws(()=>completionBlocks([{role:'user',content:[{type:'image_url',image_url:{url:'https://example.com/a.png'}}]}]));
+  assert.throws(()=>completionBlocks([{role:'tool',content:'unauthorized'}]));
+  const file=path.join(home,'video.mp4');fs.writeFileSync(file,'synthetic-video-fixture');
+  const calls=[];let fail=false;
+  const publisher=makeDouyinPublisher({home,controller:{},stopWatch:async()=>{},upload:async(input)=>{calls.push(input);if(fail)throw Error('transport interrupted');return{ok:true,dryRun:input.dryRun===true};}});
+  const args={videoPath:file,title:'测试作品',description:'明确填写的文案',visibility:'private'};
+  await assert.rejects(()=>publisher.request('publish-prepare',{...args,visibility:'invalid'}));
+  let draft=(await publisher.request('publish-prepare',args)).draft;
+  assert.equal(calls.at(-1).dryRun,true);assert.equal(calls.at(-1).mode,undefined);
+  await assert.rejects(()=>publisher.request('publish-submit',{id:draft.id}),/明确确认/);
+  await publisher.request('publish-upload',{id:draft.id});assert.equal(calls.at(-1).mode,'draft');
+  assert.equal(typeof calls.at(-1).topics,'string','upstream accepts comma-delimited topics');
+  await publisher.request('publish-submit',{id:draft.id,confirm:true});assert.equal(calls.at(-1).mode,'publish');
+  assert.equal(publisher.history()[0].state,'submitted','A click is not platform-confirmed publication');
+  assert.equal(calls.at(-1).visibility,'private');
+  const count=calls.length;await assert.rejects(()=>publisher.request('publish-submit',{id:draft.id,confirm:true}));assert.equal(calls.length,count);
+  draft=(await publisher.request('publish-prepare',args)).draft;
+  fs.writeFileSync(file,'changed-fixture');await assert.rejects(()=>publisher.request('publish-upload',{id:draft.id}),/发生变化/);
+  draft=(await publisher.request('publish-prepare',args)).draft;fail=true;
+  await assert.rejects(()=>publisher.request('publish-submit',{id:draft.id,confirm:true}),/检查实际结果/);
+  assert.equal(publisher.history()[0].state,'uncertain');
+  const before=calls.length;await assert.rejects(()=>publisher.request('publish-submit',{id:draft.id,confirm:true}));assert.equal(calls.length,before);
+  fail=false;const bgm=path.join(home,'music.mp3');fs.writeFileSync(bgm,'synthetic-bgm-fixture');
+  draft=(await publisher.request('publish-prepare',{...args,topics:'猫,旅行',coverTime:2.5,bgmPath:bgm,bgmVolume:0.2,pickMusic:true,musicSearch:'轻快',timeoutSec:120,maxInjectBytes:1024})).draft;
+  assert.equal(draft.options.coverTime,2.5);assert.equal(draft.options.bgmVolume,0.2);assert.equal(draft.options.pickMusic,true);assert.equal(draft.options.musicSearch,'轻快');assert.equal(draft.options.topics,'猫,旅行');
+  fs.writeFileSync(bgm,'changed-music');await assert.rejects(()=>publisher.request('publish-upload',{id:draft.id}),/配乐文件发生变化/);
+  await assert.rejects(()=>publisher.request('publish-prepare',{...args,platform:'bilibili',visibility:'friends'}),/不支持好友/);
+  console.log('PASS robot vision blocks, remote-image rejection, private preview, draft vs publish, explicit confirmation, file changes, duplicate sends and uncertain results (all transports mocked)');
+}finally{fs.rmSync(home,{recursive:true,force:true});}

@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>资源与开关</title>
+    <style>
+      :root {
+        --bg: #f6f7fb;
+        --card: #fff;
+        --text: #1f2937;
+        --muted: #64748b;
+        --border: #dce2eb;
+        --accent: #5271ff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 22px;
+        background: var(--bg);
+        color: var(--text);
+        font:
+          14px/1.65 system-ui,
+          "Microsoft YaHei",
+          sans-serif;
+      }
+      h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 18px;
+        margin: 0 0 12px;
+      }
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        margin: 16px 0;
+        padding: 18px;
+      }
+      .muted,
+      small {
+        color: var(--muted);
+      }
+      button,
+      select,
+      input {
+        font: inherit;
+      }
+      button {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 7px 12px;
+        background: var(--card);
+        color: var(--text);
+        cursor: pointer;
+      }
+      select {
+        color: var(--text);
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 7px;
+        max-width: 100%;
+        margin: 4px;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+      input {
+        accent-color: var(--accent);
+      }
+      .entry {
+        display: grid;
+        grid-template-columns: minmax(180px, 1fr) minmax(150px, 2fr) auto;
+        gap: 14px;
+        align-items: center;
+        padding: 14px 0;
+        border-top: 1px solid var(--border);
+      }
+      .entry:first-child {
+        border-top: 0;
+      }
+      .entry small {
+        display: block;
+      }
+      .entry label {
+        cursor: pointer;
+      }
+      #notice {
+        position: sticky;
+        top: 8px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 10px 14px;
+        z-index: 2;
+      }
+      #notice:empty {
+        display: none;
+      }
+      .links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      p {
+        margin: 8px 0;
+      }
+      @media (max-width: 650px) {
+        body {
+          padding: 12px;
+        }
+        .entry {
+          grid-template-columns: 1fr;
+        }
+        .entry button {
+          justify-self: start;
+        }
+      }
+    </style>
+  <link rel="stylesheet" href="/console-assets/workbench.css"><script src="/console-assets/workbench.js"></script></head>
+  <body class="studio-page" data-workbench="resources">
+    <h1 class="studio-page-title">资源与开关</h1>
+    <p class="muted studio-intro">统一管理功能开关和本机资源。</p>
+    <div id="notice" role="status"></div><nav class="studio-section-nav" aria-label="页面分区"><a href="#studio-resources-0">聊天与桌宠</a><a href="#studio-resources-1">内容与通道</a><a href="#studio-resources-2">模型能力</a><a href="#studio-resources-3">功能入口</a><a href="#studio-resources-4">语音资源</a><a href="#studio-resources-5">存储空间</a></nav>
+    <p>
+      <button id="refresh">刷新全部状态</button> <small id="checked"></small>
+    </p>
+    <section class="panel studio-section" id="studio-resources-0">
+      <h2>聊天与桌宠</h2>
+      <div id="chat"></div>
+      <p class="muted">
+        语音开关控制是否生成语音，语音引擎的启动／停止仍由本机管理窗口负责。自动碎碎念在桌宠设置中单独控制。
+      </p>
+    </section>
+    <section class="panel studio-section" id="studio-resources-1">
+      <h2>内容与通道</h2>
+      <div id="features"></div>
+    </section>
+    <section class="panel studio-section" id="studio-resources-2">
+      <h2>模型能力</h2>
+      <div id="plugins"></div>
+    </section>
+    <section class="panel studio-section" id="studio-resources-3">
+      <h2>功能入口</h2>
+      <div class="links">
+        <button data-view="bilibili">B站鱼塘</button><button data-view="bili-live">B站直播</button><button data-view="douyin">抖音助手</button><button data-view="creative">跑团／画图／表情包</button><button data-view="wechat">微信名单与额度</button><button data-view="qzone">空间发布与配图</button><button data-view="persona">角色记忆与工作陪伴</button><button data-view="social-v2">QQ主动联系与语音</button>
+      </div>
+      <p class="muted">
+        跨模块配图复用画图开关和额度；工作日报、自动发布仍需各自开启。页面只在进入、手动刷新或保存开关后读取状态，不持续轮询。
+      </p>
+    </section>
+    <section class="panel studio-section" id="studio-resources-4">
+      <h2>语音资源</h2>
+      <p id="voice-runtime" class="muted">正在读取语音服务…</p>
+      <label for="voice-idle">空闲后释放模型</label>
+      <select id="voice-idle" disabled="">
+        <option value="60">1 分钟</option>
+        <option value="300" selected="">5 分钟（推荐）</option>
+        <option value="600">10 分钟</option>
+        <option value="1800">30 分钟</option>
+        <option value="0">保持常驻，优先响应速度</option>
+      </select>
+      <button id="voice-save" disabled="">保存语音资源设置</button>
+      <p class="muted">
+        QQ
+        和桌宠共用一个模型进程。首次说话或空闲释放后需要重新加载；音色和情绪参数保持原值。此设置不调用聊天模型。
+      </p>
+    </section>
+    <section class="panel studio-section" id="studio-resources-5">
+      <h2>存储空间</h2>
+      <div id="storage">尚无检查结果。</div>
+      <p class="muted">
+        这里显示目录大小，不读取账号内容。模型权重、账号数据、聊天记录与安装包不会由此页面删除。
+      </p>
+    </section>
+    <script>
+      const $ = (id) => document.getElementById(id),
+        token =
+          new URL(location.href).searchParams.get("token") ||
+          localStorage.getItem("consoleToken") ||
+          "";
+      history.replaceState(null, "", "/resources/");
+      let busy = false,
+        loading = false,
+        observer;
+      function theme() {
+        try {
+          if (parent === window) return;
+          const source = parent.document.documentElement,
+            css = parent.getComputedStyle(source);
+          for (const key of css)
+            if (key.startsWith("--"))
+              document.documentElement.style.setProperty(
+                key,
+                css.getPropertyValue(key),
+              );
+        } catch {}
+      }
+      theme();
+      try {
+        if (parent !== window) {
+          observer = new MutationObserver(theme);
+          observer.observe(parent.document.documentElement, {
+            attributes: true,
+            attributeFilter: ["class", "style", "data-theme"],
+          });
+        }
+      } catch {}
+      addEventListener("pagehide", () => observer?.disconnect());
+      async function api(route, body) {
+        const response = await fetch(route, {
+          headers: {
+            "X-Console-Token": token,
+            "content-type": "application/json",
+          },
+          ...(body === undefined
+            ? {}
+            : { method: "POST", body: JSON.stringify(body) }),
+        });
+        const value = await response.json();
+        if (!response.ok || value.ok === false)
+          throw Error(value.error || "读取失败");
+        return value;
+      }
+      function notice(text) {
+        $("notice").textContent = text;
+      }
+      function go(view) {
+        try {
+          parent.document.querySelector('[data-view="' + view + '"]').click();
+        } catch {
+          notice("请从后台左侧进入对应功能。");
+        }
+      }
+      for (const button of document.querySelectorAll("[data-view]"))
+        button.onclick = () => go(button.dataset.view);
+      function row(
+        box,
+        { id, title, on, cost, view, change, disabled = false },
+      ) {
+        const el = document.createElement("div");
+        el.className = "entry";
+        const label = document.createElement("label"),
+          input = document.createElement("input");
+        input.type = "checkbox";
+        input.checked = on === true;
+        input.disabled = disabled || typeof on !== "boolean";
+        input.dataset.feature = id;
+        label.append(input, document.createTextNode(" " + title));
+        const description = document.createElement("small");
+        description.textContent = cost;
+        const button = document.createElement("button");
+        button.textContent = "详细设置";
+        button.onclick = () => go(view);
+        input.onchange = () => save(input, () => change(input.checked));
+        el.append(label, description, button);
+        box.append(el);
+      }
+      async function save(control, fn) {
+        if (busy || loading) return;
+        busy = true;
+        $("voice-idle").disabled = $("voice-save").disabled = true;
+        for (const input of document.querySelectorAll("[data-feature]"))
+          input.disabled = true;
+        $("refresh").disabled = true;
+        try {
+          await fn();
+          notice("开关已保存，其他设置保持原值。");
+        } catch (error) {
+          notice(error.message);
+        } finally {
+          busy = false;
+          await load();
+        }
+      }
+      async function creativeToggle(feature, enabled) {
+        const s = await api("/api/creative/status");
+        return api("/api/creative/config", {
+          revision: s.config.revision,
+          [feature]: { enabled },
+        });
+      }
+      async function qzoneToggle(key, enabled) {
+        const s = await api("/api/qzone/status");
+        return api("/api/qzone/config", {
+          revision: s.config.revision,
+          [key]: enabled,
+        });
+      }
+      async function load() {
+        if (busy || loading) return;
+        loading = true;
+        $("voice-idle").disabled = $("voice-save").disabled = true;
+        $("refresh").disabled = true;
+        for (const input of document.querySelectorAll("[data-feature]"))
+          input.disabled = true;
+        try {
+          const paths = [
+            "/api/resources/status",
+            "/api/creative/status",
+            "/api/wechat/status",
+            "/api/qzone/status",
+            "/api/emotional-companion",
+            "/api/dsh/plugins",
+            "/api/voice/performance",
+          ];
+          const results = await Promise.allSettled(paths.map((p) => api(p)));
+          const data = results.map((r) =>
+            r.status === "fulfilled" ? r.value : null,
+          );
+          for (const id of ["chat", "features", "plugins"])
+            $(id).replaceChildren();
+          const [
+            resource,
+            creative,
+            wechat,
+            qzone,
+            emotion,
+            plugins,
+            voicePerformance,
+          ] = data;
+          $("voice-idle").disabled = $("voice-save").disabled =
+            !voicePerformance;
+          if (voicePerformance) {
+            $("voice-idle").value = String(voicePerformance.idleUnloadSeconds);
+            const states = {
+              unloaded: "已释放，首次说话时加载",
+              loading: "正在加载模型",
+              ready: "模型已就绪",
+              busy: "正在合成语音",
+            };
+            $("voice-runtime").textContent =
+              states[voicePerformance.modelState] || "语音服务已连接";
+          } else
+            $("voice-runtime").textContent =
+              "语音服务未启动或需要更新，请先在本机管理窗口启动语音。";
+          if (resource) {
+            const r = resource.runtime,
+              d = resource.desktop;
+            row($("chat"), {
+              id: "proactive",
+              title: "QQ主动联系",
+              on: r.proactive,
+              cost:
+                "到期会调用聊天模型；范围：" +
+                (r.proactiveScope || "按原设置") +
+                "。",
+              view: "social-v2",
+              change: (enabled) =>
+                api("/api/socialV2/config", { proactive: { enabled } }),
+            });
+            row($("chat"), {
+              id: "qqVoice",
+              title: "QQ生成语音",
+              on: r.qqVoice,
+              cost: "使用本机语音模型，增加推理时间；不额外调用聊天模型。",
+              view: "operations",
+              change: (enabled) =>
+                api("/api/socialV2/config", {
+                  voice: { enabled },
+                  tools: { sendVoice: enabled },
+                }),
+            });
+            for (const [id, title, cost] of [
+              ["desktopVoice", "桌宠语音", "本机语音推理。"],
+              [
+                "desktopScreen",
+                "屏幕陪伴看图",
+                "启用后按桌宠设置检查画面，可能调用视觉模型。",
+              ],
+            ])
+              row($("chat"), {
+                id,
+                title,
+                on: d.available
+                  ? id === "desktopVoice"
+                    ? d.voice
+                    : d.screen
+                  : null,
+                cost: d.available ? cost : d.error,
+                view: "persona",
+                change: (enabled) =>
+                  api("/api/resources/toggle", { target: id, enabled }),
+              });
+            const info = document.createElement("p");
+            info.className = "muted";
+            info.textContent = d.available
+              ? "桌宠自动碎碎念：" +
+                (d.whisper
+                  ? "已开启（" + d.whisperPets + "只），会周期调用模型"
+                  : "已关闭")
+              : "桌宠状态暂不可用";
+            $("chat").append(info);
+            for (const [id, title, key] of [
+              ["slang", "黑话自动学习", "enabled"],
+              ["slangResearch", "黑话联网研究", "autoResearch"],
+            ])
+              row($("chat"), {
+                id,
+                title,
+                on: r[id],
+                cost: "开启后可能额外调用学习模型；关闭后保留已保存词条。",
+                view: "slang",
+                change: (enabled) =>
+                  api("/api/slang/config", { [key]: enabled }),
+              });
+            if (resource.storage.available) {
+              $("storage").replaceChildren(
+                ...resource.storage.directories.map((r) => {
+                  const p = document.createElement("p");
+                  p.textContent =
+                    (r.path === "." ? "安装目录合计" : r.path) +
+                    "：" +
+                    (r.bytes / 1073741824).toFixed(2) +
+                    " GB";
+                  return p;
+                }),
+              );
+            }
+          }
+          if (emotion)
+            row($("chat"), {
+              id: "emotion",
+              title: "角色状态与偏好记忆",
+              on: emotion.config.enabled,
+              cost: "本地计算，不额外调用模型；只把有界资料带入聊天。",
+              view: "persona",
+              change: (enabled) =>
+                api("/api/emotional-companion", {
+                  action: "config",
+                  config: { enabled },
+                }),
+            });
+          if (creative)
+            for (const [feature, title, cost] of [
+              ["rpg", "跑团剧情", "掷骰本地执行；AI剧情按回合调用模型。"],
+              [
+                "images",
+                "画图工作台",
+                "按次生成图片；QQ空间配图也受此开关和额度约束。",
+              ],
+              [
+                "memes",
+                "表情包管理",
+                "管理素材本地执行；模型选图可能增加输入。",
+              ],
+            ])
+              row($("features"), {
+                id: feature,
+                title,
+                on: creative.config[feature].enabled,
+                cost,
+                view: "creative",
+                change: (enabled) => creativeToggle(feature, enabled),
+              });
+          if (wechat)
+            row($("features"), {
+              id: "wechat",
+              title: "微信通道",
+              on: wechat.config.enabled,
+              cost: "开启后才运行本机读取进程；自动回复有每日模型额度。",
+              view: "wechat",
+              change: (enabled) =>
+                api("/api/wechat/config", {
+                  revision: wechat.config.revision,
+                  enabled,
+                }),
+            });
+          if (qzone)
+            for (const [key, title, cost] of [
+              ["enabled", "QQ空间总开关", "关闭会取消在途任务和自动调度。"],
+              ["autoWrite", "空间自主写稿", "每次最多调用一次写稿模型。"],
+              [
+                "withImages",
+                "空间自动配图",
+                "每条生成一张图片，复用画图配置与额度。",
+              ],
+              [
+                "autoPublish",
+                "空间生成后自动发布",
+                "发布到当前QQ账号；遵循可见范围、间隔及额度。",
+              ],
+              [
+                "scheduled",
+                "空间定时运行",
+                "仅在总开关和自主写稿也开启时执行。",
+              ],
+              [
+                "workReports",
+                "空间工作日报",
+                "仅使用真实工作记录，另受空间发布开关控制。",
+              ],
+            ])
+              if (typeof qzone.config[key] === "boolean")
+                row($("features"), {
+                  id: "qzone-" + key,
+                  title,
+                  on: qzone.config[key],
+                  cost,
+                  view: "qzone",
+                  change: (enabled) => qzoneToggle(key, enabled),
+                });
+          if (plugins)
+            for (const p of plugins.bundles.filter((p) => p.feature))
+              row($("plugins"), {
+                id: p.id,
+                title: p.title,
+                on: p.enabled,
+                cost: p.feature.cost,
+                view: "plugins",
+                disabled: !!p.readOnlyReason || !!p.problem,
+                change: (enabled) =>
+                  api("/api/dsh/plugins/toggle", {
+                    kind: "bundle",
+                    id: p.id,
+                    enabled,
+                  }),
+              });
+          const failures = results.filter(
+            (r) => r.status === "rejected",
+          ).length;
+          if (failures)
+            notice(
+              failures +
+                "个模块暂未读取，请到详细设置检查；已读取的开关仍可使用。",
+            );
+          $("checked").textContent =
+            "更新于 " + new Date().toLocaleTimeString("zh-CN");
+        } finally {
+          loading = false;
+          $("refresh").disabled = false;
+        }
+      }
+      $("refresh").onclick = () =>
+        load().catch((error) => notice(error.message));
+      $("voice-save").onclick = () =>
+        save($("voice-save"), () =>
+          api("/api/voice/performance", {
+            idleUnloadSeconds: Number($("voice-idle").value),
+          }),
+        );
+      load().catch((error) => notice(error.message));
+    </script>
+  
+
+</body></html>

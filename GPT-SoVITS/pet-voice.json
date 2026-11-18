@@ -1,0 +1,52 @@
+{
+  "engine": "gpt-sovits",
+  "model_version": "v2ProPlus",
+  "voice": "keqing-tsundere",
+  "speed": 1.0,
+  "voices": {
+    "keqing-tsundere": {
+      "name": "刻晴·轻傲娇",
+      "ref_audio_path": "voices/keqing-tsundere/reference.wav",
+      "prompt_text": "哼，就算是我也知道劳逸结合的道理哦。",
+      "prompt_lang": "zh",
+      "source": "https://huggingface.co/datasets/AquaV/genshin-voices-separated/resolve/main/Keqing/Chinese/1051_audio.wav",
+      "duration": 3.492
+    },
+    "hutao-playful": {
+      "name": "胡桃·俏皮傲娇",
+      "ref_audio_path": "voices/hutao-playful/reference.wav",
+      "prompt_text": "哼哼，反正不管你说什么，我今天就要赖在这儿，谁也别想把我拉走。",
+      "prompt_lang": "zh",
+      "source": "https://huggingface.co/datasets/AquaV/genshin-voices-separated/resolve/main/Hu%20Tao/Chinese/10702_audio.wav",
+      "duration": 6.127,
+      "styles": {
+        "happy": {
+          "prompt_text": "哦哦，对哦，忘记说了，哈哈，但是无所谓吧。",
+          "ref_audio_path": "voices/hutao-playful/happy.wav",
+          "prompt_lang": "zh"
+        },
+        "gentle": {
+          "prompt_text": "都谢过好几遍啦，芙宁娜真不用这么客气的。",
+          "ref_audio_path": "voices/hutao-playful/gentle.wav",
+          "prompt_lang": "zh"
+        }
+      }
+    },
+    "klee-cute": {
+      "name": "可莉·软萌",
+      "ref_audio_path": "voices/klee-cute/reference.wav",
+      "prompt_text": "那可莉也喊「军师」就好啦，「军师」姐姐！",
+      "prompt_lang": "zh",
+      "source": "https://huggingface.co/datasets/AquaV/genshin-voices-separated/resolve/main/Klee/Chinese/102492_audio.wav",
+      "duration": 3.341
+    },
+    "furina-proud": {
+      "name": "芙宁娜·自信",
+      "ref_audio_path": "voices/furina-proud/reference.wav",
+      "prompt_text": "嗯，我加入。虽然片酬有些配不上我的身价，但最好的剧本就应该配上最好的导演！",
+      "prompt_lang": "zh",
+      "source": "https://huggingface.co/datasets/AquaV/genshin-voices-separated/resolve/main/Furina/Chinese/100411_audio.wav",
+      "duration": 9.245
+    }
+  }
+}

@@ -1,0 +1,61 @@
+import assert from 'node:assert/strict';
+import {discoverProviderModels,modelDescriptor} from '../src/provider-discovery.js';
+
+const secret='fixture-only-provider-key',stored='fixture-stored-provider-key';
+const input={id:'fixture-api',displayName:'Fixture',baseUrl:'https://api.example/v1',api:'openai-completions',apiKey:secret};
+const profiles={'saved-api':{api:'openai-completions',baseURL:'https://saved.example/v1',apiKeyEnv:'FIXTURE_API_KEY',models:[{id:'saved-model'}]}};
+const calls=[],reads=[],rpc=async(method)=>{assert.equal(method,'settings.describe');return{namespaces:[{ns:'llm-pi-ai',value:{providers:profiles}}]};};
+const reply=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{'content-type':'application/json'}});
+let pages=[];
+const options={readKey:async ref=>{reads.push(ref);return stored;},fetchImpl:async(url,args)=>{calls.push({url,args});return pages.shift();}};
+pages=[reply({data:[{id:'vision-a',input_modalities:['text','image'],owned_by:'first'},{id:'text-a',input:['text']},{id:'text-embedding-fixture'},{id:'vision-a'},{id:'bad id'}],has_more:true,last_id:'last'}),reply({data:[{id:'vision-b',architecture:{input_modalities:['text','image']}}]})];
+const result=await discoverProviderModels(rpc,input,options);assert.equal(result.count,4);assert(result.models.find(m=>m.id==='vision-a').supportsImages);assert.equal(result.models.find(m=>m.id==='text-a').supportsImages,false);assert.equal(result.models.find(m=>m.id==='text-embedding-fixture').chat,false);assert(calls.at(-1).url.endsWith('/models?after=last'));
+assert(calls.every(c=>c.args.method==='GET'&&c.args.redirect==='error'&&c.args.headers.authorization==='Bearer '+secret));assert.equal(reads.length,0);assert(!JSON.stringify(result).includes(secret));
+calls.length=0;pages=[reply({data:[{id:'saved-model'}]})];await discoverProviderModels(rpc,{...input,id:'saved-api',baseUrl:'https://saved.example/v1',editing:true,apiKey:''},options);assert.deepEqual(reads,['FIXTURE_API_KEY']);assert.equal(calls[0].args.headers.authorization,'Bearer '+stored);
+const before=calls.length;await assert.rejects(()=>discoverProviderModels(rpc,{...input,id:'saved-api',baseUrl:'https://other.example/v1',editing:true,apiKey:''},options),/重新填写/);assert.equal(calls.length,before);
+await assert.rejects(()=>discoverProviderModels(rpc,{...input,id:'saved-api',baseUrl:'https://saved.example/v1',editing:false,apiKey:''},options),/密钥/);
+calls.length=0;pages=[reply({data:[{id:'claude-fixture',display_name:'Claude fixture'}],has_more:true,last_id:'claude-fixture'}),reply({data:[{id:'claude-two'}],has_more:false})];
+await discoverProviderModels(rpc,{...input,baseUrl:'https://api.anthropic.com/v1',api:'anthropic-messages'},options);assert.equal(calls[0].url,'https://api.anthropic.com/v1/models');assert.equal(calls[0].args.headers['x-api-key'],secret);assert(calls[1].url.includes('after_id='));
+calls.length=0;pages=[reply({models:[{name:'models/gemini-fixture',displayName:'Gemini fixture',supportedGenerationMethods:['generateContent']}],nextPageToken:'page-two'}),reply({models:[{name:'models/embedding-fixture',supportedGenerationMethods:['embedContent']}]})];
+const gemini=await discoverProviderModels(rpc,{...input,baseUrl:'https://generativelanguage.googleapis.com/v1beta/openai'},options);assert.equal(gemini.models.find(m=>m.id==='gemini-fixture').chat,true);assert.equal(gemini.models.find(m=>m.id==='embedding-fixture').chat,false);assert(calls[1].url.includes('pageToken=page-two'));assert(calls.every(c=>!c.url.includes(secret)));
+assert.equal(modelDescriptor({id:'models/custom-id'}).id,'models/custom-id');assert.equal(modelDescriptor({id:'unknown'}).supportsImages,null);assert.equal(modelDescriptor({id:'BAAI/bge-reranker'}).chat,false);
+assert.equal(modelDescriptor({id:'claude-image',capabilities:{image_input:{supported:true}}}).supportsImages,true);assert.equal(modelDescriptor({id:'claude-text',capabilities:{image_input:{supported:false}}}).supportsImages,false);
+assert.equal(modelDescriptor({id:'Qwen/visual-fixture',owned_by:'gateway'}).owner,'Qwen','aggregator groups use the model namespace');
+const sf={baseUrl:'https://api.siliconflow.cn/v1'};
+const ocr=modelDescriptor({id:'deepseek-ai/DeepSeek-OCR'},sf);
+assert.equal(ocr.supportsImages,true);assert.equal(ocr.imageCapabilitySource,'official-docs');assert.match(ocr.visionNote,/文字识别专用/);
+for(const id of ['Qwen/Qwen3-VL-8B-Instruct','Qwen/Qwen3-VL-32B-Thinking','Qwen/Qwen2.5-VL-72B-Instruct'])assert.equal(modelDescriptor({id},sf).supportsImages,true);
+assert.equal(modelDescriptor({id:'deepseek-ai/DeepSeek-OCR'}).supportsImages,null,'a model name alone does not confirm capabilities at an unrelated service');
+for(const baseUrl of ['https://proxy.example/v1','http://api.siliconflow.cn/v1','https://api.siliconflow.cn.example/v1','https://api.siliconflow.cn/other'])assert.equal(modelDescriptor({id:ocr.id},{baseUrl}).supportsImages,null);
+assert.equal(modelDescriptor({id:ocr.id,input_modalities:['text']},sf).supportsImages,false,'live explicit metadata overrides documented defaults');
+assert.equal(modelDescriptor({id:'Qwen/Qwen99-VL-8B-Instruct'},sf).supportsImages,null,'future IDs must not be guessed');
+for(const id of ['Qwen/Qwen3-VL-Embedding-8B','Qwen/Qwen3-VL-Reranker-8B']){const model=modelDescriptor({id},sf);assert.equal(model.chat,false);assert.equal(model.supportsImages,null);}
+assert.equal(modelDescriptor({id:'custom-special-purpose',type:'text',sub_type:'embedding'}).chat,false);
+pages=[reply({data:[{id:ocr.id},{id:'Qwen/Qwen3-VL-8B-Instruct'},{id:'Qwen/Qwen3-VL-Embedding-8B'},{id:'unlisted-model'}]})];
+const supplemented=await discoverProviderModels(rpc,{...input,...sf},options);
+assert.equal(supplemented.models.find(m=>m.id===ocr.id).supportsImages,true);assert.equal(supplemented.models.find(m=>m.id==='unlisted-model').supportsImages,null);
+assert.equal(supplemented.models.find(m=>m.id==='Qwen/Qwen3-VL-Embedding-8B').chat,false);
+for(const [status,message]of [[401,/密钥无效/],[403,/密钥无效/],[404,/未开放/],[405,/未开放/],[429,/请求频率/],[500,/HTTP 500/]]){pages=[reply({error:secret},status)];await assert.rejects(()=>discoverProviderModels(rpc,input,options),error=>message.test(error.message)&&!error.message.includes(secret));}
+pages=[reply({unexpected:[]})];await assert.rejects(()=>discoverProviderModels(rpc,input,options),/格式无法识别/);
+pages=[new Response('<html>not API JSON</html>')];await assert.rejects(()=>discoverProviderModels(rpc,input,options),/JSON/);
+pages=[reply({data:[{id:'okay'}],next:'https://foreign.example/models'})];const beforeRedirect=calls.length;await assert.rejects(()=>discoverProviderModels(rpc,input,options),/不属于当前服务/);assert.equal(calls.length,beforeRedirect+1);
+pages=[reply({data:[{id:'loop'}],has_more:true,last_id:'loop'}),reply({data:[{id:'loop'}],has_more:true,last_id:'loop'})];await assert.rejects(()=>discoverProviderModels(rpc,input,options),/重复/);
+pages=[reply({data:[{id:'safe',name:secret,owned_by:secret},{id:secret}]})];const redacted=await discoverProviderModels(rpc,input,options);assert.equal(redacted.count,1);assert(!JSON.stringify(redacted).includes(secret));
+pages=[new Response('x'.repeat(4*1024*1024+1))];await assert.rejects(()=>discoverProviderModels(rpc,input,options),/响应过大/);
+await assert.rejects(()=>discoverProviderModels(rpc,input,{...options,fetchImpl:async()=>{throw Error(secret);}}),error=>!error.message.includes(secret)&&/网络/.test(error.message));
+pages=[reply({data:[]})];assert.equal((await discoverProviderModels(rpc,input,options)).count,0);
+const readCount=reads.length;calls.length=0;pages=[reply({data:[{id:'new-key-result'}]})];
+await discoverProviderModels(rpc,{...input,id:'saved-api',baseUrl:'https://saved.example/v1',editing:true},options);
+assert.equal(calls[0].args.headers.authorization,'Bearer '+secret);assert.equal(reads.length,readCount,'a newly entered key takes priority over the saved key');
+calls.length=0;pages=[reply({data:[{id:'sf-model'}]})];await discoverProviderModels(rpc,{...input,baseUrl:'https://api.siliconflow.cn'},options);assert.equal(calls[0].url,'https://api.siliconflow.cn/v1/models');
+await assert.rejects(()=>discoverProviderModels(rpc,{...input,apiKey:'中文密钥-fixture'},options),/密钥格式/);
+let attempts=0;
+const temporary=Object.assign(new TypeError('fixture private error '+secret),{cause:{code:'ECONNRESET'}});
+const recovered=await discoverProviderModels(rpc,input,{...options,fetchImpl:async()=>{if(++attempts===1)throw temporary;return reply({data:[{id:'recovered'}]});}});assert.equal(attempts,2);assert.equal(recovered.count,1);
+attempts=0;await assert.rejects(()=>discoverProviderModels(rpc,input,{...options,fetchImpl:async()=>{attempts++;throw temporary;}}),e=>/超时或中断/.test(e.message)&&!e.message.includes(secret));assert.equal(attempts,2);
+for(const [cause,expected]of [[{code:'ENOTFOUND'},/无法解析/],[{code:'ECONNREFUSED'},/连接被拒绝/],[{code:'SELF_SIGNED_CERT_IN_CHAIN'},/证书验证失败/],[{message:'unexpected redirect'},/接口要求跳转/]]){
+ attempts=0;await assert.rejects(()=>discoverProviderModels(rpc,input,{...options,fetchImpl:async()=>{attempts++;throw Object.assign(new TypeError(secret),{cause});}}),e=>expected.test(e.message)&&!e.message.includes(secret));assert.equal(attempts,1,'permanent, certificate and redirect errors are not retried');
+}
+attempts=0;const aborted=new AbortController();aborted.abort();await assert.rejects(()=>discoverProviderModels(rpc,input,{...options,signal:aborted.signal,fetchImpl:async()=>{attempts++;return reply({data:[]});}}),/取消|超时/);assert.equal(attempts,0);
+console.log('PASS metadata-only discovery, multiple wire protocols, native/compatible catalog formats, pagination/deduplication, exact-service documented image capabilities, explicit metadata precedence, unknown models, visual embedding/reranker exclusion, saved-key binding, redirect/size/error redaction and empty lists; mocked transport only.');
+console.log('PASS new-key priority over stored credentials, SiliconFlow root normalization, non-ASCII key diagnostics, one transient retry, specific DNS/TLS/redirect/refused errors and cancellation before transport.');

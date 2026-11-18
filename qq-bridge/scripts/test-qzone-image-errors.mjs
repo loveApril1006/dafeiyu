@@ -1,0 +1,13 @@
+import os from 'node:os';
+import assert from 'node:assert/strict';import fs from 'node:fs';import path from 'node:path';import {createQzoneService,explainQzoneImageFailure} from '../src/qzone/service.js';
+const id='12345678-1234-1234-1234-123456789abc';
+for(const [error,pattern]of [[Error('画图已达到每日任务上限，可在后台调整'),/每日生成次数/],[Error('此会话还有未完成的生图任务，已阻止另一笔付费生成'),/旧任务/],[Error('图片已生成但下载失败，已保留回执。任务 '+id),/下载未完成/],[Error('这项任务尚未完成，请等结果'),/正忙/],[Error('图库空间不足'),/图库容量/],[new Error('生图请求未完成或结果不确定，任务 '+id,{cause:Error('image request failed (401): secret-token')}),/认证/],[Error('fetch failed secret-token'),/具体原因尚未确认/]]){const text=explainQzoneImageFailure(error);assert.match(text,pattern);assert.ok(!text.includes('secret-token'));assert.ok(!text.includes('检查画图服务和额度'));}
+const parent=os.tmpdir(),root=fs.mkdtempSync(path.join(parent,'qzone-image-error-'));let modelCalls=0,imageCalls=0,lookups=0,published=0,clock=Date.UTC(2026,9,27,2);let failure=Error('图片已生成但下载失败，任务 '+id);
+const png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+k3ioAAAAASUVORK5CYII=','base64');
+const service=createQzoneService({root,getDsh:()=>({model:'fixture'}),getApi:()=>null,getCreative:()=>({core:{status:()=>({config:{images:{enabled:true,configured:true}}}),action:async()=>{imageCalls++;throw Error('Paid generation must never be called');},readyImage:()=>{lookups++;if(failure)throw failure;return png;}}}),dependencies:{harden:false,model:async()=>JSON.stringify({text:'fixture-'+(++modelCalls),imagePrompt:'test image'}),checkPublisher:async()=>{},publish:async()=>{published++;return {tid:'fixture-'+published};},core:{now:()=>clock}}});
+try{
+ await service.core.configure({revision:0,enabled:true,autoWrite:true,autoPublish:true,withImages:true,dailyGenerations:20,dailyPublishes:20,minGapHours:1});
+ for(const error of [failure,Error('此会话还有未完成的生图任务'),Error('image request failed (401): secret-token')]){failure=error;clock+=3600000;await service.core.generate();const row=service.status().posts[0];assert.equal(row.state,'published');assert.equal(row.imageUrl,undefined);assert.match(row.imageDecision,/纯文字/);assert.ok(!JSON.stringify(row).includes('secret-token'));}
+ failure=null;clock+=3600000;await service.core.generate();assert.equal(published,4);assert.equal(service.status().posts[0].state,'published');assert(service.status().posts[0].imageUrl);assert.equal(lookups,4);assert.equal(imageCalls,0);
+ console.log('PASS Qzone optional images: unavailable/pending/error becomes text, completed local image is reused, no new generation or secret in the post. All peers mocked.');
+}finally{await service.close();assert.ok(path.resolve(root).startsWith(path.resolve(parent)+path.sep));fs.rmSync(root,{recursive:true,force:true});}

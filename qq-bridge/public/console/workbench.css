@@ -1,0 +1,91 @@
+/* Shared design tokens for first-party embedded workbenches and standalone pages. */
+html:root {
+  color-scheme:light;
+  --bg:#f3f5f9;--card:#fff;--surface:#fff;--text:#202635;--muted:#647187;
+  --border:#e2e7ef;--line:#e2e7ef;--accent:#3569e8;--blue:#3569e8;
+  --accent-fg:#fff;--green:#18765c;--red:#bd3a49;
+  --workbench-soft:#eaf0ff;--workbench-fg:#295bcf;
+}
+html[data-theme="dark"] {
+  color-scheme:dark;
+  --bg:#10151f;--card:#181f2c;--surface:#181f2c;--text:#e7ebf3;--muted:#a3afc3;
+  --border:#2a3547;--line:#2a3547;--accent:#86aaff;--blue:#86aaff;
+  --green:#83d6b3;--red:#ff9bae;--workbench-soft:#233454;--workbench-fg:#a4beff;
+}
+html body{font-family:"Segoe UI Variable Text","Segoe UI","Microsoft YaHei UI",sans-serif;background:var(--bg);color:var(--text)}
+html.embedded body{padding:20px}
+html.embedded body>main{padding:0;max-width:none}
+html.embedded body>main>header.top{margin-bottom:20px}
+html.embedded h1{font-size:22px;letter-spacing:-.5px}
+html h2{font-size:16px;font-weight:600}
+html .panel,html .card,html section.panel,html .metric,html body>main>section:not(.scene-shell),html body>section{background:var(--card);border-color:var(--border);border-radius:12px;box-shadow:0 3px 16px #23395605}
+html input:not([type=checkbox]):not([type=radio]):not([type=range]),html select,html textarea{border-color:var(--border);background:var(--card);color:var(--text);border-radius:7px;max-width:100%}
+html input[type=checkbox],html input[type=radio],html progress{accent-color:#3569e8}
+html button,html .pill,html a.action,html a.link{background:var(--card);color:var(--text);border-color:var(--border);border-radius:7px}
+html button:hover:not(:disabled){border-color:var(--accent);background:var(--workbench-soft)}
+html button.primary,html button[aria-pressed=true]{background:#3569e8;color:white;border-color:#3569e8}
+html button.danger,html .danger{color:var(--red)}
+html .hint,html .tag,html .notice,html .reply,html .badge{background:var(--workbench-soft);color:var(--workbench-fg);border-color:var(--border)}
+html .muted,html small{color:var(--muted)}
+html :focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+html .scene-top button{background:#111f37;color:#bbcee8;border-color:#304362}
+html .scene-top button[aria-pressed=true]{background:#2b496f;color:#fff}
+html .star-label{background:transparent!important;color:#dfebff!important}
+@media(max-width:600px){html.embedded body{padding:14px}html.embedded h1{font-size:20px}html .panel,html .card{padding:16px}}
+/* Matte blue surfaces shared with the parent workspace. */
+html:root{--bg:#eaf0fa;--card:#fdfefe;--surface:#f8faff;--border:#dce5f3;--line:#dce5f3;--muted:#596c8c;--workbench-shadow:5px 7px 20px #adc0df26,-3px -3px 12px #ffffff80}
+html[data-theme="dark"]{--bg:#10151f;--card:#1a2436;--surface:#1a2436;--border:#2a3547;--line:#2a3547;--muted:#a3afc3;--workbench-shadow:5px 7px 20px #030a1726,-2px -2px 10px #536d8e0a}
+html .panel,html .card,html section.panel,html .metric,html body>main>section:not(.scene-shell),html body>section{border-radius:20px;box-shadow:var(--workbench-shadow)}
+html button,html .pill,html a.action,html a.link{border-radius:10px}html input:not([type=checkbox]):not([type=radio]):not([type=range]),html select,html textarea{border-radius:10px}
+@media(max-width:600px){html .panel,html .card,html section.panel{border-radius:16px}}
+/* Shared studio layout: short headings, quiet surfaces and consistent controls. */
+html body.studio-page{font-size:13px;line-height:1.7;padding:22px;max-width:1440px;margin:auto}
+html.embedded body.studio-page{padding:0;background:transparent;max-width:none}
+.studio-page .studio-page-title{font-size:20px;font-weight:650;margin:0 0 5px;letter-spacing:-.4px}
+.studio-page .studio-intro{font-size:12px;color:var(--muted);margin:0 0 20px}
+html.embedded .studio-page-title{font-size:17px;color:var(--muted);font-weight:500}
+.studio-page .studio-section-nav{display:flex;gap:5px;flex-wrap:wrap;padding:5px;margin:18px 0 22px;background:var(--surface);border:1px solid var(--border);border-radius:12px;width:fit-content;max-width:100%}
+.studio-page .studio-section-nav a{padding:7px 12px;color:var(--muted);font-size:11px;border-radius:8px;text-decoration:none}
+.studio-page .studio-section-nav a:hover,.studio-page .studio-section-nav a:focus-visible{background:var(--workbench-soft);color:var(--workbench-fg)}
+html .studio-page section.panel,html .studio-page section.card,html .studio-page .cards>.card,html .studio-page .panel{border:1px solid var(--border);border-radius:16px;background:var(--card);padding:23px;margin-top:0;margin-bottom:20px;box-shadow:0 4px 14px #718dbb08;min-width:0}
+html .studio-page .studio-section{scroll-margin-top:20px}
+html .studio-page h2{font-size:15px;font-weight:650;line-height:1.5;color:var(--text);margin:0 0 16px;letter-spacing:0}
+html .studio-page h3{font-size:13px;font-weight:600;margin:20px 0 10px}
+html .studio-page p,html .studio-page small{font-size:11px;line-height:1.8}
+html .studio-page .studio-caption{font-size:11px;color:var(--muted);margin:0 0 17px;max-width:76ch}
+html .studio-page .row,html .studio-page .actions{gap:9px;align-items:center;margin:16px 0}
+html .studio-page button{padding:8px 13px;font-size:11px;line-height:1.65;border-radius:9px;min-height:34px;font-weight:500;box-shadow:none}
+html .studio-page button.primary{background:#3c70e4;color:#fff;border-color:#3c70e4}
+html .studio-page button.danger{background:var(--card);color:var(--red)}
+html .studio-page input:not([type=checkbox]):not([type=radio]):not([type=color]):not([type=range]),html .studio-page select,html .studio-page textarea{font-size:12px;padding:9px 11px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:9px;min-height:37px}
+html .studio-page input[type=checkbox]{appearance:none;-webkit-appearance:none;position:relative;display:inline-block;vertical-align:middle;flex:none;width:31px;height:18px;border:1px solid var(--border);border-radius:20px;background:var(--border);margin:0 8px 0 0;cursor:pointer}
+html .studio-page input[type=checkbox]:before{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;background:#fff;border-radius:50%;box-shadow:0 1px 3px #14274625;transition:transform .15s}
+html .studio-page input[type=checkbox]:checked{background:#477ce9;border-color:#477ce9}html .studio-page input[type=checkbox]:checked:before{transform:translateX(13px)}html .studio-page input[type=checkbox]:disabled{opacity:.45;cursor:not-allowed}
+html .studio-page label{font-size:12px;line-height:1.7}
+.studio-page .studio-help{font-size:11px;color:var(--muted);margin:17px 0 0;padding-top:12px;border-top:1px solid var(--border)}
+.studio-page .studio-help>summary{font-size:11px;cursor:pointer;color:var(--muted);width:fit-content}
+.studio-page .studio-help p{max-width:90ch;padding:0;margin:10px 0;line-height:1.9}
+.studio-page details:not(.studio-help){border:1px solid var(--border);border-radius:11px;background:var(--surface);padding:13px 15px;margin:15px 0}
+.studio-page details:not(.studio-help)>summary{font-size:12px;font-weight:500;cursor:pointer}
+html .studio-page .entry{gap:12px;padding:16px 0;border-color:var(--border)}
+html .studio-page .entry>div:first-child,html .studio-page .entry strong{font-size:12px}
+html .studio-page .entry small{font-size:10px}
+html .studio-page .tabs{gap:5px;padding:5px;border:1px solid var(--border);border-radius:12px;background:var(--surface);margin:20px 0}
+html .studio-page .tabs button{border-color:transparent;background:transparent;color:var(--muted);min-height:34px}
+html .studio-page .tabs button[aria-selected=true]{background:var(--card);color:var(--workbench-fg);border-color:var(--border);box-shadow:0 2px 5px #718dbb0c}
+html .studio-page .cards{gap:14px}.studio-page .cards h2{margin-bottom:14px}
+.studio-page #notice:not(:empty){font-size:11px;padding:10px 13px;border-radius:10px;box-shadow:none}
+.studio-page .state,.studio-page .status,.studio-page .statline{font-size:12px;color:var(--muted)}
+.studio-page .metrics{gap:12px}.studio-page .metric{padding:17px;border-radius:12px;box-shadow:none}.studio-page .metric strong{font-size:25px}
+html .studio-page .links button{background:var(--surface);padding:11px 14px;border-radius:10px}
+.studio-page .top{margin-bottom:18px}.studio-page .top .eyebrow{display:none}
+@media(max-width:650px){html .studio-page section.panel,html .studio-page section.card,html .studio-page .panel,html .studio-page .cards>.card{padding:17px;border-radius:13px;margin-bottom:15px}.studio-page .studio-section-nav{gap:1px;padding:4px;margin:15px 0}.studio-page .studio-section-nav a{padding:7px 9px;font-size:10px}html .studio-page .split,html .studio-page .cards{grid-template-columns:1fr}html .studio-page input:not([type=checkbox]):not([type=radio]),html .studio-page select{max-width:100%}}
+@media(prefers-reduced-motion:reduce){html .studio-page input[type=checkbox]:before{transition:none}}
+html.embedded .studio-page:not([data-workbench="bilibili-live"]) .studio-page-title,html.embedded .studio-page:not([data-workbench="bilibili-live"]) .studio-intro{display:none}
+html .studio-page label.field:not(:has(input[type=checkbox])){display:flex;flex-direction:column;align-items:stretch;gap:6px}html .studio-page label.field:not(:has(input[type=checkbox])) input,html .studio-page label.field:not(:has(input[type=checkbox])) select{width:100%;margin-top:0}
+.studio-page .studio-switch-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px;margin-bottom:22px}.studio-page .studio-switch-grid .switch{display:flex;align-items:center;padding:13px 0;border-bottom:1px solid var(--border);margin:0;font-size:12px}
+html .studio-page .panel-grid>.panel{margin:0}
+@media(max-width:650px){.studio-page .studio-switch-grid{grid-template-columns:1fr}}
+/* The console already supplies the page title; embedded workbenches show sections only. */
+html.embedded body.studio-page .studio-page-title,html.embedded body.studio-page .studio-intro{display:none}
+html.embedded body[data-workbench="bilibili-live"] .top>div:first-child{display:none}

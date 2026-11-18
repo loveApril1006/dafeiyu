@@ -1,0 +1,37 @@
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+import {existsSync} from 'node:fs';
+import {mkdir} from 'node:fs/promises';
+import {startConsoleFixture} from './console-ui-fixture.mjs';
+const require=createRequire(import.meta.url);
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE || 'playwright');
+const fixture=await startConsoleFixture();
+const executablePath=process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || ['C:/Program Files/Google/Chrome/Application/chrome.exe','C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(existsSync);
+const browser=await chromium.launch({headless:true,...(executablePath?{executablePath}:{})});
+try {
+  const context=await browser.newContext({viewport:{width:1440,height:1000}});
+  await context.route('**/*',route => new URL(route.request().url()).origin === fixture.url ? route.continue() : route.abort());
+  const page=await context.newPage();const errors=[];page.on('pageerror',error=>errors.push(error.message));
+  await page.goto(fixture.url+'/#plugins');
+  await page.getByRole('button',{name:'关闭 测试插件包',exact:true}).waitFor();
+  assert.equal(await page.getByRole('button',{name:'关闭 DSH 核心',exact:true}).isEnabled(),false);
+  await page.getByRole('button',{name:'关闭 测试插件包',exact:true}).click();
+  await page.getByRole('button',{name:'启动 测试插件包',exact:true}).waitFor();
+  assert.deepEqual(fixture.requests.filter(r=>r.path==='/api/dsh/plugins/toggle').at(-1).body,{kind:'bundle',id:'fixture-tools',enabled:false});
+  await page.getByRole('button',{name:'启动 测试插件包',exact:true}).click();
+  await page.getByRole('button',{name:'关闭 测试插件包',exact:true}).waitFor();
+  await page.getByRole('button',{name:'启动 重启插件包',exact:true}).click();
+  await page.waitForFunction(()=>document.getElementById('pluginManagerMsg').textContent.includes('重启 DSH'));
+  await page.locator('#pluginSearch').fill('不存在'); assert.match(await page.locator('#pluginBundleList').innerText(),/没有匹配/);
+  await page.locator('#pluginSearch').fill('');
+  await page.getByText('组件明细',{exact:true}).click();
+  await page.getByRole('button',{name:'关闭 测试组件',exact:true}).click();
+  await page.getByRole('button',{name:'启动 测试组件',exact:true}).waitFor();
+  await mkdir('state/plugin-ui-check',{recursive:true});
+  await page.screenshot({path:'state/plugin-ui-check/desktop.png',fullPage:true});
+  await page.setViewportSize({width:390,height:844});
+  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'mobile overflow');
+  await page.screenshot({path:'state/plugin-ui-check/mobile.png',fullPage:true});
+  assert.deepEqual(errors,[]);assert.deepEqual(fixture.unknownRequests,[]);
+  console.log('PASS plugin navigation, start/stop, protection, search, restart notice, component controls and mobile layout (isolated fixture)');
+} finally {await browser.close();await fixture.close();}

@@ -1,0 +1,15 @@
+{
+  "id": "lin_traveler",
+  "character_name": "林",
+  "race": "人类",
+  "class": "巡山人",
+  "description": "沉默寡言的巡山人，背着一盏旧提灯，说自己在找一座会走路的山。",
+  "attributes": {"str": 12, "dex": 14, "con": 13, "int": 11, "wis": 15, "cha": 9},
+  "skills": [
+    {"name": "攀爬", "value": 4},
+    {"name": "观察", "value": 5}
+  ],
+  "background": "小时候在山里走丢过一次，被灯花指引回家，从此替镇子巡视山脊，寻找裂开的缝隙。",
+  "equipment": [{"name": "旧提灯"}, {"name": "山地图"}],
+  "gold": 30
+}

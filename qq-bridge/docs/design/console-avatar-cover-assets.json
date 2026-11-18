@@ -1,0 +1,18 @@
+{
+  "tool": "image_gen.imagegen",
+  "assets": [
+    {
+      "name": "assistant-avatar",
+      "source": "assets/console-design/assistant-avatar-v1.png",
+      "runtime": "public/console/assistant-avatar.webp",
+      "prompt": "Use case: stylized-concept. Asset type: production default avatar for a Chinese AI companion dashboard named QQ Bridge. A single adorable calm little pigeon character, round head and plump upper body, gentle cornflower-blue feathers, pale blue-white face and belly, two tiny dark navy eyes, very small ivory beak, short rounded wings visible near bottom. Sophisticated soft 3D clay / finely textured ceramic, high roughness, rounded forms, soft diffuse studio light, delicate ambient occlusion. Front three-quarter portrait looking slightly towards camera. Centered square composition, character occupies 78 percent of frame, generous clear padding, clean readable silhouette for 40-pixel avatars. Harmonious muted blue palette, matte material, no glossy plastic, no glass, no jewelry, no accessories, no text or letters, no logos, no border. Truly transparent background, no colored tile or background plane. Not a photo and not a flat vector icon."
+    },
+    {
+      "name": "video-cover",
+      "source": "assets/console-design/video-cover-v1.png",
+      "runtime": "public/console/video-cover.webp",
+      "prompt": "Use case: stylized-concept. Asset type: finished fallback thumbnail for a video library, landscape 16:10. Minimal premium studio still life: one thick softly rounded periwinkle-blue rectangular video tile, slightly tilted in three-quarter view, with a raised small ivory triangular play symbol centered on its face. A short cobalt torus behind the bottom left and a small pale ice-blue sphere near the right. Objects are high-roughness finely textured matte ceramic / clay, no shiny plastic, realistic soft ambient occlusion and gentle diffused softbox lighting. Compact carefully balanced composition in the central 60 percent with generous breathing room. Seamless very pale blue background #eaf0fa, subtle grounded soft shadow. Refined quiet blue palette consistent with modern 3D geometric dashboard illustration. No text, no letters, no watermark, no faces, no collage, no user interface screenshot."
+    }
+  ],
+  "processing": "Lossless WebP encoding; original pixels and avatar transparency preserved."
+}

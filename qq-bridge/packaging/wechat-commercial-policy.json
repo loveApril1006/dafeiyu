@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "scope": "Conservative WeChat release exclusions; not a commercial-use license or full product audit",
+  "blockedDirectoryNames": [
+    "wx4py-upstream", "pywechat-upstream", "wechatapi-upstream",
+    "wechat-sdk-upstream", "weixin-upstream", "wechat-db-runtime", "wechat-desktop-runtime",
+    "wx4py", "pywechat", "pyweixin", "wxauto", "wxauto4", "wxautox4", "wechatauto"
+  ],
+  "blockedPythonModules": ["wx4py", "pywechat", "pyweixin", "wxauto", "wxauto4", "wxautox4", "wechatauto"],
+  "reason": "These SDKs, bundled runtimes and their actual dependencies have not been cleared for this commercial distribution. A permissive top-level license alone is insufficient evidence. Exclusion is release policy, not a finding of infringement."
+}

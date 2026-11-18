@@ -1,0 +1,62 @@
+{
+  "name": "dsh-diceframe",
+  "version": "0.1.0",
+  "description": "DSH AI tabletop / GM plugin for DeepSeek Harness: dice rolls, check resolution, world books, character cards, and DiceFrame content-pack import. Play solo in DSH, play with friends in DiceFrame.",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./engine": "./engine.js",
+    "./dice": "./dice.js",
+    "./gm": "./gm.js",
+    "./lore": "./lore.js",
+    "./commands": "./commands.js",
+    "./table": "./table.js",
+    "./save": "./save.js"
+  },
+  "files": [
+    "index.js",
+    "engine.js",
+    "dice.js",
+    "gm.js",
+    "lore.js",
+    "commands.js",
+    "table.js",
+    "save.js",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "trpg",
+    "tabletop-rpg",
+    "rpg",
+    "ai-roleplay",
+    "ai-gm",
+    "dice",
+    "dice-roller",
+    "gm",
+    "worldbook",
+    "character-card",
+    "diceframe",
+    "multiplayer-trpg"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {},
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

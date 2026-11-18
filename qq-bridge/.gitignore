@@ -1,0 +1,11 @@
+companion/creative-data/
+state/creative-backups/
+state/creative-audit/
+integrations/seed-vc-runtime/
+companion/wechat-data/
+integrations/wechat-desktop-runtime/
+integrations/wechat-db-runtime/
+state/wechat-backups/
+state/wechat-audit/
+companion/qzone-data/
+state/qzone-audit/

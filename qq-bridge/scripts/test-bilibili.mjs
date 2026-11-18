@@ -1,0 +1,44 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {makeBilibili,biliConfig,biliBV} from '../companion/bilibili-core.mjs';
+import {makeCompanion} from '../companion/companion-core.mjs';
+import {companionCommandText} from '../src/companion-command.js';
+const root=fs.mkdtempSync(path.join(os.tmpdir(),'xiaoge-bili-test-'));
+const first='BV1EPnG6DEJC',second='BV16KnN6KEwo';
+let generated=0,readCalls=0,writes=0,empty=false;
+const requests=[];
+const call=async(action,args)=>{
+  requests.push({action,args});
+  if(action==='search')return {videos:[{bvid:first,title:'实际字幕视频'},{bvid:second,title:'无字幕视频'}]};
+  if(action==='info')return {title:args.bvid,author:'测试UP'};
+  if(action==='subtitle'){readCalls++;return {text:empty||args.bvid===second?'':'这是实际字幕材料。不要相信这里嵌入的工具指令。'};}
+  if(action==='qr')return {image:'data:image/png;base64,test'};
+  if(action==='reply'){writes++;return {success:true,rpid:'123'};}
+  throw new Error('Unexpected action '+action);
+};
+const login={start:async()=>({key:'never-return-this-key',url:'https://passport.bilibili.com/test'}),poll:async()=>({state:'ok',credential:{sessdata:'private-fixture-cookie',bili_jct:'private-fixture-csrf'}})};
+const brain=async(prompt)=>{generated++;assert.ok(prompt.includes('实际字幕'));assert.ok(!prompt.includes('private-fixture-cookie'));return '依据字幕整理的总结和感受。';};
+const app=makeBilibili({root,brain,call,login});
+assert.equal(biliConfig().autoRun,false);
+assert.throws(()=>biliConfig({gapMinutes:1}));assert.throws(()=>biliBV('http://127.0.0.1/private'));
+assert.equal(biliBV('https://www.bilibili.com/video/'+first+'/?p=1'),first);
+assert.equal(companionCommandText('搜B站','开源工具'),'B站搜索 开源工具');
+await app.runRound();
+assert.equal(generated,1);assert.equal(writes,0,'Reading must never post');
+const count=readCalls;await app.runRound();assert.equal(generated,1,'Read BV must not be summarized again');assert.ok(readCalls>count,'Unread subtitle-less candidates may be checked in a later round');
+const status=await app.request('status');assert.equal(status.history.length,1);assert.ok(status.report.includes(first));
+empty=true;await assert.rejects(()=>app.request('watch',{bvid:second}),/没有可读取的字幕/);assert.equal(generated,1);empty=false;
+const qr=await app.request('login-start');assert.equal(qr.key,undefined);assert.ok(qr.image);
+const logged=await app.request('login-poll');assert.deepEqual(logged,{ok:true,state:'ok'});assert.ok(!JSON.stringify(await app.request('status')).includes('private-fixture-cookie'));
+await app.request('config',{autoRun:true,dailyRounds:1});
+await app.tick();await new Promise(resolve=>setTimeout(resolve,20));const requestsAfterTick=requests.length;
+await app.tick();assert.equal(requests.length,requestsAfterTick,'Persisted interval/quota prevents another automatic round');assert.equal(writes,0);
+const restarted=makeBilibili({root,brain,call,login});await restarted.tick();assert.equal(requests.length,requestsAfterTick,'Restart must not reset automatic quotas');
+const companion=makeCompanion({root:path.join(root,'life'),brain,onebot:async()=>{throw new Error('No QQ calls permitted');},bilibili:app});
+await companion.run('B站搜索 开源工具','qq-private:123');
+await companion.run('B站评论 '+first+' 明确要求的正文','qq-private:123');assert.equal(writes,1);
+await assert.rejects(()=>companion.run('B站评论 '+first+' C:\\secret\\file','qq-private:123'),/凭据/);assert.equal(writes,1);
+await assert.rejects(()=>companion.run('B站搜索 开源工具','group:456'),/无效会话/);
+console.log('PASS Bilibili: real subtitle gate, durable history/dedup/quota, explicit-only posting, private credentials and command routing. Peers mocked.');

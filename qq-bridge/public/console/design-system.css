@@ -1,0 +1,164 @@
+/* Shared geometry for the console and both kinds of embedded workbench.
+   Colors remain owned by the host theme; switches never inherit button sizing. */
+:root {
+  --ui-space-1:4px;
+  --ui-space-2:8px;
+  --ui-space-3:12px;
+  --ui-space-4:16px;
+  --ui-space-5:20px;
+  --ui-space-6:24px;
+  --ui-card-padding:24px;
+  --ui-card-radius:16px;
+  --ui-control-radius:10px;
+  --ui-control-height:36px;
+  --ui-section-gap:20px;
+  --ui-font:"Segoe UI Variable Text","Segoe UI","Microsoft YaHei UI",sans-serif;
+}
+body {font-family:var(--ui-font)}
+
+/* Shell cards and static workbenches. Keep iframe hosts flush with the page. */
+#mainContent .card:not(:has(>iframe)),
+html body.studio-page :is(section.panel,section.card,.cards>.card,.panel) {
+  padding:var(--ui-card-padding);
+  border-radius:var(--ui-card-radius);
+}
+html body.studio-page :is(section.panel,section.card,.cards>.card,.panel) {
+  margin-bottom:var(--ui-section-gap);
+}
+html body.studio-page :is(.row,.actions) {gap:var(--ui-space-2)}
+html body.studio-page :is(.card,.panel)>label:has(>input[type="checkbox"]) {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:26px;
+  margin:8px 0;
+  line-height:1.5;
+}
+html body.studio-page button:not([role="switch"]),
+#mainContent :is(.settings-content,.row,.plugin-card)>button:not([role="switch"]) {
+  min-height:var(--ui-control-height);
+  padding:8px 13px;
+  border-radius:var(--ui-control-radius);
+  font-size:12px;
+  line-height:1.5;
+}
+html body.studio-page :is(input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]),select,textarea) {
+  box-sizing:border-box;
+  min-height:var(--ui-control-height);
+  padding:8px 12px;
+  border-radius:var(--ui-control-radius);
+}
+html body.studio-page textarea {min-height:96px;line-height:1.7}
+
+/* Pond contains a legacy stylesheet inserted at runtime. These scoped rules
+   intentionally beat its local reset without touching the upstream source. */
+.pond.pond-workspace {gap:var(--ui-section-gap);font-family:var(--ui-font)}
+.pond.pond-workspace :is(.pond-workspace-bar,.pond-library,.pond-card,.pond-run-records,.pond-interaction-policy) {
+  padding:var(--ui-card-padding);
+  border-radius:var(--ui-card-radius);
+}
+.pond.pond-workspace .pond-settings {display:flex;flex-direction:column;gap:var(--ui-section-gap)}
+.pond.pond-workspace .pond-settings>[data-bd-page] {padding:0;gap:var(--ui-section-gap)}
+.pond.pond-workspace [data-bd-card] {border-radius:var(--ui-card-radius)!important}
+.pond.pond-workspace [data-bd-card-head] {padding:16px var(--ui-card-padding)!important;gap:8px!important}
+.pond.pond-workspace [data-bd-card-body] {padding:12px var(--ui-card-padding) var(--ui-card-padding)!important}
+.pond.pond-workspace [data-bd-row] {gap:12px!important;padding:12px 0!important}
+.pond.pond-workspace [data-bd-card-body]>[data-bd-row]:first-child {padding-top:0!important}
+.pond.pond-workspace [data-bd-card-body]>[data-bd-row]:last-child {padding-bottom:0!important}
+.pond.pond-workspace :is([data-bd-btn],.pond-main-actions button,.pond-library-empty button,.pond-connection button) {
+  box-sizing:border-box;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  height:auto!important;
+  min-height:var(--ui-control-height)!important;
+  padding:8px 13px!important;
+  font-size:12px!important;
+  line-height:1.5!important;
+  border-radius:var(--ui-control-radius)!important;
+  white-space:normal;
+}
+.pond.pond-workspace :is([data-bd-input],[data-bd-select],[data-bd-textarea],.pond-search input) {
+  box-sizing:border-box;
+  min-height:var(--ui-control-height)!important;
+  height:auto;
+  padding:8px 12px;
+  font-size:12px;
+  line-height:1.5;
+  border-radius:var(--ui-control-radius)!important;
+}
+.pond.pond-workspace [data-bd-select] {padding-right:30px}
+.pond.pond-workspace [data-bd-textarea] {min-height:96px!important}
+.pond.pond-workspace button:is([data-bd-sw],[role="switch"]) {
+  box-sizing:border-box;
+  flex:0 0 auto;
+  width:36px!important;
+  height:22px!important;
+  min-height:22px!important;
+  padding:0!important;
+  border-radius:99px!important;
+  line-height:1;
+  background:var(--surface-chip-strong,var(--border))!important;
+}
+.pond.pond-workspace button:is([data-bd-sw],[role="switch"])[aria-checked="true"] {background:var(--accent)!important}
+.pond.pond-workspace [data-bd-sw] i {width:16px;height:16px;top:2px;left:2px}
+.pond.pond-workspace [data-bd-sw][data-on] i {left:16px}
+.pond.pond-workspace button:is([data-bd-sw],[role="switch"])::before,
+.pond.pond-workspace button:is([data-bd-sw],[role="switch"])::after {box-sizing:border-box}
+
+/* React workbench adapters: DSH panels use CSS-module class names; the semantic
+   data-slot hook survives bundling and covers panels outside the settings tab. */
+.app-frame {font-family:var(--ui-font)}
+.app-frame :is(.settings-page,.conversation) {padding:var(--ui-card-padding)!important}
+.app-frame .settings-page :is(.panel,section[data-slot="panel"]),
+.app-frame :is(.watch-controls,.publish-record) {
+  padding:var(--ui-card-padding)!important;
+  border-radius:var(--ui-card-radius)!important;
+}
+.app-frame .settings-page :is(.panel,.persona-section) {
+  background:var(--surface)!important;
+  border:1px solid var(--card-border)!important;
+  padding:var(--ui-card-padding)!important;
+  border-radius:var(--ui-card-radius)!important;
+  margin:0 0 var(--ui-section-gap)!important;
+}
+.app-frame .settings-page>.memory-view {
+  padding:var(--ui-card-padding)!important;
+  border:1px solid var(--card-border);
+  background:var(--surface);
+  border-radius:var(--ui-card-radius);
+}
+.app-frame .settings-page :is(.section-heading,.panel-title) {margin-bottom:16px}
+.app-frame .settings-page :is(.section-heading,.panel-title) :is(h1,h2) {margin:0 0 8px;font-size:15px;font-weight:650}
+.app-frame .settings-page .persona-records {padding:20px 0;border-top:1px solid var(--card-border)}
+.app-frame button:not([role="switch"]):not(.nav-link):not([role="tab"]):not(.icon-button) {
+  min-height:var(--ui-control-height);
+  padding:8px 13px;
+  line-height:1.5;
+  border-radius:var(--ui-control-radius)!important;
+}
+.app-frame :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]),select,textarea) {
+  box-sizing:border-box;
+  min-height:var(--ui-control-height);
+  padding:8px 12px;
+  border-radius:var(--ui-control-radius)!important;
+}
+.app-frame textarea {min-height:96px;line-height:1.7}
+.app-frame .settings-tabs,.pond.pond-workspace .pond-workspace-tabs,html body.studio-page .tabs {
+  padding:4px!important;
+  gap:4px!important;
+  border-radius:12px!important;
+}
+.app-frame .settings-tabs button,.pond.pond-workspace .pond-workspace-tabs button,html body.studio-page .tabs button {
+  min-height:32px!important;
+  padding:6px 12px!important;
+  border-radius:8px!important;
+  line-height:1.5;
+}
+@media(max-width:650px) {
+  :root {--ui-card-padding:16px;--ui-card-radius:13px;--ui-section-gap:16px}
+  .pond.pond-workspace [data-bd-row-ctl] {max-width:100%}
+  .pond.pond-workspace [data-bd-row][data-bd-stack] [data-bd-inline] {flex-wrap:wrap}
+  .pond.pond-workspace [data-bd-row][data-bd-stack] [data-bd-inline] input {min-width:0;flex:1 1 150px}
+}

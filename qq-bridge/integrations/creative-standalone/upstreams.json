@@ -1,0 +1,28 @@
+[
+  {
+    "name": "dsh-diceframe",
+    "version": "0.1.0",
+    "license": "MIT",
+    "commit": "0e009dcaba496503cbf0f1d86545fde0391ac081"
+  },
+  {
+    "name": "dsh-image-gen",
+    "version": "0.9.3",
+    "license": "Apache-2.0",
+    "commit": "f5f83278ab420f2f0ef175fe2e1a027d64f3be2a",
+    "source": {
+      "type": "git",
+      "url": "git+https://github.com/shanliuling/dsh-image-gen.git"
+    }
+  },
+  {
+    "name": "dsh-deepseek-meme",
+    "version": "0.3.5",
+    "license": "MIT",
+    "commit": "b76be63b52504f03a64115e92c557a5523c48b4a",
+    "source": {
+      "type": "git",
+      "url": "git+https://github.com/FeWOO/DeepSeek-meme.git"
+    }
+  }
+]

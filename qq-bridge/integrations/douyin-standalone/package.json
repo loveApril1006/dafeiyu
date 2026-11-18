@@ -1,0 +1,1 @@
+{"name":"qq-bridge-douyin-ui","version":"1.0.0","private":true,"type":"module","license":"MIT","scripts":{"build":"node build-ui.mjs"},"dependencies":{"@ffprobe-installer/win32-x64":"5.1.0"}}

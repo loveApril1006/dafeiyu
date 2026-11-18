@@ -1,0 +1,2625 @@
+{
+  "version": 1,
+  "method": "esbuild-metafile-bytesInOutput",
+  "packages": [
+    {
+      "name": "@deepseek-ai/dsh-client-ui-layout",
+      "version": "0.1.5-rc.2",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/deepseek-ai--dsh-client-ui-layout-0.1.5-rc.2/LICENSE",
+          "sha256": "ebb4f09972aee8608be255debaf78451a68e95c290f55c240dec2ecfa16ea6be"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "src/client/AppFrame.module.css",
+          "bytesInOutput": 1141,
+          "sha256": "3ea2d3c3035a26484ee5e7760f5f6d53719b5a665cac1e09dca96bf88e8e44ec"
+        }
+      ]
+    },
+    {
+      "name": "@deepseek-ai/dsh-client-ui-primitives",
+      "version": "0.1.5-rc.2",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/deepseek-ai--dsh-client-ui-primitives-0.1.5-rc.2/LICENSE",
+          "sha256": "ebb4f09972aee8608be255debaf78451a68e95c290f55c240dec2ecfa16ea6be"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "src/ansi.ts",
+          "bytesInOutput": 190,
+          "sha256": "c4cfeb6af5a9631eddb7bc5c6527a892322cee37f142db27e44f284a4eb9fb9b"
+        },
+        {
+          "file": "src/BrandWordmark.tsx",
+          "bytesInOutput": 31,
+          "sha256": "6ec19148d54d17bc94f5d636f821b14106adf77d5dd243665f07e0eebdcab2fe"
+        },
+        {
+          "file": "src/Button.module.css",
+          "bytesInOutput": 1152,
+          "sha256": "a32017eff252569cef883d7d3308b2ca01fc41b167b568ad00b923603a902f99"
+        },
+        {
+          "file": "src/Button.tsx",
+          "bytesInOutput": 280,
+          "sha256": "5f1db06042fa372c45d777feffaab3b1d0c9395a89fa00b735bd9cbc8a389371"
+        },
+        {
+          "file": "src/clipboard.ts",
+          "bytesInOutput": 477,
+          "sha256": "f3c5ff3d5ac550adda2366e245d33cf4d91d219bfb8692ef1943866d83748a0f"
+        },
+        {
+          "file": "src/code-file-icon-artwork.ts",
+          "bytesInOutput": 57074,
+          "sha256": "1d4c6e8d77f46213258f6bf91acbaa4606cbbe09dff9b3fdc7404a90d5208515"
+        },
+        {
+          "file": "src/code-file-types.ts",
+          "bytesInOutput": 3554,
+          "sha256": "4c1008ebdc9932c4adbed27921064c527ec9affde90ffbe5d745227f9b96434e"
+        },
+        {
+          "file": "src/CodeFileIcon.tsx",
+          "bytesInOutput": 52,
+          "sha256": "882db02f0af7a6624006166c781cb03119e96febe445278941732a1320ecbbdf"
+        },
+        {
+          "file": "src/ConnectionIndicator.module.css",
+          "bytesInOutput": 1332,
+          "sha256": "440be5d197d7a56b8e1a8305d4199a112a7635c493eddd1e92fe3d9b0e0dddb2"
+        },
+        {
+          "file": "src/ConnectionIndicator.tsx",
+          "bytesInOutput": 41,
+          "sha256": "499507b69b5bc72713d2d77ff0fa59d34cfc2c56202af43cfad12227100cfe33"
+        },
+        {
+          "file": "src/DiffBlock.module.css",
+          "bytesInOutput": 1355,
+          "sha256": "d15b18565f6b37c97b3e2910a4b57077a487c3effca2d438651c78f492d7b62f"
+        },
+        {
+          "file": "src/DiffBlock.tsx",
+          "bytesInOutput": 121,
+          "sha256": "71690ceae7fdc9f0dff3f2f619a769ceb2d0691bada6479f3a36c325adf79693"
+        },
+        {
+          "file": "src/DisclosureRow.module.css",
+          "bytesInOutput": 1133,
+          "sha256": "40cdcab1f8821760ba2a59ff859b4c4fb894ea373b27083076c0e4f995373712"
+        },
+        {
+          "file": "src/DisclosureRow.tsx",
+          "bytesInOutput": 1118,
+          "sha256": "0c65c0f0f14f9fdaf4dda6aeea6c73bf803c4591d64f53784928aaa559cc9b96"
+        },
+        {
+          "file": "src/file-size.ts",
+          "bytesInOutput": 17,
+          "sha256": "e79997913c1fd49602b56decab19e740edec869abe5c5d69d8b68e7b041aaa4d"
+        },
+        {
+          "file": "src/FileTypeIcon.module.css",
+          "bytesInOutput": 850,
+          "sha256": "bc5756f2834772d4c7cc661d15417aafe0af8d00c959cdfe2dcde19bebcf62fe"
+        },
+        {
+          "file": "src/FileTypeIcon.tsx",
+          "bytesInOutput": 995,
+          "sha256": "b0407529b1651fe1020a3e47e8c612c266df6365efed6bbbf3b637f25fb4b182"
+        },
+        {
+          "file": "src/FishLogo.tsx",
+          "bytesInOutput": 31,
+          "sha256": "284e14941ee40ecb3473f424866a2f9370fb28ecdb8e5f1bbd8b1af295e5ddeb"
+        },
+        {
+          "file": "src/FoldToggle.tsx",
+          "bytesInOutput": 31,
+          "sha256": "f848e8c26b75679b2d6c27d08aa7eab844395f408ba29026202bc1ae85334e6a"
+        },
+        {
+          "file": "src/head-tail-cap.ts",
+          "bytesInOutput": 17,
+          "sha256": "1bede50ddacde225b92dfd8d5cf9621f4e39f7febbfc4363cf3446cab6953eed"
+        },
+        {
+          "file": "src/HoverCard.module.css",
+          "bytesInOutput": 584,
+          "sha256": "4d8fbf2368bd9f232f09422af94bf3527b4c9715445deaae18cf04fc1306475b"
+        },
+        {
+          "file": "src/HoverCard.tsx",
+          "bytesInOutput": 78,
+          "sha256": "e4fcb43d12de00d011717b033b496f5f57fb00c297f34e0a2f03206befd03e13"
+        },
+        {
+          "file": "src/icons/index.tsx",
+          "bytesInOutput": 859,
+          "sha256": "0bc8e307d48cf532e45637a685692b8047bb81ad6beab535e945ca86e615627d"
+        },
+        {
+          "file": "src/index.ts",
+          "bytesInOutput": 211,
+          "sha256": "0e3008424b1796237a9771561e183b7be6af14f0ba2c09a6744513b17fad48ef"
+        },
+        {
+          "file": "src/Input.module.css",
+          "bytesInOutput": 609,
+          "sha256": "f13333abf03b98d52bd65702ac34fbbf00b3c4fc3d8985b793d5e912a3e22b2e"
+        },
+        {
+          "file": "src/Input.tsx",
+          "bytesInOutput": 248,
+          "sha256": "dcb73dad681f3f37975c08ed3aa97922a1f5337548b406806324877a5d398c51"
+        },
+        {
+          "file": "src/JsonTree.module.css",
+          "bytesInOutput": 3059,
+          "sha256": "7814c49cc5e2bb8970878d7d382b7a912ea81205da2c18973444efa6e9d7fe32"
+        },
+        {
+          "file": "src/JsonTree.tsx",
+          "bytesInOutput": 67,
+          "sha256": "6d8e135712683418244aa6b7313599d2167334c0f947959d614aa9d43d7da710"
+        },
+        {
+          "file": "src/LinkIcon.tsx",
+          "bytesInOutput": 15648,
+          "sha256": "2f57888f74197d4749ef45a2ac5f7ba2f7c454938f922baf643aa8cd4fe21c36"
+        },
+        {
+          "file": "src/markdown/cjkFriendlyStrong.ts",
+          "bytesInOutput": 1020,
+          "sha256": "bc4adf3183f7d0feea17e3a176e7c4b1db5bdddc29e7fc87261f627ff8a39b53"
+        },
+        {
+          "file": "src/markdown/CodeBlock.module.css",
+          "bytesInOutput": 2555,
+          "sha256": "5a7ed14f12cb63ebf3f77d57e67340f7e9a399b0b07a90bec773fad3ddfa312f"
+        },
+        {
+          "file": "src/markdown/CodeBlock.tsx",
+          "bytesInOutput": 2864,
+          "sha256": "bb7d7f9d71aaaa8f4a8bedc7b8167b0d8ed00c6d302cd16534d5acff776b4502"
+        },
+        {
+          "file": "src/markdown/highlight.ts",
+          "bytesInOutput": 4785,
+          "sha256": "032e3df32a77522b3ba7b2d5efe4734999e6c547ee2418a48817cfe5be93b84b"
+        },
+        {
+          "file": "src/markdown/incremental.ts",
+          "bytesInOutput": 3762,
+          "sha256": "eaa266bb77dfb646738d0fdd79be4f1c4bc5490f7bf3f4127f9ffb72ef741ff8"
+        },
+        {
+          "file": "src/markdown/JsonBlock.module.css",
+          "bytesInOutput": 572,
+          "sha256": "b8e997251686015faed5f437fe9829b69226346aa12d1599aafde7caec36277f"
+        },
+        {
+          "file": "src/markdown/JsonBlock.tsx",
+          "bytesInOutput": 551,
+          "sha256": "5546bb5eedec61b901370412cc7e8179580227515ba78e645b4ca34aa4e36198"
+        },
+        {
+          "file": "src/markdown/katex.tsx",
+          "bytesInOutput": 984,
+          "sha256": "8227e04d29333d2568021ed012143237b457852bce25d82cf394d72b941e74a5"
+        },
+        {
+          "file": "src/markdown/MarkdownText.module.css",
+          "bytesInOutput": 4106,
+          "sha256": "7a6a54cfd2870405f45ea7ed3725bed4f858e410c32c4b5db097cc7e15872465"
+        },
+        {
+          "file": "src/markdown/MarkdownText.tsx",
+          "bytesInOutput": 2079,
+          "sha256": "d8c6aa23232aa4a76339c49c02df5888f5530a7a1bbb417ef14a42a1e41d5d94"
+        },
+        {
+          "file": "src/markdown/mathCompatibility.ts",
+          "bytesInOutput": 3599,
+          "sha256": "5f8cec86fd613fd2f67510e22b0a9d661f4173b3d49fb13fef71b25f4abb652b"
+        },
+        {
+          "file": "src/markdown/parse.ts",
+          "bytesInOutput": 218,
+          "sha256": "6be57559995c4e717d6d704207eb2fec86db9714c2a4bcc5b0c3f6648c8990f0"
+        },
+        {
+          "file": "src/markdown/plain-text.ts",
+          "bytesInOutput": 21,
+          "sha256": "98a63f70ea7d227712915c56de7e9f12fada855d03c2041fcabf9fdcdaf9f878"
+        },
+        {
+          "file": "src/markdown/render.tsx",
+          "bytesInOutput": 7747,
+          "sha256": "3576c16a37846a55f215562d15df9394cf5761fc46eae8f89fdcea8420f09d3d"
+        },
+        {
+          "file": "src/markdown/useViewportHighlighting.ts",
+          "bytesInOutput": 851,
+          "sha256": "29fb78ac857415989b70bf0cf73a8eef3b25843df227441838be2e08ba1f8d36"
+        },
+        {
+          "file": "src/Menu.module.css",
+          "bytesInOutput": 2363,
+          "sha256": "281d01fd38a35f72bb2f6827873512d5ee3511a0f04553f1d532d886dfd78b91"
+        },
+        {
+          "file": "src/Menu.tsx",
+          "bytesInOutput": 83,
+          "sha256": "905ce9ef6ff3e2ee3fef051ddea8383cd9988be0a81cf68c34e83d3ff5149094"
+        },
+        {
+          "file": "src/Modal.module.css",
+          "bytesInOutput": 1262,
+          "sha256": "0e1de6a6cfcd5333e6b02c8b2583c09ad90f98a618f3b80ec60acfc5c59ee68c"
+        },
+        {
+          "file": "src/Modal.tsx",
+          "bytesInOutput": 78,
+          "sha256": "1c2ed7f8b9ef84b892b4f0a69570db2379ecaa07fb46fe71008443e2388a4a53"
+        },
+        {
+          "file": "src/OnboardingSurface.module.css",
+          "bytesInOutput": 272,
+          "sha256": "82c4cd7e345a8e64d2b4817d15823692fa344f3458852207c0863bf3dd414b56"
+        },
+        {
+          "file": "src/OnboardingSurface.tsx",
+          "bytesInOutput": 68,
+          "sha256": "0d062c0d52917f551e20af166aacc8a7454b9ae3674146cd99a0a2720dc99de2"
+        },
+        {
+          "file": "src/Pill.module.css",
+          "bytesInOutput": 476,
+          "sha256": "c1c39eb6adc0e40326f7a33598a32195b388cb9db2627a9c723c009b44a94dab"
+        },
+        {
+          "file": "src/Pill.tsx",
+          "bytesInOutput": 41,
+          "sha256": "851727b4f745755f8553a92bc5881e54d0479ea680d1686533ba210cb943ca2f"
+        },
+        {
+          "file": "src/pointer-grace.ts",
+          "bytesInOutput": 32,
+          "sha256": "cba1529e052cf3ea09fd3851990219e2b80d61fa4b3d35da490f28ba9f9965c6"
+        },
+        {
+          "file": "src/rank-by-name.ts",
+          "bytesInOutput": 17,
+          "sha256": "55b492e52d978852118e6aa3bb69a93d1a5cc85c502f2ce7a5ebaa52c0fed054"
+        },
+        {
+          "file": "src/ReadBlock.module.css",
+          "bytesInOutput": 1679,
+          "sha256": "51c238e23bfd3be92fc788b5b19d82cc0c3144ccec4aa644634073e60e077861"
+        },
+        {
+          "file": "src/ReadBlock.tsx",
+          "bytesInOutput": 77,
+          "sha256": "b9575caddc91ef41c0a7dc0a23652c5d315f8ecbd8d8d5fd1928255f44df53a1"
+        },
+        {
+          "file": "src/ReferenceIcon.tsx",
+          "bytesInOutput": 36,
+          "sha256": "fd707411d3fb783d410c3377acb61a3cb592c38b3f2958e065c1b76e5088e600"
+        },
+        {
+          "file": "src/relative-time.ts",
+          "bytesInOutput": 17,
+          "sha256": "a3f20285eb17903464d4b69178046704a0ba7a2618d7cedb532eb6e171bc2c09"
+        },
+        {
+          "file": "src/RiskConfirmation.module.css",
+          "bytesInOutput": 849,
+          "sha256": "c4c8e339a9f12ebf21c785cd6217898733f8a053f63d5aee936611fcd319ef27"
+        },
+        {
+          "file": "src/RiskConfirmation.tsx",
+          "bytesInOutput": 51,
+          "sha256": "4671735be6dc70b496493f1a8e86da2de344413dea1f58f154185b1fc547d125"
+        },
+        {
+          "file": "src/SearchBlock.module.css",
+          "bytesInOutput": 1626,
+          "sha256": "52efb46feb6fadaac29ae52b3d2face1c442eb83cbde93d7163b1d15ac0c4be0"
+        },
+        {
+          "file": "src/SearchBlock.tsx",
+          "bytesInOutput": 67,
+          "sha256": "e7d3fbd2ee77ab72e4555d3a7bb262b95e1a3021e253feb9c45aa581cb5b36bd"
+        },
+        {
+          "file": "src/StateDot.module.css",
+          "bytesInOutput": 870,
+          "sha256": "21c9dca85dffbae6e31da3bfd4c4578739282f9ed3b9a3bbf68b6b12338879de"
+        },
+        {
+          "file": "src/StateDot.tsx",
+          "bytesInOutput": 579,
+          "sha256": "94e287b278d5481d6812dae820a95afee6856d34b4056bfd84017f43a5b43ad2"
+        },
+        {
+          "file": "src/Switch.module.css",
+          "bytesInOutput": 636,
+          "sha256": "9baa1cfa828e5806cf59d88b82bbde6d9ba5f795c1105a2e819476388f734149"
+        },
+        {
+          "file": "src/Switch.tsx",
+          "bytesInOutput": 322,
+          "sha256": "9f0f6db0de338793711b4333e87dcd2b82d06d8ad43aa362eb67efc63573ccb1"
+        },
+        {
+          "file": "src/Tag.module.css",
+          "bytesInOutput": 1159,
+          "sha256": "ac135f028674d5bce37a2617902c86d5934b299742536056a2abc5e99583764e"
+        },
+        {
+          "file": "src/Tag.tsx",
+          "bytesInOutput": 171,
+          "sha256": "2f4845c6b5c7d6f06304de6b972127692a909c775bae72c14799acfd2dc56289"
+        },
+        {
+          "file": "src/TerminalBlock.module.css",
+          "bytesInOutput": 2477,
+          "sha256": "15b660276fc6d44910975afd4721b7f6cd85f250ba00962d7bfd7a55f00a28dd"
+        },
+        {
+          "file": "src/TerminalBlock.tsx",
+          "bytesInOutput": 82,
+          "sha256": "81c5b6576f2a40a254a04e813e002f47c6de4df4c7be48f64e6ea3ff3c84bd09"
+        },
+        {
+          "file": "src/Toast.module.css",
+          "bytesInOutput": 806,
+          "sha256": "52787139e11408a5a3ab8e1ebf7eb4a723306fdc056eaea0446c3811deb78781"
+        },
+        {
+          "file": "src/Toast.tsx",
+          "bytesInOutput": 68,
+          "sha256": "cca7dc4dbffbdbcc38cec374ecaf1d877b64c5447204325f1e13c79e35369d9b"
+        },
+        {
+          "file": "src/Tooltip.module.css",
+          "bytesInOutput": 562,
+          "sha256": "6ee070b9ce1c62eaaddaed1e96be8ff6d59eb4e09df708b219cd4ba3f676ca6b"
+        },
+        {
+          "file": "src/Tooltip.tsx",
+          "bytesInOutput": 52,
+          "sha256": "10f277998fb57f0595fbf7e31a5898cc7e45fd9554033ec17bc863ab7645cde4"
+        },
+        {
+          "file": "src/use-copy-feedback.ts",
+          "bytesInOutput": 37,
+          "sha256": "14f41a92fe72f87adc4827c2b3c0496657071cd05bbc85435a74e1606c9309f8"
+        },
+        {
+          "file": "src/useAnchoredMaxHeight.ts",
+          "bytesInOutput": 32,
+          "sha256": "f017bd3133a67e7ca0b95aee66d34cac7c95541671b7c082f446f0220b4c5e65"
+        },
+        {
+          "file": "src/useAnchoredPosition.ts",
+          "bytesInOutput": 32,
+          "sha256": "6b009f169622111089bbefcadc9a7b0dbb158860cddd1c50114ce694da4b8ebe"
+        },
+        {
+          "file": "src/useDismissOnOutsidePointer.ts",
+          "bytesInOutput": 32,
+          "sha256": "c7e05b448eeade540b7c6623a5c60401a63d09589bb27a573760ae5defbb4644"
+        },
+        {
+          "file": "src/user-text.module.css",
+          "bytesInOutput": 295,
+          "sha256": "c45ccd9c09c3fa977c041bc67146215247eea62439aa4b324a4e5c1495840ed7"
+        },
+        {
+          "file": "src/user-text.tsx",
+          "bytesInOutput": 46,
+          "sha256": "e28248447221f2e1ff92e725291edf2467abf0ff83f931699629cc9c1ebf8fbc"
+        },
+        {
+          "file": "src/WebBlock.module.css",
+          "bytesInOutput": 1466,
+          "sha256": "58fd3398e85c51a1289a0b0a8fc6f290d6d287fe43115be9c366e354df25301c"
+        },
+        {
+          "file": "src/WebBlock.tsx",
+          "bytesInOutput": 51,
+          "sha256": "e523d5c924b60c2d6f6b2a6b1ef35e43ad959be28288aa76c933438a6711f13c"
+        }
+      ]
+    },
+    {
+      "name": "@deepseek-ai/dsh-client-ui-theme",
+      "version": "0.1.5-rc.2",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/deepseek-ai--dsh-client-ui-theme-0.1.5-rc.2/LICENSE",
+          "sha256": "ebb4f09972aee8608be255debaf78451a68e95c290f55c240dec2ecfa16ea6be"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "src/styles/base.css",
+          "bytesInOutput": 478,
+          "sha256": "85f8970d2650108ad47d66da1db3ba00ebbe3f26aaec00551cfa69dd029347a3"
+        },
+        {
+          "file": "src/styles/corner-shape.css",
+          "bytesInOutput": 162,
+          "sha256": "d94f82e1332b6d37e8345aafe1b6b4129faed65891edd3861c00b88940ec4d3f"
+        },
+        {
+          "file": "src/styles/design-platform.css",
+          "bytesInOutput": 17894,
+          "sha256": "ba4f1ec7f164756c67f33101c6851ec5e8fa26d61cff7e0be61e30c4f58db28c"
+        },
+        {
+          "file": "src/styles/gradient-shadow-text.css",
+          "bytesInOutput": 11974,
+          "sha256": "a0765d599b80c91798c00b2fd1a917fb37d99ddcdabd67b5a8f1d90cd9e9fdc1"
+        },
+        {
+          "file": "src/styles/scrollbar.css",
+          "bytesInOutput": 601,
+          "sha256": "1364c2c2ac058427ec820bc3583927924f0119d5fea41088dddff7cd71990235"
+        },
+        {
+          "file": "src/styles/shiki.css",
+          "bytesInOutput": 742,
+          "sha256": "14f2b00083b035d8f92e26243a669d1b04a8d564c20d91856b20706cc79b8828"
+        }
+      ]
+    },
+    {
+      "name": "@shikijs/core",
+      "version": "4.3.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/shikijs--core-4.3.1/LICENSE",
+          "sha256": "7a9d8d01038aeacf9e5bcdabbddf2a7815200dce9fc1118468cc553e00ae3eee"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "dist/index.mjs",
+          "bytesInOutput": 20896,
+          "sha256": "71702105d96c5425a3b70a98b564efffdab5ea0206f74f2440c8bdfdd358c272"
+        }
+      ]
+    },
+    {
+      "name": "@shikijs/engine-javascript",
+      "version": "4.3.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/shikijs--engine-javascript-4.3.1/LICENSE",
+          "sha256": "7a9d8d01038aeacf9e5bcdabbddf2a7815200dce9fc1118468cc553e00ae3eee"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "dist/engine-compile.mjs",
+          "bytesInOutput": 398,
+          "sha256": "64aeb7ea59eb1df937436f2fdec5b1c67a75e54de3742b334142b24c63e9014a"
+        },
+        {
+          "file": "dist/index.mjs",
+          "bytesInOutput": 21,
+          "sha256": "0270c7120870afbc20149ba240dfce54c4fa39a29e14b6a4038cdff607bfa566"
+        },
+        {
+          "file": "dist/scanner-DX8LRFGE.mjs",
+          "bytesInOutput": 1000,
+          "sha256": "4f057294198e3e8dc2459ff0b5b66685e9ea5384ed9636850ced58fe63541300"
+        }
+      ]
+    },
+    {
+      "name": "@shikijs/langs",
+      "version": "4.3.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/shikijs--langs-4.3.1/LICENSE",
+          "sha256": "7a9d8d01038aeacf9e5bcdabbddf2a7815200dce9fc1118468cc553e00ae3eee"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "dist/c.mjs",
+          "bytesInOutput": 72144,
+          "sha256": "f2da7ca9f12fc2c5194351508fff542cd1bb2d7ec13d5d1e3f788883475bebd8"
+        },
+        {
+          "file": "dist/cpp-macro.mjs",
+          "bytesInOutput": 224141,
+          "sha256": "a1a89c679be99e230d354f38eaaee6aae140a22204eaa281b9aba69f8de1d919"
+        },
+        {
+          "file": "dist/cpp.mjs",
+          "bytesInOutput": 401911,
+          "sha256": "8e341b6be82dbc3317c6868e67327435ed90bf8b12b331134e9dad2717af65f0"
+        },
+        {
+          "file": "dist/csharp.mjs",
+          "bytesInOutput": 90220,
+          "sha256": "ce909b10307209e0691b71e4d42f5a29342022882e0d7115284a7ff281b5cfa4"
+        },
+        {
+          "file": "dist/css.mjs",
+          "bytesInOutput": 49072,
+          "sha256": "dff3bfe730e04426b9119258016140453671218aff5f7d224b2322f9d360c554"
+        },
+        {
+          "file": "dist/glsl.mjs",
+          "bytesInOutput": 3606,
+          "sha256": "bd2ac3c72841bf210e6d9b604dfb6bedc8b6d028a653ea2e49c3a07e3204754e"
+        },
+        {
+          "file": "dist/go.mjs",
+          "bytesInOutput": 46849,
+          "sha256": "592e98118a5c94602e63b8b67d3317aa583a6e115c2e82f59e659fa6d49e7a3a"
+        },
+        {
+          "file": "dist/graphql.mjs",
+          "bytesInOutput": 17877,
+          "sha256": "ba16156a21a63ae3161b57703e76d89d6b58db9b0f919f03f584f02e5d67540e"
+        },
+        {
+          "file": "dist/haml.mjs",
+          "bytesInOutput": 8199,
+          "sha256": "49c3c75aa8dbb16b9111bd5c5f4db1a7f5139ada197866f0d96595a068d46497"
+        },
+        {
+          "file": "dist/html.mjs",
+          "bytesInOutput": 57623,
+          "sha256": "db459a440f772dcab53b33b849bb7829433d2d43cf2c040d17bf22b4277d297c"
+        },
+        {
+          "file": "dist/ini.mjs",
+          "bytesInOutput": 1556,
+          "sha256": "91f4640cf0f0789cf0169c94afd1d7aa1d67650dcc729f25e5ee65930b6d6c4a"
+        },
+        {
+          "file": "dist/java.mjs",
+          "bytesInOutput": 27250,
+          "sha256": "37d4cd10708b251cd0a2efc60b090c801598d016cef921f19a6b31c2031c846f"
+        },
+        {
+          "file": "dist/javascript.mjs",
+          "bytesInOutput": 174824,
+          "sha256": "9e2baa2cf197acfcc4d45f87af10275ced002f6cb1ebcd6ce570340cbbfab902"
+        },
+        {
+          "file": "dist/json.mjs",
+          "bytesInOutput": 2821,
+          "sha256": "b057750f7333dae18feeb337cedbdb87f463f6a5d8358d375911ef28c0742325"
+        },
+        {
+          "file": "dist/jsx.mjs",
+          "bytesInOutput": 177789,
+          "sha256": "e93e62820880daf7a547dc35a8053a013a3b324d617a17cc8d2f94717a5d8fd6"
+        },
+        {
+          "file": "dist/kotlin.mjs",
+          "bytesInOutput": 8816,
+          "sha256": "137f10eb20d082b9f96e60748c10cdfb3b06f51f557fa670aec3128055481028"
+        },
+        {
+          "file": "dist/less.mjs",
+          "bytesInOutput": 98644,
+          "sha256": "5a7bbc1bc11df85b9727649de33f079f034259e3fd092f98e0eecb2f6ab2a46f"
+        },
+        {
+          "file": "dist/lua.mjs",
+          "bytesInOutput": 15541,
+          "sha256": "3cf2e47f578a49bc5c8aa51f6f4391f511b8c5eeb46837a6ed0efa75534d8f91"
+        },
+        {
+          "file": "dist/markdown.mjs",
+          "bytesInOutput": 59366,
+          "sha256": "5c45727de7a8279ad67817724fa3dce91186ae787456f1e9b5e5ceffeb17f0f0"
+        },
+        {
+          "file": "dist/mdx.mjs",
+          "bytesInOutput": 136145,
+          "sha256": "15e1fd24b5ec2c65efb44f0a6e59124126b5d03f094c82f8913b2867d0dcc5c1"
+        },
+        {
+          "file": "dist/php.mjs",
+          "bytesInOutput": 112923,
+          "sha256": "943d1c3a1a5c8c8db224e36f73cdf7e9b7e6ed13558d3d1e22e7e8caa4b6b378"
+        },
+        {
+          "file": "dist/python.mjs",
+          "bytesInOutput": 69983,
+          "sha256": "98300d0d7f05ece9fd85e702a6ce0fe8f910082afd4d4fd13a48d927ac2afd2f"
+        },
+        {
+          "file": "dist/regexp.mjs",
+          "bytesInOutput": 7985,
+          "sha256": "1f2c1a99d011c7864bb428372e0f9f4810d5f13ef5c773d6482956b5e4ed5dd0"
+        },
+        {
+          "file": "dist/ruby.mjs",
+          "bytesInOutput": 46238,
+          "sha256": "202c6a0dd529015d6a669af6e0a4fc82e7e9616288a51090430a91eab48536f7"
+        },
+        {
+          "file": "dist/rust.mjs",
+          "bytesInOutput": 15100,
+          "sha256": "e4e301976b9199cfa6e1dcd3cb398a59fcf0c58cdc10f6f41445221a21869642"
+        },
+        {
+          "file": "dist/scss.mjs",
+          "bytesInOutput": 27208,
+          "sha256": "daccedb3030f6f12632e1f247d1af8233cbcec183284bf589fc41dd5267e29d1"
+        },
+        {
+          "file": "dist/shellscript.mjs",
+          "bytesInOutput": 41476,
+          "sha256": "95a2353b07d65e7cc699662ff139111f4a47ce8d761c60975dd1bf20971a1864"
+        },
+        {
+          "file": "dist/sql.mjs",
+          "bytesInOutput": 23459,
+          "sha256": "cb1bfbdbf1cab3418219c72d16825d7df31cdb078e53b00fe0409ef3175bfdd5"
+        },
+        {
+          "file": "dist/swift.mjs",
+          "bytesInOutput": 88115,
+          "sha256": "be0a69a4ed7d2ca38186768dd43069a88c1ba27ea93c1cba14765671da74683d"
+        },
+        {
+          "file": "dist/toml.mjs",
+          "bytesInOutput": 6457,
+          "sha256": "4238ee612fce2bb5bef5581f89409d99398b29f1c0d93315a11c50e870e59dd5"
+        },
+        {
+          "file": "dist/tsx.mjs",
+          "bytesInOutput": 175533,
+          "sha256": "7eefa50eb5e48354d7f7838e6bf36b4bcc5b39d6806f10ced432824037328fe1"
+        },
+        {
+          "file": "dist/typescript.mjs",
+          "bytesInOutput": 181077,
+          "sha256": "6e8fe43b5e189a1e103c9e8bfec1a15b1072627d93c5061a0b063405b1c5fbd2"
+        },
+        {
+          "file": "dist/xml.mjs",
+          "bytesInOutput": 5387,
+          "sha256": "4c8d8f591501bc1d8f407f93869f96d82384dce5e721a4eb75b10f276a953990"
+        },
+        {
+          "file": "dist/yaml.mjs",
+          "bytesInOutput": 10537,
+          "sha256": "057427cbd35c6c6cd100b9f0d447549581eff926ff822f14be63791dc8d7631a"
+        }
+      ]
+    },
+    {
+      "name": "@shikijs/primitive",
+      "version": "4.3.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/shikijs--primitive-4.3.1/LICENSE",
+          "sha256": "7a9d8d01038aeacf9e5bcdabbddf2a7815200dce9fc1118468cc553e00ae3eee"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "dist/index.mjs",
+          "bytesInOutput": 13134,
+          "sha256": "65cd5db33752ccfa81e681be14e4a9e8d63faec2c7e4aace8776f383efe3fb66"
+        }
+      ]
+    },
+    {
+      "name": "@shikijs/types",
+      "version": "4.3.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/shikijs--types-4.3.1/LICENSE",
+          "sha256": "7a9d8d01038aeacf9e5bcdabbddf2a7815200dce9fc1118468cc553e00ae3eee"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "dist/index.mjs",
+          "bytesInOutput": 91,
+          "sha256": "966801ba2cac174bb2df4478585179a92e6a5147e6a3f52771d6926ac72bb262"
+        }
+      ]
+    },
+    {
+      "name": "@shikijs/vscode-textmate",
+      "version": "10.1.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/shikijs--vscode-textmate-10.1.0/LICENSE.md",
+          "sha256": "b5cb7ff7859e7d282d98fc43ab081b0dda5dc659dc3385cf65740c759a7e6a6c"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "dist/index.js",
+          "bytesInOutput": 43189,
+          "sha256": "0080d9e266b238ee5d977061ae5a1dc6ea2fd82827b9400b8acbb7800fa44744"
+        }
+      ]
+    },
+    {
+      "name": "anser",
+      "version": "2.3.5",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/anser-2.3.5/LICENSE",
+          "sha256": "4643a4e712246eca7684de8ea540b7d3d5c557f7e05402d5c88003dacc6b04b2"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 6112,
+          "sha256": "d1aa5e4bdb0450757a17e9445b38b23dcfeb695ac16086ee895021c9ccfb1f09"
+        }
+      ]
+    },
+    {
+      "name": "ccount",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/ccount-2.0.1/license",
+          "sha256": "63cb98b3f6abfb3c3592c16f88253c1bdc834087bf52671e8ce5609e4eb693cf"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 189,
+          "sha256": "cbba065a9f66c5909d49f740a64f12cfde03220303a845b2273d54af59e70af9"
+        }
+      ]
+    },
+    {
+      "name": "character-entities-html4",
+      "version": "2.1.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/character-entities-html4-2.1.0/license",
+          "sha256": "63cb98b3f6abfb3c3592c16f88253c1bdc834087bf52671e8ce5609e4eb693cf"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 3496,
+          "sha256": "e577a2808b49682ec5815136707399e2f822b122efa3b6e7c856a12a73413ffd"
+        }
+      ]
+    },
+    {
+      "name": "character-entities-legacy",
+      "version": "3.0.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/character-entities-legacy-3.0.0/license",
+          "sha256": "63cb98b3f6abfb3c3592c16f88253c1bdc834087bf52671e8ce5609e4eb693cf"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 854,
+          "sha256": "866ea4d827640306ef91015eff237695892340ae0f8ded6a17a7fe83f13c7513"
+        }
+      ]
+    },
+    {
+      "name": "clsx",
+      "version": "2.1.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/clsx-2.1.1/license",
+          "sha256": "9a9edad7baae52622bddf3c15b2ef8a33d2c89f2d25408ad13e8a7481c6b0c97"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "dist/clsx.mjs",
+          "bytesInOutput": 387,
+          "sha256": "d949e5cdbfebc76a6642b1901095e900fc3f2262d8dc0373aa44850a9bc75522"
+        }
+      ]
+    },
+    {
+      "name": "comma-separated-tokens",
+      "version": "2.0.3",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/comma-separated-tokens-2.0.3/license",
+          "sha256": "ca4662cb5d1b738fbe5350c0d5485ba11773b4b7208974082ae6e129a52d631d"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 146,
+          "sha256": "a62eb07c352878a940619595a2e2d11221bc02a16f9a64501612105fddbc2c0b"
+        }
+      ]
+    },
+    {
+      "name": "decode-named-character-reference",
+      "version": "1.3.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/decode-named-character-reference-1.3.0/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.dom.js",
+          "bytesInOutput": 178,
+          "sha256": "bbfdff9072ab38fb0669b2fe2fef28e9b36e5cbbeed3592cd13fc29748755dd3"
+        }
+      ]
+    },
+    {
+      "name": "dsh-douyin-browser-local",
+      "version": "1.4.5",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/dsh-douyin-browser-local-1.4.5/LICENSE",
+          "sha256": "8e35188213b36c608c0e94bd684c1cc3dbe283ef240f4e1a7f43241e3f9f5b1c"
+        },
+        {
+          "file": "licenses/dsh-douyin-browser-local-1.4.5/media/vendor/mimo/LICENSE",
+          "sha256": "e37210eb330951cc3ee2cb5b0430d0bb9027dc3b4d57323cd0d3500ff5d7cb0e"
+        },
+        {
+          "file": "licenses/dsh-douyin-browser-local-1.4.5/media/vendor/minimax/LICENSE",
+          "sha256": "03d00326944899f5f24ea05f96bb9799a3e9ae4986802d0c6682d22715f955bd"
+        },
+        {
+          "file": "licenses/dsh-douyin-browser-local-1.4.5/media/vendor/voice/LICENSE",
+          "sha256": "dc6f2fbad994189e1e1466c51173363264826fc454f0cfccdafa91a9a41b6365"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "contact-authorization.mjs",
+          "bytesInOutput": 1848,
+          "sha256": "13565a78cf9daabd3facc4e3ff583073b7c3e59a3386385ff83bd7c67ceb57f3"
+        },
+        {
+          "file": "settings-sections.mjs",
+          "bytesInOutput": 541,
+          "sha256": "6371e0e89f249859dbdbe5da7a1b845f7be6bf41708c66b15017fff9109ff2ef"
+        }
+      ]
+    },
+    {
+      "name": "escape-string-regexp",
+      "version": "5.0.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/escape-string-regexp-5.0.0/license",
+          "sha256": "5c932d88256b4ab958f64a856fa48e8bd1f55bc1d96b8149c65689e0c61789d3"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 164,
+          "sha256": "af2065ad2f2d2b91946c2121e21618daa3f4b18787af9226f8c953ca54cca2f5"
+        }
+      ]
+    },
+    {
+      "name": "hast-util-to-html",
+      "version": "9.0.5",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/hast-util-to-html-9.0.5/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "10984d1819cb0c036fe2fbb47047d2b3b670c38634680f346df4882674877450"
+        },
+        {
+          "file": "lib/handle/comment.js",
+          "bytesInOutput": 343,
+          "sha256": "db0efb054ad051ff4b872e47e5beff9d8f1755397949e46af3203db43d6e86df"
+        },
+        {
+          "file": "lib/handle/doctype.js",
+          "bytesInOutput": 136,
+          "sha256": "ac6e11e9e12f00b4f06febc7af8d961e99f89981aa7d9f3bd5dc35e3982d7c73"
+        },
+        {
+          "file": "lib/handle/element.js",
+          "bytesInOutput": 2351,
+          "sha256": "e0d6a66c292ab5d726dc8bed367a2882bce03a07cee09c86df3810aeb29acebd"
+        },
+        {
+          "file": "lib/handle/index.js",
+          "bytesInOutput": 303,
+          "sha256": "3fc926e2a0d88029bd3bfaa75adb1a427107b7dab1e45d18490ab9bd15848a41"
+        },
+        {
+          "file": "lib/handle/raw.js",
+          "bytesInOutput": 99,
+          "sha256": "fe6a3d9be9a0d13f98c638f60c0d6a4de5ea447cad06251ae670a8a9d4fb73e3"
+        },
+        {
+          "file": "lib/handle/root.js",
+          "bytesInOutput": 54,
+          "sha256": "e76e89501eb788ef2f143da17543e0103498bdb86150c1da7e0e1603182a41eb"
+        },
+        {
+          "file": "lib/handle/text.js",
+          "bytesInOutput": 213,
+          "sha256": "c2dcdd630646314b36e11df53a4090362e471e308857814beebe53aaa7934577"
+        },
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 1179,
+          "sha256": "7045fefdc6fad99506e387343e679c97a6dd47edf6abd9460abbe5f3336fa944"
+        },
+        {
+          "file": "lib/omission/closing.js",
+          "bytesInOutput": 2275,
+          "sha256": "0e7724ee2d1a2cd8518325a5bb0297a7a13fbaad30ce6105687f563502d49d83"
+        },
+        {
+          "file": "lib/omission/omission.js",
+          "bytesInOutput": 132,
+          "sha256": "382fdb25a2812d15a4aac024dc18dbdb0fed0048fe13efcd44d7ff6d695970a4"
+        },
+        {
+          "file": "lib/omission/opening.js",
+          "bytesInOutput": 983,
+          "sha256": "c242ddec7456d280882a010c16eeba18257a28a4336594a5c215d2f3ce95e38b"
+        },
+        {
+          "file": "lib/omission/util/siblings.js",
+          "bytesInOutput": 180,
+          "sha256": "fbef526c0f03dd4472fc41de09766a8c885af8a85147e926c086e2e7f19ad627"
+        }
+      ]
+    },
+    {
+      "name": "hast-util-whitespace",
+      "version": "3.0.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/hast-util-whitespace-3.0.0/license",
+          "sha256": "ca4662cb5d1b738fbe5350c0d5485ba11773b4b7208974082ae6e129a52d631d"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "1e443111d1b477b45f35f751834b5a031c1ed1272f53322c7f40e2b28d790cc2"
+        },
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 159,
+          "sha256": "8b9342003bf1956922a92d6299ec98fdd6369e0d83f3d96bc144a793137e80f7"
+        }
+      ]
+    },
+    {
+      "name": "html-void-elements",
+      "version": "3.0.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/html-void-elements-3.0.0/license",
+          "sha256": "ca4662cb5d1b738fbe5350c0d5485ba11773b4b7208974082ae6e129a52d631d"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 177,
+          "sha256": "f9211e17693f8dfdab3613ac49f83d2b16c6868354244a253ab87b870f7cb037"
+        }
+      ]
+    },
+    {
+      "name": "katex",
+      "version": "0.16.47",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/katex-0.16.47/LICENSE",
+          "sha256": "766ccc1f306c885aa45542a9846bbd0a505b27a0374f146778171c2254ce18e3"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "dist/katex.min.css",
+          "bytesInOutput": 1458804,
+          "sha256": "0289a02cf451a44dd73add683a09644252363871ac11713a647b732cee8b1ee3"
+        },
+        {
+          "file": "dist/katex.mjs",
+          "bytesInOutput": 268652,
+          "sha256": "09a78a9812d1e7d3ace85033512e6a450127b9554ef281b4b6567408694c6e36"
+        }
+      ]
+    },
+    {
+      "name": "mdast-util-find-and-replace",
+      "version": "3.0.4",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/mdast-util-find-and-replace-3.0.4/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "7a4656d4f6e259733e75f160544e681c1250180db6f099907dde936bce1d8c7b"
+        },
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 1241,
+          "sha256": "79fbcfd1d992431b10067b27092a618c0aed78bf3adee4c88623a4f5d3203bc0"
+        }
+      ]
+    },
+    {
+      "name": "mdast-util-from-markdown",
+      "version": "2.0.3",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/mdast-util-from-markdown-2.0.3/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "b5ac1d75a898f7e28ae90ce26ab937b5f574bd5b4e8c17745bd15ba78a4a33f5"
+        },
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 10478,
+          "sha256": "2b19a9873232679ef08429e08c5836c865a54d8113ae5d58cb9409a60863727b"
+        }
+      ]
+    },
+    {
+      "name": "mdast-util-gfm-autolink-literal",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/mdast-util-gfm-autolink-literal-2.0.1/license",
+          "sha256": "536804b3adbff17dbbb9ed0d2bf9655b78f07640278581e37e3d7475282d5e61"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "c3c1073e83ac96d470b41a7ace9636321578659a83e1d14d4c8ac7f7f85db8a8"
+        },
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 1819,
+          "sha256": "4965bd92f22009a0fd0fa4f7af73903e4d793165634c26ab5827fe5386fbcff2"
+        }
+      ]
+    },
+    {
+      "name": "mdast-util-gfm-footnote",
+      "version": "2.1.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/mdast-util-gfm-footnote-2.1.0/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "b94bca85a6eefc173cd3a68381c45bfdc75643ed8f901a428d311d5a01575678"
+        },
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 1072,
+          "sha256": "47f5f97e3698325187eff57567e05f0a63162506cdd95f8f6468f2a7bbf69eff"
+        }
+      ]
+    },
+    {
+      "name": "mdast-util-gfm-strikethrough",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/mdast-util-gfm-strikethrough-2.0.1/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "0156f05d678b6885b4e2a41248ac1366232e51e92bb0b6fc561c209062f5a721"
+        },
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 557,
+          "sha256": "3dde7bed9aac562d2db25c24150eea442b73a8a5288277636f50ee0813b3f69c"
+        }
+      ]
+    },
+    {
+      "name": "mdast-util-gfm-table",
+      "version": "2.0.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/mdast-util-gfm-table-2.0.0/license",
+          "sha256": "536804b3adbff17dbbb9ed0d2bf9655b78f07640278581e37e3d7475282d5e61"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "9cc7b5b80a5b94d6c0803936b9a120c272e32a63f802cb960de7c6c59907ee65"
+        },
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 696,
+          "sha256": "5f5fc1551fe95d4e4e5a8729e52391abb9a053c0a618aa79dfb0364728299be8"
+        }
+      ]
+    },
+    {
+      "name": "mdast-util-gfm-task-list-item",
+      "version": "2.0.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/mdast-util-gfm-task-list-item-2.0.0/license",
+          "sha256": "536804b3adbff17dbbb9ed0d2bf9655b78f07640278581e37e3d7475282d5e61"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "38e8209a8b251e633588fd16ad1152c33daced7ff21be821827c29be7bf37d3f"
+        },
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 772,
+          "sha256": "1986b0f334e23659909982bc930ebc11784212d9331ef97efa14f268af01d852"
+        }
+      ]
+    },
+    {
+      "name": "mdast-util-gfm",
+      "version": "3.1.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/mdast-util-gfm-3.1.0/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "f6d345b843a3b44d74a5e8ee123f90c7d16f0c670542810c8b06367c44a01b50"
+        },
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 88,
+          "sha256": "0ead64b5f705ade5818adf7059c62c34353f00aaf4528549aceccd342004297e"
+        }
+      ]
+    },
+    {
+      "name": "mdast-util-math",
+      "version": "3.0.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/mdast-util-math-3.0.0/license",
+          "sha256": "536804b3adbff17dbbb9ed0d2bf9655b78f07640278581e37e3d7475282d5e61"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "266fcd72f8606ae61640f98ea2aa660562c08d3e5cc14956d09051813aab47c0"
+        },
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 1218,
+          "sha256": "fabe05044becc9ae3ff1320f4c2ed30d8aa8859b4944e126cac22a570bae9574"
+        }
+      ]
+    },
+    {
+      "name": "mdast-util-to-string",
+      "version": "4.0.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/mdast-util-to-string-4.0.0/license",
+          "sha256": "63cb98b3f6abfb3c3592c16f88253c1bdc834087bf52671e8ce5609e4eb693cf"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "46fb60d03aacb0a3f66c7be7f7c93e85013076f59d595c7220554b05027d8ada"
+        },
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 515,
+          "sha256": "53015b2b0b7a72aed1c2d880d3c2aaed73972241f968d4a206a18d92fbe57b21"
+        }
+      ]
+    },
+    {
+      "name": "micromark-core-commonmark",
+      "version": "2.0.3",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-core-commonmark-2.0.3/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 126,
+          "sha256": "67211c138962eb4153158d185781612cb5a4f811a7f26f98863d03e7560595b6"
+        },
+        {
+          "file": "lib/attention.js",
+          "bytesInOutput": 2043,
+          "sha256": "0c4d5d13b7c56ed8e3c7b4617a1a2624c827576e652e65140478c47545526314"
+        },
+        {
+          "file": "lib/autolink.js",
+          "bytesInOutput": 1069,
+          "sha256": "d0762261ea02440fbc81b5facf994bc42ba1561d4c7bf822dd9d09a7c05a69ed"
+        },
+        {
+          "file": "lib/blank-line.js",
+          "bytesInOutput": 189,
+          "sha256": "ef542164abcf6a5e6806720105146feba7e340a1f6d8c08c840707208ca76d69"
+        },
+        {
+          "file": "lib/block-quote.js",
+          "bytesInOutput": 783,
+          "sha256": "dc87caa801ada12890767e83534b15746097b3cc6c9d5a99c046c1a252632366"
+        },
+        {
+          "file": "lib/character-escape.js",
+          "bytesInOutput": 341,
+          "sha256": "8fd107627d4f0363999adf68fadd375a17a7536da8eee96799c805e3e57b3fe4"
+        },
+        {
+          "file": "lib/character-reference.js",
+          "bytesInOutput": 952,
+          "sha256": "cc8138483321def7b2f4304df0e76ee2bcea84bb1bc5bc603534063b30ddd959"
+        },
+        {
+          "file": "lib/code-fenced.js",
+          "bytesInOutput": 2354,
+          "sha256": "ad089ec3656e37e3adbcda1fa873a8377d0b4143d556e279424b65b49f0d209f"
+        },
+        {
+          "file": "lib/code-indented.js",
+          "bytesInOutput": 899,
+          "sha256": "179e7327f4c7565b0f1f74042e8fca37f232750f52e8bb4064a8f7602abce01c"
+        },
+        {
+          "file": "lib/code-text.js",
+          "bytesInOutput": 1365,
+          "sha256": "6e59e9b77a76a825c8cd142b0a2f0495aa5122da271770cb09322456a5207451"
+        },
+        {
+          "file": "lib/content.js",
+          "bytesInOutput": 953,
+          "sha256": "86fe007055efee6edaecfbb2ccebb9bdd1e7887a45d1c5881bcaa7ed6a973b77"
+        },
+        {
+          "file": "lib/definition.js",
+          "bytesInOutput": 1183,
+          "sha256": "800e7ef9f722e2536dc5e9774d0e22b0dcc58770d7a8011dc2c205f5fd263009"
+        },
+        {
+          "file": "lib/hard-break-escape.js",
+          "bytesInOutput": 221,
+          "sha256": "a84fdfcc8ad17557345f074d2cc61ac902349ae4666a86c934be7914029a80bd"
+        },
+        {
+          "file": "lib/heading-atx.js",
+          "bytesInOutput": 1125,
+          "sha256": "963cbe1d91fcbd825cb452cea673e1ca874a7533a31a5c48b674cb4817799b40"
+        },
+        {
+          "file": "lib/html-flow.js",
+          "bytesInOutput": 3672,
+          "sha256": "907e1b73e4eb1e51e818ab74698872906f3163788aeea7232b36d0d30aafedd0"
+        },
+        {
+          "file": "lib/html-text.js",
+          "bytesInOutput": 2543,
+          "sha256": "017f2b1f7be2303f4b849394f29430f4daea803dbb7eaf4ce82bb63e42e6c47c"
+        },
+        {
+          "file": "lib/label-end.js",
+          "bytesInOutput": 3186,
+          "sha256": "0fb2b950e1ed066cc1af4072bb4ff841a640aa8e02a43dc6de288ea8044e67e4"
+        },
+        {
+          "file": "lib/label-start-image.js",
+          "bytesInOutput": 444,
+          "sha256": "60877f46d816d25fe11d86e24b703b4501240cdb89d63f7cc978d39af500abb8"
+        },
+        {
+          "file": "lib/label-start-link.js",
+          "bytesInOutput": 336,
+          "sha256": "ffdab4c9eb7c16743e91f3b20711cdded335413c279aa4fa76d2d98d515cc0ec"
+        },
+        {
+          "file": "lib/line-ending.js",
+          "bytesInOutput": 184,
+          "sha256": "3fa206316adeeb5a76e93c52d044f9ed32c1c1aad3a25346b913fec375ada089"
+        },
+        {
+          "file": "lib/list.js",
+          "bytesInOutput": 2661,
+          "sha256": "86115cefb14f3d7076cfe28a6f06dd805ae4e024b0897eaa897d64db1966c7e4"
+        },
+        {
+          "file": "lib/setext-underline.js",
+          "bytesInOutput": 1157,
+          "sha256": "36d333f33ee829a005a116ff464f7be89e2311650a36f3837bc20915c2d2d6c9"
+        },
+        {
+          "file": "lib/thematic-break.js",
+          "bytesInOutput": 431,
+          "sha256": "0249d3b4ed750ed74d7b9cdcf7b0ad07048a6fcf735c22a41c43d6f54c8d4a10"
+        }
+      ]
+    },
+    {
+      "name": "micromark-extension-gfm-autolink-literal",
+      "version": "2.1.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-extension-gfm-autolink-literal-2.1.0/license",
+          "sha256": "536804b3adbff17dbbb9ed0d2bf9655b78f07640278581e37e3d7475282d5e61"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "df8add1053d02f32b6fbbd72d5d7fb213590ea32d666bc15c7f4e69467d021be"
+        },
+        {
+          "file": "lib/syntax.js",
+          "bytesInOutput": 3790,
+          "sha256": "2b45c68982c1f80daf125b709faba88803b131a0d710b0374dd309495a74efeb"
+        }
+      ]
+    },
+    {
+      "name": "micromark-extension-gfm-footnote",
+      "version": "2.1.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-extension-gfm-footnote-2.1.0/license",
+          "sha256": "807a88522a850092aece49486207c17c313c4d5708ac276524840fe1caa0b0fa"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "9f2dd0393871a1d2db494fd4e5502ede219eda13ac05fea9ea6dd9c8ccf8dff6"
+        },
+        {
+          "file": "lib/syntax.js",
+          "bytesInOutput": 4073,
+          "sha256": "5fd8d63fcbb9918a0f7b92f2ba6adea3845e9cbf7f1e74ee239f4d018943ef6b"
+        }
+      ]
+    },
+    {
+      "name": "micromark-extension-gfm-strikethrough",
+      "version": "2.1.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-extension-gfm-strikethrough-2.1.0/license",
+          "sha256": "536804b3adbff17dbbb9ed0d2bf9655b78f07640278581e37e3d7475282d5e61"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "0ee76753d9416266808227424eac60626edd98daeb27b74df4da71d2444c147c"
+        },
+        {
+          "file": "lib/syntax.js",
+          "bytesInOutput": 1587,
+          "sha256": "293e9b13a554fe569efd096cd7f1c3f4d6da861f30bba701e8b923f621181250"
+        }
+      ]
+    },
+    {
+      "name": "micromark-extension-gfm-table",
+      "version": "2.1.2",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-extension-gfm-table-2.1.2/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "bfdd4285a9f61faa334ced8f98fbbd1c3ba35f00a1613839c23c30c0786dcc97"
+        },
+        {
+          "file": "lib/edit-map.js",
+          "bytesInOutput": 595,
+          "sha256": "46973cc1af222ae8c47c90df32b58fd7a1745e6052a5c141a8524e012985cda6"
+        },
+        {
+          "file": "lib/infer.js",
+          "bytesInOutput": 446,
+          "sha256": "c2a038479872bd8026d513d528e56717fa266f09905f53192c6b5a0da6bc9ea7"
+        },
+        {
+          "file": "lib/syntax.js",
+          "bytesInOutput": 4681,
+          "sha256": "2e4cd89043d22236dcc386c92e9a20f9b631b039197ced3f6141b27329d52b0b"
+        }
+      ]
+    },
+    {
+      "name": "micromark-extension-gfm-task-list-item",
+      "version": "2.1.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-extension-gfm-task-list-item-2.1.0/license",
+          "sha256": "536804b3adbff17dbbb9ed0d2bf9655b78f07640278581e37e3d7475282d5e61"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "9642f1c0386a40107895796c2207e55f981c762614887835e56ad18849f24788"
+        },
+        {
+          "file": "lib/syntax.js",
+          "bytesInOutput": 856,
+          "sha256": "b819eb327b98387d58b3c254df11324b9291420e7b59306cc41d8a25b0820385"
+        }
+      ]
+    },
+    {
+      "name": "micromark-extension-gfm",
+      "version": "3.0.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-extension-gfm-3.0.0/license",
+          "sha256": "536804b3adbff17dbbb9ed0d2bf9655b78f07640278581e37e3d7475282d5e61"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 100,
+          "sha256": "66b05551c6efe3d6a1c75bca914c192139bc3c998fdb2b0d0784ab6685934bbc"
+        }
+      ]
+    },
+    {
+      "name": "micromark-extension-math",
+      "version": "3.1.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-extension-math-3.1.0/license",
+          "sha256": "536804b3adbff17dbbb9ed0d2bf9655b78f07640278581e37e3d7475282d5e61"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "d2651b530ac7e16dac559f6230bae438846f693dbc7b8e39b2b3001bf8455208"
+        },
+        {
+          "file": "lib/math-flow.js",
+          "bytesInOutput": 1727,
+          "sha256": "5399d010e7dee830eb033b56bc3162c6ec0be64cc4da82d808533bd9aa918248"
+        },
+        {
+          "file": "lib/math-text.js",
+          "bytesInOutput": 1444,
+          "sha256": "228234cea5f5ee00ebe3e1c2e5e0362efbbdc7f296d77f0ead3ee0b9fdb8ef78"
+        },
+        {
+          "file": "lib/syntax.js",
+          "bytesInOutput": 78,
+          "sha256": "abe6c2f50bdd1899290310c20d77ca6db1f17c5542eea85141e83460a4b02810"
+        }
+      ]
+    },
+    {
+      "name": "micromark-factory-destination",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-factory-destination-2.0.1/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 948,
+          "sha256": "8ef4475091af9f26c98ef6ee0fcccc8964fcbf60c7654b9f3d4af34da2adaa4b"
+        }
+      ]
+    },
+    {
+      "name": "micromark-factory-label",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-factory-label-2.0.1/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 659,
+          "sha256": "011484772e200ea32f3139c0a258627af573dcabd78bd4eb514a34495cb4aea0"
+        }
+      ]
+    },
+    {
+      "name": "micromark-factory-space",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-factory-space-2.0.1/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 211,
+          "sha256": "0325d6a34aeb0f069e764ea25a48874c5c1f95b70a35590b9767eef0e66a2617"
+        }
+      ]
+    },
+    {
+      "name": "micromark-factory-title",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-factory-title-2.0.1/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 624,
+          "sha256": "1556b0f5d6f04b32d7178ea89b6381b936d7b8a18c92f4ca2844c4c062ed7a89"
+        }
+      ]
+    },
+    {
+      "name": "micromark-factory-whitespace",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-factory-whitespace-2.0.1/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 201,
+          "sha256": "8cdbba455b8ff17dee625a111eab27ccf3966ac3840e66a8b21aa0d800c639d4"
+        }
+      ]
+    },
+    {
+      "name": "micromark-util-character",
+      "version": "2.1.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-util-character-2.1.1/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 483,
+          "sha256": "0ec487160ae3fa7f375698f9f951a0c5d7d752800bca2e3b1de15e3a07ee0417"
+        }
+      ]
+    },
+    {
+      "name": "micromark-util-chunked",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-util-chunked-2.0.1/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 319,
+          "sha256": "0776986647dd83ca16594bc02984a288f11e4c8a2d6f81b2487b3c9ef3a34f94"
+        }
+      ]
+    },
+    {
+      "name": "micromark-util-classify-character",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-util-classify-character-2.0.1/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 89,
+          "sha256": "fa7b4a93bc117a88844216e2bb8fef3483825bac1d9186126048ca42f1ed3e57"
+        }
+      ]
+    },
+    {
+      "name": "micromark-util-combine-extensions",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-util-combine-extensions-2.0.1/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 390,
+          "sha256": "b2aaec9f3549d92afb610d41b4f5ab73293fbeab0d2b6080ad7a8bd3518e46e1"
+        }
+      ]
+    },
+    {
+      "name": "micromark-util-decode-numeric-character-reference",
+      "version": "2.0.2",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-util-decode-numeric-character-reference-2.0.2/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 224,
+          "sha256": "74d2139b3651d79a7f4c1d3b21159d9c89459256e12b263ed2eb6b4fce599f87"
+        }
+      ]
+    },
+    {
+      "name": "micromark-util-decode-string",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-util-decode-string-2.0.1/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 287,
+          "sha256": "d38b07736ff9de94721153d910fd2966608bf8cd423f2dad9c091acf8ef3377d"
+        }
+      ]
+    },
+    {
+      "name": "micromark-util-edit-map",
+      "version": "1.0.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-util-edit-map-1.0.0/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 662,
+          "sha256": "0a29b60e6299a7b17e57e3c185014ad9bfe5a0ad6fd1365ce14605d6d299cbf0"
+        }
+      ]
+    },
+    {
+      "name": "micromark-util-html-tag-name",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-util-html-tag-name-2.0.1/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 546,
+          "sha256": "da74ea4080075b3f45a13eda9a05789e7038e1560954aff6979daafa68d0f096"
+        }
+      ]
+    },
+    {
+      "name": "micromark-util-normalize-identifier",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-util-normalize-identifier-2.0.1/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 117,
+          "sha256": "6def6e2422ac8905df740d27603d8eaa5d2fdbe41122c40958ac785ff0c8dfe3"
+        }
+      ]
+    },
+    {
+      "name": "micromark-util-resolve-all",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-util-resolve-all-2.0.1/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 141,
+          "sha256": "fa3b71cedce7b6f31ae68720dccfd561b7191e3d7280663cee1400a2dd38698c"
+        }
+      ]
+    },
+    {
+      "name": "micromark-util-sanitize-uri",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-util-sanitize-uri-2.0.1/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 510,
+          "sha256": "c8c100c6e730dd6b19ecaa70ef9f1da99c10c415dc9b6539820d41756c0fc197"
+        }
+      ]
+    },
+    {
+      "name": "micromark-util-subtokenize",
+      "version": "2.1.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-util-subtokenize-2.1.0/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 1901,
+          "sha256": "a70e48d4652be4f956606dcda3e4c13707952dc74b86f6f71990eba88d4a1e79"
+        },
+        {
+          "file": "lib/splice-buffer.js",
+          "bytesInOutput": 1674,
+          "sha256": "addce56cc7eccc0cb0ba10f7f8eab4c902f5ddf55ff43e0fb2907815ea63440e"
+        }
+      ]
+    },
+    {
+      "name": "micromark-util-symbol",
+      "version": "2.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-util-symbol-2.0.1/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "lib/codes.js",
+          "bytesInOutput": 1688,
+          "sha256": "f714f25d71a49a17429befbeb67af141ac9aaae969a7d64af30547f2ef32875f"
+        },
+        {
+          "file": "lib/constants.js",
+          "bytesInOutput": 839,
+          "sha256": "4f97f02687845c9c57545074d6768b423e0a73c3e560eccf4d999cba3e41f60b"
+        },
+        {
+          "file": "lib/default.js",
+          "bytesInOutput": 31,
+          "sha256": "1591ff41a65d33aa17a8477554e989e3cd85e657f83206a8b2dc6f68710ecff9"
+        },
+        {
+          "file": "lib/types.js",
+          "bytesInOutput": 3564,
+          "sha256": "17af096915e6c6e4966c758e13c5f14dc4fb05e7a32c4e3ec0c957aa4646f778"
+        }
+      ]
+    },
+    {
+      "name": "micromark",
+      "version": "4.0.3",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/micromark-4.0.3/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 31,
+          "sha256": "0abeeca43ffae89b3d911da05de284f4ea6b80bde67ee8f30d7bc9655f4dad97"
+        },
+        {
+          "file": "lib/constructs.js",
+          "bytesInOutput": 569,
+          "sha256": "afecd299e4b5e7edb3ecba007000c311ed2b7c86e4e28729f9783da9021da2cf"
+        },
+        {
+          "file": "lib/create-tokenizer.js",
+          "bytesInOutput": 3205,
+          "sha256": "4d563d31e0f48eb0460072c869c6e38d92da7179768a671c66fa9db9fbe4fadf"
+        },
+        {
+          "file": "lib/initialize/content.js",
+          "bytesInOutput": 567,
+          "sha256": "a1e1ad9cb372cc3ad2caa172de2f0658a9d38cde01a3f1109041a8b1ea83345e"
+        },
+        {
+          "file": "lib/initialize/document.js",
+          "bytesInOutput": 2363,
+          "sha256": "81ba0ecd6105c92a3b1f40490c67bf9b02e765894430ece35257b2f4a80f2dc3"
+        },
+        {
+          "file": "lib/initialize/flow.js",
+          "bytesInOutput": 510,
+          "sha256": "36a507211b00526d6ec1e9d9cca7547d26a5b01db61bb6d0d94d625d2babe66f"
+        },
+        {
+          "file": "lib/initialize/text.js",
+          "bytesInOutput": 1562,
+          "sha256": "1c5682291dbb6cea7f95edeb6d50421238b91752c9e0fb9485bdde44628ce090"
+        },
+        {
+          "file": "lib/parse.js",
+          "bytesInOutput": 268,
+          "sha256": "a8e110b17213a26a212332b2c8c39d31c302735c810bb0078e00b752f00552d9"
+        },
+        {
+          "file": "lib/postprocess.js",
+          "bytesInOutput": 59,
+          "sha256": "0faf397c79cefaa71f92b00aa11c5b2e954aa7560ceb1c93d85d21853136b5d6"
+        },
+        {
+          "file": "lib/preprocess.js",
+          "bytesInOutput": 690,
+          "sha256": "7b537d897bec551f515477d1033e1fafaa84519ee296cad0c5331ecd2e86d188"
+        }
+      ]
+    },
+    {
+      "name": "oniguruma-parser",
+      "version": "0.12.2",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/oniguruma-parser-0.12.2/LICENSE",
+          "sha256": "5fe78c91b36c6147ed0b6ab1631ce731165b7dd5e00482be1f027d46d12a8082"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "dist/parser/node-utils.js",
+          "bytesInOutput": 397,
+          "sha256": "b2855d0c3d6683e90280d3e539384381d89dd812785a84175224403ec51a9a8c"
+        },
+        {
+          "file": "dist/parser/parse.js",
+          "bytesInOutput": 9849,
+          "sha256": "114b1488c50ae2d273d107efea3b238fd822446fee8ef8d0cbdf2366a4fea0ab"
+        },
+        {
+          "file": "dist/tokenizer/tokenize.js",
+          "bytesInOutput": 11834,
+          "sha256": "c83dbefdd7a59302bbfec41575b842cad04e7deac66a8bd3a4374dc14374eed9"
+        },
+        {
+          "file": "dist/traverser/traverse.js",
+          "bytesInOutput": 1579,
+          "sha256": "00ab3568b4ef13420476520bbd7108d6d7487cc7273e3387fc2e09085c082f14"
+        },
+        {
+          "file": "dist/utils.js",
+          "bytesInOutput": 426,
+          "sha256": "b295e6252087093d290c0657e584bb863a55cd9008b7cba4998c3c08571ad159"
+        }
+      ]
+    },
+    {
+      "name": "oniguruma-to-es",
+      "version": "4.3.6",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/oniguruma-to-es-4.3.6/LICENSE",
+          "sha256": "c1a5a1ebc88f3e0f3caa04c0af52bf8f3a5405a467337a09594ae1ad149cec83"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "dist/esm/index.js",
+          "bytesInOutput": 26683,
+          "sha256": "42aa0dc1015d146928f4a074221d23abce11edbeea2ee9f3df01e21bb67e6d72"
+        }
+      ]
+    },
+    {
+      "name": "property-information",
+      "version": "7.2.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/property-information-7.2.0/license",
+          "sha256": "5d0698266086f217bb11ea0499d33453e401fe479fb9126ad04e625e63d3557b"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 123,
+          "sha256": "c70e5d2c76ea00116e87d0fabe961f6d260e94641ab76dfb0a73c9c9498a4a3d"
+        },
+        {
+          "file": "lib/aria.js",
+          "bytesInOutput": 925,
+          "sha256": "e46d46194887fe65bfc84dac050b20c163f131f81f10e88f38b48925cf01602b"
+        },
+        {
+          "file": "lib/find.js",
+          "bytesInOutput": 536,
+          "sha256": "0e7b3a54af5d32fe6b30648b420f82ccf0bf7e2d2af9460e3c173c2785084336"
+        },
+        {
+          "file": "lib/html.js",
+          "bytesInOutput": 4418,
+          "sha256": "e204fcc00f9ba1c19049be6dbe1fa0c9378d8401482aead17cb0d0e47adff671"
+        },
+        {
+          "file": "lib/normalize.js",
+          "bytesInOutput": 55,
+          "sha256": "b682cd82e5383c9752b3fd9b354d4694150a1b70027337998bcd46e030ed3e93"
+        },
+        {
+          "file": "lib/svg.js",
+          "bytesInOutput": 10146,
+          "sha256": "c12f46a6c616f46cf7d24f4979471402f78320d71e6642db88c3566f160f0356"
+        },
+        {
+          "file": "lib/util/case-insensitive-transform.js",
+          "bytesInOutput": 67,
+          "sha256": "ed53a57e86ad3153460b9aa558206d9781bb21ace54f825b3ff8ba26c708aa5e"
+        },
+        {
+          "file": "lib/util/case-sensitive-transform.js",
+          "bytesInOutput": 55,
+          "sha256": "4935f8bbb39e31920d1efe1a1feb742678113f6355b4feb7b3060118a04c9eda"
+        },
+        {
+          "file": "lib/util/create.js",
+          "bytesInOutput": 302,
+          "sha256": "e1da7557afffe2afa5ee8b582fa8e302578342e9ced8bc8410fc618968730137"
+        },
+        {
+          "file": "lib/util/defined-info.js",
+          "bytesInOutput": 277,
+          "sha256": "abfc5c18f95ffe73105e336370b778d4d24eb539fe609428035f690e3ded73b2"
+        },
+        {
+          "file": "lib/util/info.js",
+          "bytesInOutput": 421,
+          "sha256": "9cacb8f3711acde4ef79814c4f42d97a4923ccb37e5a6ddd550ebbffb452a1e5"
+        },
+        {
+          "file": "lib/util/merge.js",
+          "bytesInOutput": 142,
+          "sha256": "4f9b3be6a66510d379a3096297da53f2a5a49eebeba6b8db17a5e7b044a90c33"
+        },
+        {
+          "file": "lib/util/schema.js",
+          "bytesInOutput": 171,
+          "sha256": "d97aa20f271dd5e3ea798dff8cc1fa196a074081b92e60b9335824ce00d05ba6"
+        },
+        {
+          "file": "lib/util/types.js",
+          "bytesInOutput": 291,
+          "sha256": "534ee498a7991c73556e49cf8031de26b193f4ffdf3da0aeac52add9d7b6ea1c"
+        },
+        {
+          "file": "lib/xlink.js",
+          "bytesInOutput": 228,
+          "sha256": "9a92f5105b5f4558bf1b63cb43a11c57289fb4b638e9ad4f1d99716602b95a91"
+        },
+        {
+          "file": "lib/xml.js",
+          "bytesInOutput": 152,
+          "sha256": "aa91faf152020c8be409ae8253d3ebaf85b2a9246c5a3ed96d9d5424c9e4064c"
+        },
+        {
+          "file": "lib/xmlns.js",
+          "bytesInOutput": 143,
+          "sha256": "5e3700fcaa7faf7542982e2657286be3a652744c0f3d0ee64c311ed158ef00d9"
+        }
+      ]
+    },
+    {
+      "name": "qq-bridge",
+      "version": "0.2.1-r1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/integrations/bili-pond-upstream/LICENSE",
+          "sha256": "9eb9adb1f3e4b8360f1ddf879602530fe80bc10a137beac2485b3a0195a166a5"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/integrations/bili-pond-upstream/NOTICE.md",
+          "sha256": "ddf3706461d323353ebd2447fb21791151b868e8721af28404f68d48c1a507db"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/integrations/bilibili-asr-runtime/LICENSE.txt",
+          "sha256": "886a0ead2d89030ee62dbff52b04e47ab91998341295bb9c56fb952b4e081c7a"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/integrations/bilibili-runtime/LICENSE.txt",
+          "sha256": "886a0ead2d89030ee62dbff52b04e47ab91998341295bb9c56fb952b4e081c7a"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/integrations/diceframe-upstream/LICENSE",
+          "sha256": "0448f99664e09791e13e4beea58fc2f4ccd328de72e9d009ca44674a0cf32376"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/integrations/douyin-agent-upstream/LICENSE",
+          "sha256": "8e35188213b36c608c0e94bd684c1cc3dbe283ef240f4e1a7f43241e3f9f5b1c"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/integrations/douyin-publish-upstream/LICENSE",
+          "sha256": "90ea934992563773a1cb2e2e81b9742b08ecb996c311409dd427d4c79e541d83"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/integrations/image-gen-upstream/LICENSE",
+          "sha256": "47c3f9dbe83d3467c05c19f02bc650d97e8d65c0012926e5a5f0e3b5432b39ee"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/integrations/meme-upstream/LICENSE",
+          "sha256": "14954e9916afe813b76d578ab3d27c0143a2588258e5ba95dc0d8ca5ac1c1061"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/integrations/pywechat-upstream/LICENSE",
+          "sha256": "2e85d536d30f24ffdfe7ae2668420e355442677fd15aaa004f220febaa563a13"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/integrations/qzone-sdk-upstream/LICENSE",
+          "sha256": "197dbe506e047e48ee099b841a6d2fa91288db6b1f4d6cf862023bc8f1aeb266"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/integrations/wechat-sdk-upstream/LICENSE",
+          "sha256": "f7fcd525920592be7eedfde9c27b35aad26d4ea711bcfc5a0c0b79747fcbcd06"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/integrations/wechatapi-upstream/LICENSE",
+          "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/integrations/weixin-upstream/LICENSE",
+          "sha256": "e03f0b07c51d8e8f1c9e25bca15a67d9c3157ae9a14d77dda98d426bfb165adb"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/integrations/wx4py-upstream/LICENSE",
+          "sha256": "6f1e622c82a380075843bb084a7ec3b1f1d12a4a02526d75e78b0924a860aa75"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/LICENSE",
+          "sha256": "4f6e6af70a3c1cfc06ad3c9fe09abfb142d02d99abae28b0b22128b7a2d90e39"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/packaging/installer/NOTICE.txt",
+          "sha256": "890a485d583d3d084dd03b64dbfa643a476560792934bd3b60a063593f4bf61d"
+        },
+        {
+          "file": "licenses/qq-bridge-0.2.1-r1/public/vendor/three/LICENSE",
+          "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "integrations/ui-idle-polling.js",
+          "bytesInOutput": 1638,
+          "sha256": "40ecf188ee86f1294b25e805997d8a95e54cf2e16bb122a93f25d924ebca2e45"
+        },
+        {
+          "file": "src/douyin-model-contract.js",
+          "bytesInOutput": 269,
+          "sha256": "88cb4a521274223a22858ec59ae77adbebf99c3c41e6f60a8f68d5927461343f"
+        }
+      ]
+    },
+    {
+      "name": "react-dom",
+      "version": "18.3.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/react-dom-18.3.1/LICENSE",
+          "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "cjs/react-dom.production.min.js",
+          "bytesInOutput": 130629,
+          "sha256": "cbf7fe6b9726ee65f8bcd5715289cc5161c8dacf74d0b8aaa0d29412516f5f47"
+        },
+        {
+          "file": "client.js",
+          "bytesInOutput": 108,
+          "sha256": "a510041dfc40d69b3aa574e5e111864186c711fbeb3db41aa2f27196b27c429f"
+        },
+        {
+          "file": "index.js",
+          "bytesInOutput": 253,
+          "sha256": "f26fcb81b5d1dc32c6edea34645c75b60d259916293d3208c8be48ac33e882e4"
+        }
+      ]
+    },
+    {
+      "name": "react",
+      "version": "18.3.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/react-18.3.1/LICENSE",
+          "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "cjs/react-jsx-runtime.production.min.js",
+          "bytesInOutput": 861,
+          "sha256": "76e3364c46895ed2c4a8d5cc332e5e4ef31d6f732d35b1e56826dc5895245452"
+        },
+        {
+          "file": "cjs/react.production.min.js",
+          "bytesInOutput": 6842,
+          "sha256": "4b35e378f469c4f492c7514bb106b5833746dbbae80496bd4aa9acc6e9ac4b42"
+        },
+        {
+          "file": "index.js",
+          "bytesInOutput": 51,
+          "sha256": "a216c390bf956cbb906c66d29fdb2e2ad6999464a5ca83e476533a6f25ad0ef3"
+        },
+        {
+          "file": "jsx-runtime.js",
+          "bytesInOutput": 50,
+          "sha256": "28170e60f2ff0bc045bc7d175f5849e86f68dd02d76d7255369420718b30295a"
+        }
+      ]
+    },
+    {
+      "name": "regex-recursion",
+      "version": "6.0.2",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/regex-recursion-6.0.2/LICENSE",
+          "sha256": "3d19c2b6246b3072547af2bd05e6b4c09bd3d15955590f1f1e1d20382c919a49"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "src/index.js",
+          "bytesInOutput": 3258,
+          "sha256": "a5ed45f11102d7cb449ecd89057b5f2c50dba8ed79bc21826c75e25182f01383"
+        }
+      ]
+    },
+    {
+      "name": "regex-utilities",
+      "version": "2.3.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/regex-utilities-2.3.0/LICENSE",
+          "sha256": "8ca7af4f6c753e5ab8388e1078d94ce4650723bba4b0d4dfe562fbd45fb4a4e6"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "src/index.js",
+          "bytesInOutput": 1044,
+          "sha256": "6ea867f015ee403793968716eb0b7345266ab692572bc0f7cc25279268d4b758"
+        }
+      ]
+    },
+    {
+      "name": "regex",
+      "version": "6.1.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/regex-6.1.0/LICENSE",
+          "sha256": "3d19c2b6246b3072547af2bd05e6b4c09bd3d15955590f1f1e1d20382c919a49"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "src/atomic.js",
+          "bytesInOutput": 2265,
+          "sha256": "bde76d802e7dcfba88312403876c0132f8bc81f75678024fbdf51744a0944ffa"
+        },
+        {
+          "file": "src/internals.js",
+          "bytesInOutput": 26,
+          "sha256": "6d90a040afdec01d9856e2296352d345da60ab091057f67958f9ce0888c8315a"
+        },
+        {
+          "file": "src/subclass.js",
+          "bytesInOutput": 17,
+          "sha256": "e6025e4ffb76ea065343e458b263f79172302578bc201d33d1551d37483e4590"
+        },
+        {
+          "file": "src/utils-internals.js",
+          "bytesInOutput": 197,
+          "sha256": "cbd3f397dc5c6dbee556b2c50e05fe90a5f605c54e6b03e8622bdd6746054b86"
+        }
+      ]
+    },
+    {
+      "name": "scheduler",
+      "version": "0.23.2",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/scheduler-0.23.2/LICENSE",
+          "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "cjs/scheduler.production.min.js",
+          "bytesInOutput": 4233,
+          "sha256": "f6cb8cf42696980c702f6b879417ab8bd489660485eb012b46f67e92e18a78ee"
+        },
+        {
+          "file": "index.js",
+          "bytesInOutput": 51,
+          "sha256": "b413b3aac7bd209fd82cbe2241fda1467558daaef830744f45ed8396fac9185e"
+        }
+      ]
+    },
+    {
+      "name": "shiki",
+      "version": "4.3.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/shiki-4.3.1/LICENSE",
+          "sha256": "7a9d8d01038aeacf9e5bcdabbddf2a7815200dce9fc1118468cc553e00ae3eee"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "dist/core.mjs",
+          "bytesInOutput": 21,
+          "sha256": "32a795c90486276843438d65435eece143f055a435083529b502cb83cf9dffa3"
+        },
+        {
+          "file": "dist/engine-javascript.mjs",
+          "bytesInOutput": 21,
+          "sha256": "8ad394e40e74198c6c4b8b22aa5f425f554597f00412444ff4474d440aee74d3"
+        }
+      ]
+    },
+    {
+      "name": "space-separated-tokens",
+      "version": "2.0.2",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/space-separated-tokens-2.0.2/license",
+          "sha256": "ca4662cb5d1b738fbe5350c0d5485ba11773b4b7208974082ae6e129a52d631d"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 58,
+          "sha256": "080bce26a6623cdb189d1cd62c6bdd27fe9984b40f19d81abe113a20dae3c379"
+        }
+      ]
+    },
+    {
+      "name": "stringify-entities",
+      "version": "4.0.4",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/stringify-entities-4.0.4/license",
+          "sha256": "9f084fac69d8cf1e6ce983ba5a3499c7695ed74a26ec625c38f0fd19fddd5e10"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "0b8dd92df1fa36c265ab1d75f4b6472027c16d9f259ec22c670e1dddb3a09406"
+        },
+        {
+          "file": "lib/constant/dangerous.js",
+          "bytesInOutput": 78,
+          "sha256": "4319c36762a75bda915ff6890944ac50ce4de71cea47b0429257bcc4e95c26a8"
+        },
+        {
+          "file": "lib/core.js",
+          "bytesInOutput": 690,
+          "sha256": "94c13739ebd1932284e9070b575ca5fe4c7f9539c1ba00d9eab1e80a4b8633d7"
+        },
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 85,
+          "sha256": "4f19d10eeacdb541c4cad75457833ba1eb3d028ff387e9a1ecbc717617a75e2a"
+        },
+        {
+          "file": "lib/util/format-smart.js",
+          "bytesInOutput": 372,
+          "sha256": "372e33408706863ea7bb95ef139de391b1c01a5e0d09b73414e5a983234f8d76"
+        },
+        {
+          "file": "lib/util/to-decimal.js",
+          "bytesInOutput": 121,
+          "sha256": "adad15ef3ec16d10b82dd7f9a4689b198dd68ab55a7ceecd010ddfee0fb2c81e"
+        },
+        {
+          "file": "lib/util/to-hexadecimal.js",
+          "bytesInOutput": 149,
+          "sha256": "9ee776d7783770473fbe50b6c82c772b698848ea2eb8b0357857015328e10701"
+        },
+        {
+          "file": "lib/util/to-named.js",
+          "bytesInOutput": 329,
+          "sha256": "82f890b04897582899731c9090eefb5f37a2dfcaedd2798c164e067f5ff05499"
+        }
+      ]
+    },
+    {
+      "name": "unist-util-is",
+      "version": "6.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/unist-util-is-6.0.1/license",
+          "sha256": "82974dbf2639d13edab95c32ed9cb6c0867ede272cd2e07ce47ce8548fe55c05"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "037c062d404356c6bbb8dad28d39445165d23e84ac35a63496a98d40aaa8d645"
+        },
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 781,
+          "sha256": "ce90bad6b772a7e1115d76e4cc53bfade1ee1fe8ac1b8880f48b0e1512ffba44"
+        }
+      ]
+    },
+    {
+      "name": "unist-util-stringify-position",
+      "version": "4.0.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/unist-util-stringify-position-4.0.0/license",
+          "sha256": "ca4662cb5d1b738fbe5350c0d5485ba11773b4b7208974082ae6e129a52d631d"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "7b80d608db2ab15251da8c71c4ed8029102b16677d80f4977487136e6b9e5774"
+        },
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 327,
+          "sha256": "9d66941cf43fa4f4faa5912019ad9dae3f1ea3395b0c2fe64c2bcd5c2d4b2c28"
+        }
+      ]
+    },
+    {
+      "name": "unist-util-visit-parents",
+      "version": "6.1.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/unist-util-visit-parents-6.1.0/license",
+          "sha256": "dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 21,
+          "sha256": "6e3e10026230a33197e56422a2d95fc1815528c0bde7c1c790fd1a733b04bd39"
+        },
+        {
+          "file": "lib/index.js",
+          "bytesInOutput": 1729,
+          "sha256": "ab513737db9f8810d38f888f1f79a0db8de0336bcf771b4ea22d9ec315b26885"
+        }
+      ]
+    },
+    {
+      "name": "zwitch",
+      "version": "2.0.4",
+      "license": "MIT",
+      "notices": [
+        {
+          "file": "licenses/zwitch-2.0.4/license",
+          "sha256": "ca4662cb5d1b738fbe5350c0d5485ba11773b4b7208974082ae6e129a52d631d"
+        }
+      ],
+      "inputs": [
+        {
+          "file": "index.js",
+          "bytesInOutput": 293,
+          "sha256": "81f592d700aff8042238e7cab8e03c002e689117ecf15844ed753e08825a2873"
+        }
+      ]
+    }
+  ],
+  "fonts": [],
+  "artifacts": [
+    {
+      "file": "app.css",
+      "sha256": "ec2e8cde237dad1b80603b2160739bffa51e02fa101f642169e3d2a0227e8c40"
+    },
+    {
+      "file": "app.js",
+      "sha256": "af5636498d81fb11ad56a6b165a4dcee5bcb63beaff7a545b7e044d12abaa369"
+    }
+  ]
+}

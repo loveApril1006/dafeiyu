@@ -1,0 +1,40 @@
+微信接入商业使用审查（2026-10-31）
+
+结论：待整改、未获商业发布放行。本次是微信相关来源和发布风险检查，不是法律意见或对整套产品不侵权的保证。
+不得将现有完整目录、旧版安装包或本次检查通过字样作为可商业销售的证明。
+
+一、已查明的实际依赖
+1. companion/wechat-desktop-worker.py 通过 sys.path 引入 integrations/pywechat-upstream/src，实际 import pyweixin。它不是仅供阅读的参考资料。
+   本地 LICENSE 为 LGPL-2.1；该许可不是禁止商用。分发时需要按实际整合方式核对版权/许可、库源码与修改、用户替换库和相关条款，不能只在自己程序里写 MIT。
+2. companion/wechat-db-worker.py 实际 import wechatauto；scripts/prepare-wechat-db.py 固定第三方源码版本，并安装其声明的依赖。
+   wechatapi-upstream 顶层 LICENSE 为 Apache-2.0；仍须核对来源链、版权和适用 NOTICE、修改标记、全部依赖及附带二进制，不能仅凭顶层文本放行。
+3. wx4py-upstream 的 LICENSE 为 AGPL-3.0，README 另写“附加商业使用限制/未经授权的商业使用”。AGPL 本身允许收费；两处文本的关系本次未获权利人澄清。
+   当前没有在所检查的微信运行源码中发现它的 import，但整包携带源码也属于需要审查的分发行为。未经澄清，不纳入本项目商业交付。
+4. 其他微信 SDK 和两个 Python 环境的传递依赖未完成逐包审查，暂不纳入商业交付。
+
+二、后续开发原则
+可以提炼功能需求和通用设计：适配器、消息队列、去重、会话隔离、发送确认。新代码按书面需求编写并保留来源记录。
+不得复制、翻译、改变量名后宣称独立实现；现有人员已阅读源代码，不能宣称本次是严格的净室开发。
+不复制第三方文案、图标、图片、音色或示例数据。依赖优先选许可清晰、版本固定且能履约的组件；保留完整版权、许可、适用 NOTICE 和修改记录。
+AGPL/LGPL 并非一律禁止商业使用；若要保留，应先设计并核实履约方案，或取得覆盖实际用途的书面授权。通过子进程、HTTP、用户自行安装，不当然免除责任。
+不修改第三方 LICENSE，不把有争议代码自行改标 MIT，不删除现有个人测试依赖或用户数据来伪造审查通过。
+
+三、发布检查
+新增命令：node scripts/check-wechat-commercial.mjs --staging <最终安装包解包目录或完整待打包目录>
+命令只读扫描，发现待审微信组件目录或已知库 import 时退出码为 1；缺少明确目录/读取错误时为 2；应停止商业打包。
+退出码为 0 只表示未命中此有限规则，不代表获得商业许可或整包无侵权。重命名/复制代码、动态导入、传递依赖和媒体权利仍需人工检查。
+本检查尚未接入旧版 maintenance 中的所有历史打包脚本；发布人员必须显式执行，不能声称所有打包已被自动拦截。
+目前采用保守排除策略；将来如保留某 SDK，先完成与实际版本对应的审查，再调整发布策略和测试。
+
+四、整包另有阻断项
+根目录《版权与使用说明.txt》仍写“严禁倒卖和商业使用，仅供个人娱乐”。不能为了销售直接删除这句话，必须确认所含全部代码和素材的授权范围。
+desktop-pet/dsh-pet/dsh-pet/README.md 单独写“代码 MIT；素材禁止商用”；整包商业发布前需获得对应素材授权或替换并核查来源。
+2026-10-29 的既有审查 docs/commercial-review-20261029 已记录其他组件、模型和素材待审事项。本次不替代那份审查，不解除那些限制。
+软件著作权许可与微信平台授权/账号风控是分别需要解决的事项，源码许可允许商用不等于允许操控个人微信。
+
+证据见同目录 wechat-commercial-evidence-20261031.json，记录本地固定提交与许可/说明文件 SHA-256。网络上 main 分支的变化不自动改变本地版本的适用结论。
+来源：
+https://github.com/Hello-Mr-Crab/pywechat/blob/main/LICENSE
+https://github.com/claw-codes/wx4py/blob/main/LICENSE
+https://github.com/claw-codes/wx4py/blob/main/README.md
+https://github.com/jiatj/wechatapi/blob/main/LICENSE

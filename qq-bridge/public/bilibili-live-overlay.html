@@ -1,0 +1,14 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>大肥鱼直播字幕与声音</title><style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent;color:#fff;font:30px/1.7 "Microsoft YaHei UI",sans-serif}#caption{position:absolute;bottom:7%;left:12%;right:12%;padding:20px 30px;border-radius:18px;background:rgba(14,25,45,.82);box-shadow:0 8px 30px #0003;text-shadow:0 1px 3px #0008;white-space:pre-wrap;overflow-wrap:anywhere}#label{font-size:15px;letter-spacing:2px;color:#9cc6ff;margin-bottom:8px}#enable{position:absolute;top:16px;left:16px;border:0;border-radius:8px;padding:10px 16px;font-size:14px;background:#fff;color:#26416c;cursor:pointer}#status{position:absolute;top:18px;right:20px;font-size:13px;color:#7190b4}[hidden]{display:none!important}@media(max-width:650px){body{font-size:20px}#caption{left:5%;right:5%;padding:14px 18px}}
+</style></head><body><button id="enable" hidden>点击启用声音</button><span id="status"></span><div id="caption" hidden><div id="label">大肥鱼 · LIVE</div><div id="text"></div></div><audio id="audio"></audio><script>
+const q=new URLSearchParams(location.search),key=q.get('view')||'',monitor=q.get('monitor')==='1',client=crypto.randomUUID(),audio=document.getElementById('audio'),enable=document.getElementById('enable');let cursor='',first=true,busy=false,pending=null;
+const auth='view='+encodeURIComponent(key);history.replaceState({},'',location.pathname+'?'+auth+(monitor?'&monitor=1':''));
+async function play(output){audio.pause();audio.src='/bili-live-view/audio/'+output.audioId+'.wav?'+auth;pending=output;try{await audio.play();enable.hidden=true;pending=null;}catch{enable.hidden=false;}}
+enable.onclick=()=>{if(pending)void play(pending);};
+async function poll(){if(busy)return;busy=true;try{const r=await fetch('/bili-live-view/state?'+auth+'&client='+client+(monitor?'&monitor=1':''),{cache:'no-store'});const d=await r.json();if(!r.ok)throw Error('展示地址失效，请在后台重新复制');const o=d.output;document.getElementById('status').textContent=monitor?'静音预览':d.playAudio?'':'另一个展示源正在播放音频';
+ if(!d.active||!o){document.getElementById('caption').hidden=true;audio.pause();audio.removeAttribute('src');pending=null;cursor='';first=false;return;}
+ document.getElementById('caption').hidden=false;document.getElementById('text').textContent=o.text;document.getElementById('label').textContent='大肥鱼 · '+(d.demo?'本地演练':'LIVE');
+ if(first){cursor=o.id;first=false;return;}if(o.id!==cursor){cursor=o.id;if(d.playAudio&&!monitor&&o.audioId)await play(o);}
+ }catch(e){document.getElementById('status').textContent=e.message;audio.pause();}finally{busy=false;}}
+setInterval(poll,600);poll();
+</script></body></html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>本鱼的小窝</title><link rel="stylesheet" href="/fish-home-assets/fish-home.css"></head>
+<body>
+<main>
+ <header class="home-heading"><div><span class="eyebrow"><i></i> A LITTLE PLACE TO BE</span><h1>回家啦，<span>本鱼。</span></h1><p>在自己的小世界里，慢慢游，慢慢生活。</p></div><div class="heading-actions"><span class="local-pill">本地生活 · 无额外模型请求</span><button id="returnHQ" class="soft-button">生活总部 ↗</button><button id="openOcean" class="soft-button">识海记忆 <span>↗</span></button></div></header>
+ <section class="vitals-panel" aria-label="它此刻的状态"><div class="vitals-heading"><span class="eyebrow">LIFE, AT ITS OWN PACE</span><small>随活动与作息慢慢变化 · 点击查看</small></div><div id="vitals" class="vitals-grid"></div><div id="vitalDetail" class="vital-detail" hidden><div><b id="vitalTitle"></b><p id="vitalDescription"></p><small id="vitalCause"></small></div><button id="vitalAction" data-activity="sleep">睡一会儿</button><button id="closeVital" aria-label="收起状态说明">×</button></div></section>
+ <div class="home-grid">
+  <section class="world-card" aria-label="可探索的三维鱼窝">
+   <div class="world-top"><div class="room-mark"><span class="live-dot"></span><b id="homeName">本鱼的小窝</b><small id="dayLabel">给生活留一点空白</small></div><div class="world-tools"><button id="resetCamera" title="恢复看家的角度" aria-label="恢复视角">⌂</button><button id="lightMode" title="切换日间和夜间" aria-label="切换光线">☀</button><button id="fullScreen" title="展开鱼窝" aria-label="全屏鱼窝">⛶</button></div></div>
+   <div id="world" class="world"><div id="loading" class="loading"><span class="loading-orb"></span><b>正在给小窝开灯…</b><small>把一小片安静，留给本鱼。</small></div></div>
+   <div id="roomLabel" class="object-label" hidden></div>
+   <div class="fish-bubble"><span class="bubble-face">◡</span><div><b id="activityTitle">今天也可以什么都不着急。</b><span id="activityReason">跟着自己的节奏，放松一会儿。</span></div><span class="bubble-dot"></span></div>
+   <div class="world-bottom"><span><i class="mouse-icon"></i> 拖动旋转 · 滚轮拉近 · 点地面去走走</span><button id="motionToggle" aria-pressed="true">动效已开</button></div>
+  </section>
+  <aside class="home-sidebar">
+   <section class="side-card resident-card"><div class="section-caption">住在这里的它 <span class="tiny-dot"></span></div><div class="resident"><div class="fish-avatar">●<span>◡</span></div><div><h2 id="residentName">本鱼</h2><p><span id="moodDot"></span><span id="moodText">平静地待着</span></p></div><span class="resident-tag" id="lifeLink">小窝自由活动</span></div><div class="autonomy"><div><b>自由活动</b><small>按心情和作息，换个舒服的位置</small></div><label class="switch"><input type="checkbox" id="autoLife" checked aria-label="启用自由活动"><span></span></label></div><div class="quick-actions"><button data-activity="rest">☾ <span>休息会儿</span></button><button data-activity="wander">⌁ <span>随便走走</span></button><button data-activity="read">▤ <span>翻一会儿书</span></button><button data-activity="sunbathe">☀ <span>安静发呆</span></button></div><div class="quick-actions play-actions"><button data-activity="play">◇ <span>一起玩耍</span></button><button data-activity="feed">♧ <span>喂点零食</span></button><button data-activity="touch">♡ <span>轻轻摸摸</span></button></div><button data-activity="sleep" class="sleep-button">☾ 去小床上睡一会儿</button><p id="avatarStatus" class="footnote">正在连接桌宠形象…</p><p class="footnote">聊天、观看、创作与任务会同步到它的动作。互动影响自己的心情，记忆保留在原会话。</p></section>
+   <section class="side-card furniture-card"><div class="section-caption">把小窝变成喜欢的样子 <button id="editLayout">布置小窝 ↗</button></div><div id="selectionEmpty" class="selection-empty"><div class="little-chair">▱</div><b>每个角落，都可以待一会儿。</b><p>点一下家具，看看这里能做些什么。</p></div><div id="selection" hidden><div class="selected-object"><span id="itemIcon">▱</span><div><h3 id="itemName"></h3><p id="itemHint"></p></div></div><button id="useFurniture" class="primary wide">在这里待会儿</button></div>
+    <div id="buildTools" hidden><p class="build-hint">拖动家具调整位置，保存后下次回家还在。</p><div id="catalog" class="catalog"></div><div class="build-actions"><button id="rotateItem">旋转</button><button id="colorItem">换色</button><button id="removeItem">收起来</button></div><div class="build-save"><button id="cancelLayout">取消</button><button id="saveLayout" class="primary">保存布置</button></div></div>
+   </section>
+   <section class="side-card memory-card"><div class="section-caption">家里的回忆角 <span class="memory-symbol">✧</span></div><p class="memory-intro">有个家，也有值得留下的小事。</p><div id="memoryList" class="memory-list"><p class="muted">正在翻开回忆…</p></div><button id="writeDiary" class="diary-button">＋ 留下一句今天的心事</button></section>
+  </aside>
+ </div>
+ <section class="home-journal"><div><span class="eyebrow">LITTLE MOMENTS</span><h2>小窝里的日常</h2><p>记下真正安排过的虚拟活动，和亲手留下的心事。</p></div><div id="journal" class="journal-items"><p class="muted">故事可以从今天开始。</p></div></section>
+ <p id="notice" class="notice" role="status" hidden></p>
+ <dialog id="diaryDialog"><form id="diaryForm"><div class="dialog-heading"><h2>把今天的心事留在家里</h2><button type="button" id="closeDiary" aria-label="关闭">×</button></div><p>日记作为主观记录，保存到管理员私聊范围的识海。</p><textarea name="text" maxlength="1200" required placeholder="今天有一件小事，想记下来…"></textarea><div class="dialog-actions"><span>不会自动发送到 QQ</span><button class="primary" id="saveDiary">放进回忆里</button></div></form></dialog>
+ <dialog id="memoryDialog"><div class="dialog-heading"><h2 id="memoryTitle"></h2><button id="closeMemory" aria-label="关闭">×</button></div><p id="memoryContent"></p><small id="memoryTime"></small><div class="dialog-actions"><span>来源、原文和关联可在识海查看</span><button class="primary" id="viewMemory">到识海查看 ↗</button></div></dialog>
+</main><script type="module" src="/fish-home-assets/fish-home-ui.js"></script>
+</body></html>

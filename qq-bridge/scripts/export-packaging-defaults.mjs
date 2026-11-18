@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
+import {capturePortableSettings} from '../src/portable-settings.js';
+const bridge=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),root=path.resolve(bridge,'..');
+const protectedFiles=['config.json','state/current-role.json','state/role-identities.json','companion/reply-options.json','companion/creative-data/settings.json','companion/wechat-data/settings.json','companion/qzone-data/settings.json','companion/bilibili-live-data/config.json','companion/bili-native-data/config.json',...fs.readdirSync(path.join(bridge,'roles')).filter(f=>f.endsWith('.md')).map(f=>'roles/'+f)].map(f=>path.join(bridge,f));
+protectedFiles.push(path.join(root,'model-settings.json'),path.join(root,'engine-home/.credentials.yaml'),path.join(root,'engine-home/profiles/web/package.json'),path.join(root,'engine-home/profiles/web/cordis.patch.yml'));
+const checksum=file=>fs.existsSync(file)?createHash('sha256').update(fs.readFileSync(file)).digest('hex'):null;
+const before=protectedFiles.map(checksum),result=await capturePortableSettings(root);
+if(protectedFiles.some((file,i)=>checksum(file)!==before[i]))throw Error('导出期间原设置发生变化，未写入安装默认；请在保存设置完成后重试');
+const directory=path.join(bridge,'packaging');fs.mkdirSync(directory,{recursive:true});
+const output=path.join(directory,'default-settings.json'),temp=output+'.new';fs.writeFileSync(temp,JSON.stringify(result.settings,null,2)+'\n');fs.renameSync(temp,output);
+fs.mkdirSync(path.join(bridge,'state/packaging-audit'),{recursive:true});
+const report={capturedAt:new Date().toISOString(),fingerprint:result.fingerprint,pluginSource:result.pluginSource,sections:Object.keys(result.settings).filter(k=>k!=='format'),redactedFields:result.redactedFields,privateDataIncluded:false,sourceRuntimeModified:false,protectedSourceFilesVerified:protectedFiles.length};
+fs.writeFileSync(path.join(bridge,'state/packaging-audit/defaults-export.json'),JSON.stringify(report,null,2));
+console.log(JSON.stringify({file:'packaging/default-settings.json',sections:report.sections.length,fingerprint:result.fingerprint,redactedFields:result.redactedFields.length,privateDataIncluded:false}));

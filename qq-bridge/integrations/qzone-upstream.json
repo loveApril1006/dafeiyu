@@ -1,0 +1,8 @@
+{
+  "name": "qzone-sdk",
+  "source": "https://github.com/Eganchiyu/qzone-sdk",
+  "version": "1.0.1",
+  "commit": "2282b8bc50c185eb6f8f7a39a3c8c6a517484d77",
+  "license": "MIT",
+  "mode": "one-shot manual-cookie adapter; no QR login or persistent cookie file"
+}

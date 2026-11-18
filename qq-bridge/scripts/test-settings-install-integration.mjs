@@ -1,0 +1,36 @@
+// Real fresh-profile loader and update migration, with fake registration only.
+import fs from 'node:fs';import path from 'node:path';import os from 'node:os';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';import {spawnSync} from 'node:child_process';import {pathToFileURL} from 'node:url';
+const source=path.resolve('packaging/installer'),expectedVersion=Number(fs.readFileSync(path.resolve('packaging/installer/configure-update.mjs'),'utf8').match(/edition:'full',version:(\d+)/)?.[1]),root=fs.mkdtempSync(path.join(os.tmpdir(),'defaults-install-'));
+const put=(rel,value)=>{const file=path.join(root,rel);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,typeof value==='string'||Buffer.isBuffer(value)?value:JSON.stringify(value));};
+try{
+ for(const rel of ['release-profile.mjs','src/state-acl.mjs','src/portable-settings.js','src/portable-settings-upgrade.js','packaging/default-settings.json'])put('qq-bridge/'+rel,fs.readFileSync(path.resolve(rel)));
+ put('qq-bridge/package.json',{type:'module'});fs.symlinkSync(path.resolve('node_modules'),path.join(root,'qq-bridge/node_modules'),'junction');
+ put('qq-bridge/config.json',{ownerQQ:10000001,consoleToken:'new-private-console-token',dsh:{provider:'new-provider',model:'new-model',authToken:'new-private-api-key'},snowluma:{accessToken:'new-private-onebot-token'},allow:{private:['10000001'],groups:[]},socialV2:{enabled:false,proactive:{enabled:false}}});
+ put('engine-home/profiles/web/package.json',{private:true,dependencies:{'dsh-pet':'old-path'},dsh:{profile:{bundles:['@deepseek-ai/dsh-base','@deepseek-ai/dsh-web-app']}}});
+ put('engine-home/profiles/web/cordis.patch.yml','# preserve formatting\n- id: custom-provider\n  config: { apiKey: private-key-fixture }\n');
+ put('GPT-SoVITS/pet-voice.json',{voice:'klee-cute',voices:{}});
+ const profile=await import(pathToFileURL(path.join(root,'qq-bridge/release-profile.mjs')));profile.migrateReleaseProfile(root,{fresh:true});
+ const defaults=JSON.parse(fs.readFileSync(path.join(root,'qq-bridge/packaging/default-settings.json'),'utf8')),read=rel=>JSON.parse(fs.readFileSync(path.join(root,rel),'utf8'));
+ assert.equal(read('qq-bridge/config.json').ownerQQ,10000001);assert.equal(read('qq-bridge/config.json').dsh.authToken,'new-private-api-key');assert.deepEqual(read('qq-bridge/config.json').socialV2.proactive,defaults.bridge.socialV2.proactive);
+ assert.equal(read('qq-bridge/companion/reply-options.json').replyLength,defaults.replies.replyLength);
+ // A subsequently customized installation must not be reset by updates.
+ const cfg=read('qq-bridge/config.json');cfg.socialV2.enabled=false;cfg.socialV2.proactive={enabled:false,scope:'private',fixedIntervalMs:420000};put('qq-bridge/config.json',cfg);
+ put('xiaoge-install.json',{version:21,installedAt:'2025-01-01',qqEnabled:false,desktopPet:{enabled:false}});
+ put('engine-home/profiles/web/package.json',{private:true,dependencies:{'dsh-pet':'old-path','user-package':'file:user'},dsh:{profile:{bundles:['@deepseek-ai/dsh-base','@deepseek-ai/dsh-web-app']}}});
+ put('engine-home/profiles/web/cordis.patch.yml','# preserve formatting\n- id: custom-provider\n  config: { apiKey: private-key-fixture }\n');
+ put('engine-home/.credentials.yaml','exact original account bytes');put('qq-bridge/state/private-history.json','exact original message bytes');
+ put('qq-bridge/companion/reply-options.json',{revision:43,replyLength:'natural',voice:false,images:false,text:true,stickers:false});put('qq-bridge/roles/custom.md','original custom role');put('qq-bridge/public/uploads/private.png','original personal picture');
+ put('engine-home/dsh-pet/local-voice.json',{enabled:false,voice:'user-choice'});put('engine-home/dsh-pet/local-integrations.json',{userCustomSwitch:false});put('desktop-pet/deployment.json',{version:'custom',qqLinked:true});
+ put('configure-full.mjs',`import fs from 'node:fs';import path from 'node:path';export function configureFull(root){const file=path.join(root,'engine-home/profiles/web/package.json');const p=JSON.parse(fs.readFileSync(file));p.dependencies['dsh-pet']='link:'+root+'/desktop-pet/dsh-pet/dsh-pet';p.dsh.profile.bundles.push('dsh-pet');fs.writeFileSync(file,JSON.stringify(p));for(const rel of ['engine-home/dsh-pet/local-voice.json','engine-home/dsh-pet/local-integrations.json','desktop-pet/deployment.json'])fs.writeFileSync(path.join(root,rel),JSON.stringify({version:'generated',enabled:true,dshExe:root+'/engine/exe'}));}`);
+ const exact=['engine-home/.credentials.yaml','qq-bridge/state/private-history.json','engine-home/dsh-pet/local-voice.json','engine-home/profiles/web/cordis.patch.yml','qq-bridge/roles/custom.md','qq-bridge/public/uploads/private.png','qq-bridge/state/conversation-memory.sqlite','qq-bridge/state/emotional-companion.sqlite'];
+ const hash=file=>createHash('sha256').update(fs.readFileSync(path.join(root,file))).digest('hex'),before=exact.map(hash);
+ const result=spawnSync(process.execPath,[path.join(source,'configure-update.mjs'),root],{encoding:'utf8',windowsHide:true});assert.equal(result.status,0,result.stderr);
+ assert.deepEqual(exact.map(hash),before);assert(!read('engine-home/profiles/web/package.json').dsh.profile.bundles.includes('dsh-pet'));assert.equal(read('xiaoge-install.json').version,expectedVersion);assert.equal(read('xiaoge-install.json').desktopPet.enabled,false);
+ const updated=read('qq-bridge/config.json');assert.equal(updated.socialV2.enabled,false);assert.equal(updated.socialV2.proactive.enabled,false);assert.equal(updated.socialV2.proactive.fixedIntervalMs,420000);assert.equal(updated.dsh.authToken,'new-private-api-key');assert.equal(updated.ownerQQ,10000001);
+ assert.equal(read('qq-bridge/companion/reply-options.json').voice,false);assert.equal(read('qq-bridge/companion/reply-options.json').replyLength,'natural');
+ const once=hash('qq-bridge/config.json');const repeat=spawnSync(process.execPath,[path.join(source,'configure-update.mjs'),root],{encoding:'utf8',windowsHide:true});assert.equal(repeat.status,0,repeat.stderr);assert.equal(hash('qq-bridge/config.json'),once);
+ assert.equal(read('engine-home/dsh-pet/local-integrations.json').userCustomSwitch,false);assert.equal(read('desktop-pet/deployment.json').qqLinked,true);
+ const emptyProfile=read('engine-home/profiles/web/package.json');emptyProfile.dsh.profile.bundles=[];put('engine-home/profiles/web/package.json',emptyProfile);put('engine-home/profiles/web/cordis.patch.yml','[]\n');
+ const emptyRun=spawnSync(process.execPath,[path.join(source,'configure-update.mjs'),root],{encoding:'utf8',windowsHide:true});assert.equal(emptyRun.status,0,emptyRun.stderr);assert.deepEqual(read('engine-home/profiles/web/package.json').dsh.profile.bundles,[]);assert.equal(fs.readFileSync(path.join(root,'engine-home/profiles/web/cordis.patch.yml'),'utf8'),'[]\n');
+ console.log('PASS current fresh-default loader and update migration: current baseline seeds fresh install; later custom switches, API/account/history bytes, disabled bundles, voice, images and role remain preserved. No services launched.');
+}finally{assert(root.startsWith(path.join(os.tmpdir(),'defaults-install-')));fs.rmSync(root,{recursive:true,force:true});}

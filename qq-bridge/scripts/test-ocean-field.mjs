@@ -1,0 +1,19 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {createConversationMemory} from '../src/conversation-memory.js';
+import {createOceanMemory} from '../src/ocean-memory.js';
+const root=fs.mkdtempSync(path.join(os.tmpdir(),'ocean-field-')),history=createConversationMemory(path.join(root,'history.sqlite'));
+let role='one';const ocean=createOceanMemory({database:history.database,getRole:()=>({sourceName:role}),now:()=>Date.UTC(2026,9,30)});history.subscribe(m=>ocean.observeMessage(m));
+try{
+ for(let i=0;i<205;i++)history.append('private:123',{sender:'合成朋友',userId:'123',messageId:'private-'+i,text:'这是同一会话里的聊天片段 '+i,time:Date.UTC(2026,9,30)+i*60000});
+ history.append('group:456',{sender:'另一个群',userId:'456',messageId:'secret',text:'群聊独有秘密不可串入',time:Date.now()});
+ for(let i=0;i<270;i++)ocean.create('private:123',{kind:'fact',title:'测试记录 '+i,body:'可直接展开的真实测试主记录 '+i});ocean.refreshCore('private:123');
+ const key='private:123',before=ocean.db.prepare('SELECT id,version,reinforced_at FROM ocean_nodes ORDER BY seq').all(),nodes=new Map(),chats=new Map(),edges=new Map(),sources=new Map();let cursors={after:0,chatAfter:0,edgeAfter:0,refAfter:0},rounds=0;
+ do{const data=ocean.field(key,{...cursors,expectedRole:role});assert.equal(data.role,role);assert(data.memories.items.length<=120);assert(data.chats.items.length<=80);assert(data.edges.items.length<=400);assert(data.sources.items.length<=400);assert(!JSON.stringify(data).includes('群聊独有秘密'));for(const n of data.memories.items){assert.notEqual(n.kind,'cluster');assert(!nodes.has(n.id));nodes.set(n.id,n);}for(const c of data.chats.items){assert(!chats.has(c.id));chats.set(c.id,c);}for(const e of data.edges.items)edges.set(e.seq,e);for(const ref of data.sources.items)sources.set(ref.seq,ref);cursors={after:data.memories.next??-1,chatAfter:data.chats.next??-1,edgeAfter:data.edges.next??-1,refAfter:data.sources.next??-1};assert(++rounds<30);}while(Object.values(cursors).some(n=>n!==-1));
+ assert.equal(nodes.size,ocean.stats(key).total);assert.equal(chats.size,205);assert(edges.size>0&&sources.size>=205);for(const ref of sources.values()){assert(nodes.has(ref.memory));assert(chats.has(ref.message));assert(ocean.db.prepare('SELECT 1 FROM ocean_refs WHERE node=? AND message=?').get(ref.memory,ref.message));}assert.deepEqual(ocean.db.prepare('SELECT id,version,reinforced_at FROM ocean_nodes ORDER BY seq').all(),before,'reading changed memory or weights');
+ const blocked=[...nodes.values()].find(n=>n.kind==='event');ocean.mutate(key,blocked.id,'delete');const read=ocean.field(key);assert(!read.memories.items.some(n=>n.id===blocked.id));assert(!read.sources.items.some(n=>n.memory===blocked.id));const deniedIds=ocean.db.prepare('SELECT message FROM ocean_refs WHERE node=?').all(blocked.id).map(r=>r.message);assert(!read.chats.items.some(c=>deniedIds.includes(c.id)),'withdrawn evidence returned to chat orbit');
+ role='two';history.append(key,{sender:'新角色朋友',userId:'123',messageId:'new-role',text:'仅属于第二人格的聊天',time:Date.now()});const isolated=ocean.field(key);assert.equal(isolated.chats.items.length,1);assert.equal(isolated.chats.items[0].body,'仅属于第二人格的聊天');assert.deepEqual(ocean.field(key,{expectedRole:'one'}),{role:'two',reset:true});assert.throws(()=>ocean.field('bad'),/有效/);assert.throws(()=>ocean.field(key,{after:-2}),/游标/);
+ console.log('PASS flat field: automatic cursor traversal beyond 3 previews/120 nodes, actual source/relationship lines, 205 persona-scoped chats, withdrawal exclusion, read-only weights, role reset and invalid scopes.');
+}finally{history.close();const target=path.resolve(root);assert(target.startsWith(path.resolve(os.tmpdir())+path.sep)&&path.basename(target).startsWith('ocean-field-'));fs.rmSync(target,{recursive:true,force:true});}

@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qzone-sdk"
+version = "1.0.1"
+description = "轻量级、零第三方依赖的 QQ 空间操作 SDK：发布/删除/点赞/评论/转发说说、获取动态，支持扫码、NapCat、手动 Cookie 三种认证"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "qzone-sdk contributors" },
+]
+keywords = ["qzone", "qq空间", "qq", "qqzone", "napcat", "qzone-sdk", "sdk"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[project.optional-dependencies]
+napcat = ["websockets>=11"]
+dev = ["pytest>=7.4", "build>=1.0", "twine>=4.0"]
+
+[project.urls]
+Homepage = "https://github.com/Eganchiyu/qzone-sdk"
+Repository = "https://github.com/Eganchiyu/qzone-sdk"
+
+[project.scripts]
+qzone = "qzone_sdk.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"

@@ -1,0 +1,62 @@
+大肥鱼 · qq-bridge 二次开发版：收费交付范围核对
+日期：2026-10-29
+
+一、结论和适用范围
+
+qq-bridge 当前 MIT 许可明确允许修改、再分发和销售副本。销售你二次开发后的 qq-bridge，在保留上游版权和完整许可、履行实际附带组件许可的前提下，有代码许可依据。MIT 不强制把你自己新增的代码公开，也不要求因收费而另行购买 qq-bridge 商业授权。
+
+这项结论针对 qq-bridge 的 MIT 代码，不是给 项目目录 整个目录、现有完整版 ZIP、所有角色素材和第三方服务作商用许可证明。新增代码的来源及授权归属仍需由开发者确认，不能只凭文件位于 src 就认定全部原创。
+
+二、可以纳入收费软件的代码范围
+
+1. qq-bridge 原有 MIT 代码，以及你有权授权的修改和新增代码。销售描述可包括：消息桥接、会话和角色配置、后台管理、记忆管理、发送方式控制，以及自行实现的接口适配。功能名称本身不代表它附带的所有外部引擎、服务、素材都已获商用授权。
+2. 当前 package.json 的六项直接依赖：@deepseek-ai/dsh-host-apiproxy、@deepseek-ai/schemastery、@modelcontextprotocol/sdk、js-yaml、zod、ws。本机版本均声明 MIT，且每项均找到 LICENSE 原文；证据及哈希见 evidence.json。交付时保留实际依赖的许可和通知。
+3. qq-agent-presets、qq-mode-console 的 package.json 声明 MIT。原有第三方部分保留归属；新增部分的权属以实际来源为准。
+4. dsh-pet 本体采用 MIT，代码许可允许商用；若附带交付，应保留 PC2005-cloud 版权和完整许可。其角色形象、模型、皮肤及另外下载的内容需要分别核对。用户本次收费标的是 qq-bridge 增强版，不将 dsh-pet 描述为本人独占原创。
+
+三、不能顺带作为已获授权的收费内容
+
+1. SnowLuma 本体、原生模块、SDK/MCP，以及基于它的付费安装、代搭、托管、运营服务。SnowLuma 的商业授权需要另行解决。v31 中这些运行组件已移除，并不等于获得其商业授权；用户手动下载也不能替代所需授权。
+2. 任何其他 QQ 框架：按其实际版本许可和平台规则分别判断。通用 OneBot 协议适配与直接复制框架代码是两回事，也不能承诺更换框架后天然可商用。
+3. GPT-SoVITS 角色权重、参考录音、人物形象、表情包、用户上传图片和字体等。当前没有逐项商用授权凭证，不应把这些素材视为本次已确认可售内容。语音/生图“调用接口的程序功能”和“随包分发的模型素材”需要区分。
+4. 模型账号、API 额度及平台授权。销售程序不等于转让第三方账号或保证平台始终可用。
+
+四、当前附带集成功能的实际发现
+
+qq-bridge/integrations 不全是 qq-bridge 本体，不能只保留 qq-bridge 的一份 MIT 就覆盖全部目录。
+
+- bili-pond-upstream、diceframe-upstream、douyin-agent-upstream、douyin-publish-upstream、meme-upstream、qzone-sdk-upstream、wechat-sdk-upstream 等顶层存在 MIT 许可文本。它们只是进一步审查的候选，不代表本次已审清内嵌依赖、素材和运行行为。B站鱼塘还带有 NOTICE 和 vendor/bilibili-mcp/LICENSE，必须一起保留。
+- image-gen-upstream、wechatapi-upstream 顶层存在 Apache-2.0 文本。交付需要保留许可、适用 NOTICE，并对修改文件作醒目修改说明；此处没有完成其所有依赖的审查。
+- pywechat-upstream 顶层是 LGPL-2.1 文本；微信桌面 worker 存在对它的路径引用。销售并非禁止，但分发形式、修改源码、库替换等履约要求需要按实际整合方式核对。
+- wx4py-upstream 顶层是 AGPL-3.0 文本。收费并非禁止；分发及修改后网络服务可能涉及对应源码提供等义务，不能把它当作任意闭源打包的 MIT 组件。仅在目录里发现它，不表示整个 qq-bridge 自动变成 AGPL；是否构成结合作品要看真实代码关系。
+- Python、原生二进制、模型运行时、预构建前端和其他依赖尚未完成全量逐文件审查。没有顶层 LICENSE 不能直接认定无授权或不可售，也不能认定已经获准。
+
+实际核对的 v31 ZIP 仍包含 wx4py-upstream 的 68 个路径条目、pywechat-upstream 的 119 个路径条目。因此本次不能把 v31 完整版标成“整个包已完成商用审核”。如果只销售 qq-bridge 核心，应另做最小交付清单，剔除不交付的集成及其调用入口，并验证核心运行；不是把当前整个 qq-bridge 文件夹直接压缩出售。
+
+五、声明保留与当前交付状态
+
+以下原文件未改写，已作字节一致的证据副本：
+- 桌宠素材目录\LICENSE
+- desktop-pet\dsh-pet\dsh-pet\LICENSE
+
+v31 ZIP 中这两份许可也与本机原文件一致。证据副本为本目录的 qq-bridge-LICENSE.txt、dsh-pet-LICENSE.txt。
+
+当前界面/完整版说明仍有“严禁商业使用、仅供个人娱乐”字样。本次仅确认范围和保存声明草案，没有把整包直接切换成商用版，也没有重新生成安装包。商业交付时应将限制明确限定于你确实有权授权的新增部分，不得削弱接收者对上游 MIT 代码已有的权利。
+
+六、建议商品名称和收费描述
+
+名称：大肥鱼 · qq-bridge 增强版（非官方二次开发）
+收费对象：本发行版的二次开发功能、软件交付及明确约定的维护支持。以销售合同/商品说明列出的实际功能为准。涉及 SnowLuma 等受限第三方组件的收费服务，不能靠此描述转成已授权。
+
+七、证据和判断边界
+
+evidence.json 保存本机版本、许可文件 SHA-256、锁文件许可标签计数、集成目录顶层许可以及 v31 包内路径检查。锁文件包含开发和可选依赖，标签不能代替实际许可及逐项履约。
+
+这是技术与许可文本的范围核对，不是无侵权保证；尚未核实代码全部来源、素材权属、所有运行时及历史安装包。上架前按最终交付物定稿，并对实际销售模式取得必要的法律审查。
+
+官方依据：
+https://github.com/Derpyu520/qq-bridge/blob/main/LICENSE
+https://github.com/PC2005-cloud/dsh-pet/blob/main/LICENSE
+https://github.com/SnowLuma/SnowLuma/blob/main/LICENSE
+https://github.com/SnowLuma/SnowLuma/blob/main/EULA.md
+https://www.apache.org/licenses/LICENSE-2.0

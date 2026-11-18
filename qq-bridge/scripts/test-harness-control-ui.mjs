@@ -1,0 +1,25 @@
+import fs from 'node:fs';import http from 'node:http';import assert from 'node:assert/strict';import {createRequire} from 'node:module';import {HARNESS_DEFAULTS} from '../src/harness-control.js';
+import {startConsoleFixture} from './console-ui-fixture.mjs';
+const require=createRequire(import.meta.url),{chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+let config={...HARNESS_DEFAULTS,revision:0},reads=0,writes=0;const errors=[];
+const server=http.createServer(async(req,res)=>{const url=new URL(req.url,'http://localhost');const json=d=>{res.setHeader('content-type','application/json');res.end(JSON.stringify(d));};
+ if(url.pathname==='/'){res.end('<html style="--accent:#bf7095;--bg:#f7f4f8"><body><iframe id="panel" style="width:100%;height:1600px;border:0" src="/harness-control/?token=fixture"></iframe></body></html>');return;}
+ if(url.pathname==='/harness-control/'){res.setHeader('content-type','text/html; charset=utf-8');res.end(fs.readFileSync('public/harness-control.html'));return;}
+ if(req.headers['x-console-token']!=='fixture'){res.statusCode=401;json({ok:false});return;}
+ if(url.pathname==='/api/harness/status'){reads++;json({ok:true,config,ownerConfigured:true,presetReady:true,usage:{adminTurns:0,autoTasks:0},active:null,jobs:[{id:'12345678',source:'admin',state:'done',projectId:'work',title:'<img src=x onerror="window.injected=true">',tokens:0,toolCalls:1,result:'<script>window.injected=true</script>',events:[]}]});return;}
+ if(url.pathname==='/api/harness/config'){let raw='';for await(const p of req)raw+=p;const body=JSON.parse(raw);assert.equal(body.revision,config.revision);config={...config,...body,revision:config.revision+1};writes++;json({ok:true,config});return;}
+ res.statusCode=404;json({ok:false});});await new Promise(r=>server.listen(0,'127.0.0.1',r));const origin='http://127.0.0.1:'+server.address().port;
+const browser=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'});
+try{const page=await browser.newPage({viewport:{width:1280,height:980}});page.on('pageerror',e=>errors.push(e.message));await page.route('**/*',r=>new URL(r.request().url()).origin===origin?r.continue():r.abort());await page.goto(origin);const frame=page.frameLocator('#panel');await frame.locator('#fields:not([disabled])').waitFor();
+ assert.equal(await frame.locator('#enabled').isChecked(),false);assert.equal(await frame.locator('#autonomousEnabled').isChecked(),false);assert.equal(await frame.locator('#jobs img').count(),0);assert.equal(await frame.locator('body').evaluate(()=>window.injected),undefined);
+ assert.equal(await frame.locator('body').evaluate(e=>getComputedStyle(e).getPropertyValue('--accent').trim()),'#bf7095');
+ await frame.locator('#add').click();const project=frame.locator('.project');await project.locator('[data-field=id]').fill('work');await project.locator('[data-field=label]').fill('个人项目');await project.locator('[data-field=path]').fill('E:/test-project');
+ assert.equal(await project.locator('[data-field=write]').isChecked(),false);assert.equal(await project.locator('[data-field=autonomous]').isChecked(),false);
+ await frame.locator('#enabled').check();await frame.locator('#dailyAdminTurns').fill('4');await project.locator('[data-field=write]').check();await frame.locator('#save').click();await frame.locator('#notice').filter({hasText:'已保存'}).waitFor();
+ assert.equal(writes,1);assert.equal(config.projects[0].write,true);assert.equal(config.projects[0].autonomous,false);assert.equal(config.dailyAdminTurns,4);assert.equal(config.autonomousEnabled,false);
+ fs.mkdirSync('state/harness-control-audit',{recursive:true});await page.locator('#panel').screenshot({path:'state/harness-control-audit/settings-desktop.png'});
+ await page.setViewportSize({width:390,height:844});assert(await frame.locator('body').evaluate(()=>document.documentElement.scrollWidth<=document.documentElement.clientWidth+1));
+ assert.deepEqual(errors,[]);assert(reads<6,'idle page never keeps polling');
+ console.log('PASS Harness sidebar page: default-off controls, separate project write/autonomy consent, revisioned save, inherited theme, XSS-safe task logs, mobile layout and no idle polling; no live services/messages/models');
+ const fixture=await startConsoleFixture();try{const main=await browser.newPage({viewport:{width:1440,height:1000}});const failures=[];main.on('pageerror',e=>failures.push(e.message));await main.goto(fixture.url);await main.locator('[data-view="harness-control"]').click();const embedded=main.frameLocator('#harnessControlFrame');await embedded.locator('#fields:not([disabled])').waitFor();assert.equal(await embedded.locator('#enabled').isChecked(),false);await main.screenshot({path:'state/harness-control-audit/main-sidebar.png',fullPage:true});assert.deepEqual(failures,[]);assert.deepEqual(fixture.unknownRequests,[]);await main.close();console.log('PASS actual console sidebar navigation and lazy Harness frame load against offline fixtures');}finally{await fixture.close();}
+}finally{await browser.close();await new Promise(r=>server.close(r));}

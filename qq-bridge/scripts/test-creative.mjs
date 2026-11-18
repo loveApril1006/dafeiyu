@@ -1,0 +1,42 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import os from 'node:os';
+import {createCreativeCore} from '../src/creative-core.js';
+import {parseCreativeCommand} from '../src/creative-commands.js';
+import {createCreativeService} from '../src/creative-service.js';
+import {writeJson} from '../src/creative-store.js';
+const repo=path.resolve('.'),temp=fs.mkdtempSync(path.join(os.tmpdir(),'xiaoge-creative-'));
+const png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+k3ioAAAAASUVORK5CYII=','base64');
+fs.mkdirSync(path.join(temp,'integrations'));for(const folder of ['meme-upstream','creative-standalone'])fs.symlinkSync(path.join(repo,'integrations',folder),path.join(temp,'integrations',folder),'junction');
+const activities=[];
+let modelCalls=0,mode='normal',release,pendingSignal;const fetchOriginal=globalThis.fetch;
+const model=async(prompt,{signal})=>{modelCalls++;pendingSignal=signal;if(mode==='slow')await new Promise((resolve,reject)=>{release=resolve;signal.addEventListener('abort',()=>reject(signal.reason),{once:true});});return '小鸽子：前方出现一座灯塔，轮到你行动。';};
+const core=createCreativeCore({root:temp,onActivity:event=>activities.push(event),model,harden:false});
+async function config(patch){return core.configure({revision:core.status().config.revision,...patch});}
+try{
+ assert(Object.values(core.status().config).filter(r=>r&&typeof r==='object').every(r=>r.enabled===false));
+ await assert.rejects(()=>core.action('rpg','turn',{text:'开场'}),/已关闭/);assert.equal(modelCalls,0);
+ assert.equal(parseCreativeCommand('刚才他说“画图”是什么意思'),null);assert.equal(parseCreativeCommand('#点歌 QQ 晴天'),null);assert.equal(parseCreativeCommand('掷骰 2d20kh1').action,'roll');
+ await config({rpg:{enabled:true,qq:true}});
+ const roll=await core.action('rpg','roll',{expression:'2d20kh1'},'group:123456',{source:'qq'});assert(roll.result.total>=1&&roll.result.total<=20);assert.equal(modelCalls,0);
+ await core.action('rpg','configure',{world:'迷雾王国',character:'艾琳',notes:'码头'},'group:123456');
+ assert.equal((await core.action('rpg','state',{},'private:123456')).data.world,'');
+ await core.action('rpg','turn',{text:'开场'},'group:123456',{source:'qq'});assert.equal(modelCalls,1);assert.equal(activities.length,1);assert.equal(activities[0].channel,'group:123456');assert(activities[0].summary.includes('虚构游戏'));
+ mode='slow';const pending=core.action('rpg','turn',{text:'进入灯塔'},'group:123456');pending.catch(()=>{});await new Promise(r=>setTimeout(r,0));
+ await assert.rejects(()=>core.action('rpg','roll',{expression:'d20'},'group:123456'),/等本轮/);
+ await config({rpg:{enabled:false}});await assert.rejects(()=>pending,/关闭|取消/);assert.equal(pendingSignal.aborted,true);
+ await config({rpg:{enabled:true}});assert.equal((await core.action('rpg','state',{},'group:123456')).data.history.length,2);mode='normal';
+ await config({rpg:{dailyLimit:core.status().budget.used.rpg}});const before=modelCalls;await assert.rejects(()=>core.action('rpg','turn',{text:'继续'},'group:123456'),/每日任务上限/);assert.equal(modelCalls,before);await config({rpg:{dailyLimit:80}});
+ await assert.rejects(()=>core.configure({revision:0,rpg:{enabled:true}}),/别处更新/);
+ await config({memes:{enabled:true,qq:true}});let memes=await core.action('memes','list');assert.equal(memes.stickers.length,18);
+ await core.action('memes','upload',{base64:png.toString('base64'),name:'fixture',meaning:'测试'});memes=await core.action('memes','list',{query:'fixture'});assert.equal(memes.stickers.length,1);const memeId=memes.stickers[0].id;assert(fs.existsSync(core.asset('meme',memeId).file));
+ await core.action('memes','edit',{id:memeId,name:'new',tags:['测试']});await core.action('memes','delete',{id:memeId});assert.throws(()=>core.asset('meme',memeId));
+ await config({images:{enabled:true,qq:true,useDefaultReferences:false,baseURL:'https://image.example/v1',model:'image-fixture',apiKey:'fixture-secret'}});assert.equal(core.status().config.images.apiKey,undefined);assert.equal(core.status().config.images.hasApiKey,true);
+ await assert.rejects(()=>config({images:{baseURL:'https://other.example/v1'}}),/重新输入密钥/);
+ globalThis.fetch=async(url,options)=>{assert.equal(String(url),'https://image.example/v1/images/generations');assert.equal(new Headers(options.headers).get('authorization'),'Bearer fixture-secret');assert.equal(JSON.parse(options.body).prompt,'一只猫');return new Response(JSON.stringify({data:[{b64_json:png.toString('base64')}]}),{headers:{'content-type':'application/json'}});};
+ const generated=await core.action('images','generate',{prompt:'一只猫'},'group:123456',{source:'qq'});assert(fs.existsSync(core.asset('image',generated.image.id,'group:123456').file));assert.throws(()=>core.asset('image',generated.image.id,'group:654321'),/当前会话/);
+ await assert.rejects(()=>core.action('images','generate',{prompt:'一只猫',referenceId:generated.image.id},'private:123456'),/当前会话/);
+ globalThis.fetch=fetchOriginal;
+ console.log('PASS RPG dice, isolated saves, cancellation, image generation and meme assets; removed commands do not execute');
+}finally{globalThis.fetch=fetchOriginal;await core.close();assert(temp.startsWith(path.join(os.tmpdir(),'xiaoge-creative-')));fs.rmSync(temp,{recursive:true,force:true});}

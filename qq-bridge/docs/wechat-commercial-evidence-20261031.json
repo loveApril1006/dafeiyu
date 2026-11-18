@@ -1,0 +1,80 @@
+{
+  "ActualImports": [
+    {
+      "Module": "pyweixin",
+      "File": "companion/wechat-desktop-worker.py"
+    },
+    {
+      "Module": "wechatauto",
+      "File": "companion/wechat-db-worker.py"
+    }
+  ],
+  "ReviewDate": "2026-10-31",
+  "Unresolved": [
+    "All transitive dependencies and bundled binaries",
+    "SDK rights and distribution compliance",
+    "Existing desktop pet media noncommercial restriction",
+    "Entire product commercial distribution scope"
+  ],
+  "TimeZone": "Asia/Shanghai",
+  "Status": "NOT_CLEARED",
+  "Components": [
+    {
+      "LicenseObservation": "LGPL-2.1 text",
+      "Decision": "Pending distribution compliance review",
+      "Files": [
+        {
+          "SHA256": "2e85d536d30f24ffdfe7ae2668420e355442677fd15aaa004f220febaa563a13",
+          "Path": "integrations/pywechat-upstream/LICENSE"
+        },
+        {
+          "SHA256": "591f93a9cf7cb3e13fdc25a85f283b495903fb26518c8941cfc9a2f23515dc36",
+          "Path": "integrations/pywechat-upstream/README.md"
+        }
+      ],
+      "Component": "pywechat-upstream",
+      "Commit": "8589baa049bb91d3a500602c167f07b2f8397a13"
+    },
+    {
+      "LicenseObservation": "AGPL-3.0 text plus README commercial restriction",
+      "Decision": "Excluded pending rights clarification",
+      "Files": [
+        {
+          "SHA256": "6f1e622c82a380075843bb084a7ec3b1f1d12a4a02526d75e78b0924a860aa75",
+          "Path": "integrations/wx4py-upstream/LICENSE"
+        },
+        {
+          "SHA256": "3b5a16e401c1f7e338426897ca782a4a4b8b7dc27d66d985aedb29cd4893f673",
+          "Path": "integrations/wx4py-upstream/README.md"
+        },
+        {
+          "SHA256": "a9acea77cc48092c063a06b5fd434297a16b5f92117c54334b8f170b5a719915",
+          "Path": "integrations/wx4py-upstream/pyproject.toml"
+        }
+      ],
+      "Component": "wx4py-upstream",
+      "Commit": "ccbc7c13905f35b9861b7fb13ff8257b5258e749"
+    },
+    {
+      "LicenseObservation": "Apache-2.0 text",
+      "Decision": "Pending provenance and transitive dependency review",
+      "Files": [
+        {
+          "SHA256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6",
+          "Path": "integrations/wechatapi-upstream/LICENSE"
+        },
+        {
+          "SHA256": "ac4fe58f5d9a20f7363f75b1594f38d2d83c46c93e428362ed80587dea8dbb55",
+          "Path": "integrations/wechatapi-upstream/README.md"
+        },
+        {
+          "SHA256": "5d6e45450fbeea73ad29b900d876f2a7c63de458239abd461dd1a4aa7fc860bb",
+          "Path": "integrations/wechatapi-upstream/pyproject.toml"
+        }
+      ],
+      "Component": "wechatapi-upstream",
+      "Commit": "04ef8cbde3862cff90b5f6b42c9ebfcea44ef48d"
+    }
+  ],
+  "Scope": "WeChat integration only; local source observations, no commercial release clearance"
+}

@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>B站聊天联动</title>
+    <style>
+      :root {
+        --bg: #f6f7fb;
+        --card: #fff;
+        --text: #1f2937;
+        --muted: #64748b;
+        --border: #dce2eb;
+        --accent: #5271ff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 22px;
+        color: var(--text);
+        background: var(--bg);
+        font:
+          14px/1.7 system-ui,
+          "Microsoft YaHei",
+          sans-serif;
+      }
+      h1 {
+        font-size: 24px;
+        margin: 0;
+      }
+      h2 {
+        font-size: 18px;
+        margin: 0 0 12px;
+      }
+      .muted,
+      small {
+        color: var(--muted);
+      }
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 18px;
+        margin: 16px 0;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .field {
+        display: grid;
+        gap: 5px;
+        align-content: start;
+      }
+      input,
+      select,
+      button {
+        font: inherit;
+        accent-color: var(--accent);
+      }
+      input[type="number"],
+      select {
+        padding: 8px;
+        width: 100%;
+        color: var(--text);
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+      button {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--card);
+        color: var(--text);
+        padding: 7px 12px;
+        cursor: pointer;
+      }
+      button.primary {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+      .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      #notice {
+        min-height: 24px;
+        margin-top: 8px;
+        overflow-wrap: anywhere;
+      }
+      fieldset {
+        border: 0;
+        padding: 0;
+        margin: 0;
+        min-width: 0;
+      }
+      .switch {
+        display: block;
+        margin: 10px 0;
+      }
+      .job {
+        padding: 12px 0;
+        border-top: 1px solid var(--border);
+        overflow-wrap: anywhere;
+      }
+      .job:first-child {
+        border: 0;
+      }
+      .video {
+        margin: 8px 0;
+      }
+      a {
+        color: var(--accent);
+      }
+      .status {
+        font-weight: 600;
+      }
+      .statline {
+        font-variant-numeric: tabular-nums;
+      }
+      @media (max-width: 640px) {
+        body {
+          padding: 12px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  <link rel="stylesheet" href="/console-assets/workbench.css"><script src="/console-assets/workbench.js"></script></head>
+  <body class="studio-page" data-workbench="bilibili-chat">
+    <h1 class="studio-page-title">B站聊天联动</h1>
+    <p class="muted studio-intro">把看过的视频带回聊天。</p>
+    <div class="actions">
+      <button id="refresh">刷新状态</button><button id="native">打开 B站登录与运行设置</button>
+    </div>
+    <div id="notice" role="status"></div><nav class="studio-section-nav" aria-label="页面分区"><a href="#studio-bilibili-chat-0">连接与额度</a><a href="#studio-bilibili-chat-1">最近联动任务</a></nav>
+    <section class="panel studio-section" id="studio-bilibili-chat-0">
+      <h2>连接与额度</h2>
+      <p id="connection" class="status">正在读取…</p>
+      <p id="usage" class="statline muted"></p>
+      <p class="studio-caption">未登录、登录失效、功能关闭或额度用完时，不会启动浏览，也不能假称已经在刷。</p>
+    <details class="studio-help"><summary>使用说明</summary><p class="muted">
+        未登录、登录失效、功能关闭或额度用完时，不会启动浏览，也不能假称已经在刷。轮数和视频挑选还受
+        B站后台原有额度控制。
+      </p></details></section>
+    <form id="settings" class="panel">
+      <h2>联动开关</h2>
+      <fieldset id="fields" disabled="">
+        <div class="studio-switch-grid"><label class="switch">聊天联动<input id="enabled" type="checkbox"></label><label class="switch">看完后主动分享<input id="feedbackEnabled" type="checkbox"></label><label class="switch">读取私聊分享的视频<input id="sharedVideosEnabled" type="checkbox"></label><label class="switch">处理后回复原聊天<input id="sharedVideoReplyEnabled" type="checkbox"></label><label class="switch">保存视频记忆<input id="rememberSharedVideos" type="checkbox"></label><label class="switch">无字幕时本地转写<input id="sharedTranscribeEnabled" type="checkbox"></label></div>
+        
+        
+        
+        
+        
+        <div class="grid">
+          <label class="field">每天读取上限（个）<input id="sharedVideoDailyMax" type="number" min="1" max="20" required=""></label>
+          <label class="field">字幕读取上限（字）<input id="sharedSubtitleChars" type="number" min="2000" max="20000" required=""></label>
+          <label class="field">转写上限（秒）<input id="sharedAudioSeconds" type="number" min="30" max="300" required=""></label>
+        </div>
+        <p class="studio-caption">支持BV号、视频长链、b23短链和QQ分享卡。</p>
+        
+        <div class="grid">
+          <label class="field">单批轮数<select id="maxRounds">
+              <option value="1">1 轮</option>
+              <option value="2">2 轮</option>
+              <option value="3">3 轮</option></select><small>依次运行，不同时开多轮；没有新增可聊内容会提早结束。</small></label>
+          <label class="field">每日轮数<input id="dailyRounds" type="number" min="1" max="12" required=""><small>这里只统计聊天联动；B站自身的自动任务沿用原设置。</small></label>
+          <label class="field">批次间隔（分钟）<input id="minGapMinutes" type="number" min="1" max="1440" required=""></label>
+          <label class="field">每日分享上限<input id="feedbackDailyMax" type="number" min="0" max="12" required=""><small>设为 0 可停止主动分享，仍可主动询问真实进度。</small></label>
+          <label class="field">分享概率（%）<input id="feedbackProbability" type="number" min="0" max="100" required=""></label>
+          <div class="field">
+            <label for="feedbackDelayMinSeconds">分享前随机等待（秒）</label>
+            <div class="grid">
+              <input id="feedbackDelayMinSeconds" aria-label="随机等待最少秒数" type="number" min="0" max="600" required=""><input id="feedbackDelayMaxSeconds" aria-label="随机等待最多秒数" type="number" min="0" max="600" required="">
+            </div>
+          </div>
+        </div>
+        
+        <div class="actions">
+          <button id="save" class="primary" type="submit">保存设置</button><button id="cancel" type="button">取消后续轮次与分享</button>
+        </div>
+      </fieldset>
+    <details class="studio-help"><summary>使用说明</summary><p class="muted">支持BV号、视频长链、b23短链和QQ分享卡。最多保留3个待处理任务，与刷推荐串行运行；重复视频复用当天结果。长视频均匀采样字幕并注明范围；没有字幕时，可在原B站转写开关和额度允许的情况下限量读取开头、中间、结尾音频（默认合计3分钟，最多5分钟），仅用已安装的本地模型，转写结束释放内存。转写不可用则只记录视频信息，不猜内容。每项任务保留状态日志和历史；长期记忆同时受B站记忆总开关控制。分享视频回复独立于随机吐槽开关。</p><p class="muted">
+          机器人可自然说“刷一轮”“刷两轮”来决定任务；只说“刷会儿”时会在上限内选择。不会另开模型来规划轮数。分享复用当前聊天的人设，每批最多安排一次。
+          浏览方向使用 B站页面已有关注关键词。浏览会使用
+          B站配置的模型，分享会唤起当前聊天模型；关闭分享可省去这一部分开销。
+        </p><p class="muted">
+          关闭联动或取消本批，会停止后续轮次和待发分享；已经开始的一轮仍由
+          B站后台完成。评论、点赞、收藏、私信等权限继续使用
+          B站页面原来的开关，本页不会替你开启。
+        </p></details></form>
+    <section class="panel studio-section" id="studio-bilibili-chat-1">
+      <h2>最近联动任务</h2>
+      <div id="jobs">还没有通过聊天发起的任务。</div>
+    </section>
+    <script>
+      const $ = (id) => document.getElementById(id),
+        token =
+          new URL(location.href).searchParams.get("token") ||
+          localStorage.getItem("consoleToken") ||
+          "";
+      history.replaceState(null, "", "/bilibili-chat/");
+      let revision = 0,
+        busy = false,
+        loading = false,
+        dirty = false,
+        timer = null,
+        observer,
+        viewObserver;
+      function visible() {
+        try {
+          return (
+            !document.hidden &&
+            (!window.frameElement || !window.frameElement.closest("[hidden]"))
+          );
+        } catch {
+          return !document.hidden;
+        }
+      }
+      function visibilityChanged() {
+        if (timer) clearTimeout(timer);
+        timer = null;
+        if (visible()) void load();
+      }
+      function theme() {
+        try {
+          if (parent === window) return;
+          const src = parent.document.documentElement,
+            css = parent.getComputedStyle(src);
+          for (const key of css)
+            if (key.startsWith("--"))
+              document.documentElement.style.setProperty(
+                key,
+                css.getPropertyValue(key),
+              );
+        } catch {}
+      }
+      theme();
+      try {
+        if (parent !== window) {
+          observer = new MutationObserver(theme);
+          observer.observe(parent.document.documentElement, {
+            attributes: true,
+            attributeFilter: ["style", "class", "data-theme"],
+          });
+          const section = window.frameElement?.closest("[data-page]");
+          if (section) {
+            viewObserver = new MutationObserver(visibilityChanged);
+            viewObserver.observe(section, {
+              attributes: true,
+              attributeFilter: ["hidden"],
+            });
+          }
+        }
+      } catch {}
+      const bools = ["enabled", "feedbackEnabled", "sharedVideosEnabled", "sharedVideoReplyEnabled", "rememberSharedVideos", "sharedTranscribeEnabled"],
+        nums = [
+          "maxRounds",
+          "dailyRounds",
+          "minGapMinutes",
+          "feedbackDailyMax",
+          "feedbackDelayMinSeconds",
+          "feedbackDelayMaxSeconds",
+          "sharedVideoDailyMax",
+          "sharedSubtitleChars",
+          "sharedAudioSeconds",
+        ];
+      const labels = {
+        queued: "排队中",
+        resolving: "解析链接中",
+        starting: "启动中",
+        running: "正在刷",
+        between: "准备下一轮",
+        done: "已完成",
+        failed: "未完成",
+        cancelled: "已取消后续轮次",
+        interrupted: "追踪已中断",
+      };
+      const feedbackLabels = {
+        sent: "已在聊天里分享",
+        none: "未安排分享",
+        scheduled: "等待随机分享",
+        claimed: "正在生成分享",
+        requested: "已通知聊天生成分享",
+        failed: "分享未完成",
+        suppressed: "已取消分享",
+        "suppressed-restart": "重启后未重复分享",
+        superseded: "已由新任务替代",
+      };
+      async function api(route, body) {
+        const r = await fetch(route, {
+          headers: {
+            "X-Console-Token": token,
+            "content-type": "application/json",
+          },
+          ...(body === undefined
+            ? {}
+            : { method: "POST", body: JSON.stringify(body) }),
+        });
+        const d = await r.json();
+        if (!r.ok || d.ok === false)
+          throw Object.assign(Error(d.error || "请求未完成"), {
+            status: r.status,
+          });
+        return d;
+      }
+      function renderJobs(jobs) {
+        const box = $("jobs");
+        box.replaceChildren();
+        if (!jobs.length) {
+          box.textContent = "还没有通过聊天发起的任务。";
+          return;
+        }
+        for (const job of jobs) {
+          const row = document.createElement("article");
+          row.className = "job";
+          const title = document.createElement("strong");
+          title.textContent = job.kind === "shared" ? `${labels[job.state] || "处理中"} · 分享视频${job.target ? " · " + job.target.bvid + " P" + job.target.page : ""}` : `${labels[job.state] || "任务状态"} · ${job.finishedRounds}/${job.plannedRounds} 轮`;
+          row.append(title);
+          const info = document.createElement("p");
+          info.className = "muted";
+          info.textContent =
+            new Date(job.startedAt).toLocaleString("zh-CN") +
+            " · " +
+            (feedbackLabels[job.feedbackState] || "未安排分享") +
+            (job.reason ? " · " + job.reason : "");
+          row.append(info);
+          if (job.result) {
+            const saved = document.createElement("p");
+            saved.textContent = `${job.result.scope} · 历史${job.result.historySaved ? "已保存" : "未保存"} · 记忆${job.result.memorySaved ? "已保存" : job.result.memorySkipped ? "已关闭" : "未保存"}`;
+            row.append(saved);
+          }
+          if (job.events?.length) {
+            const details=document.createElement("details"),summary=document.createElement("summary"),log=document.createElement("p");
+            summary.textContent="任务日志";
+            log.style.whiteSpace="pre-wrap";
+            log.textContent=job.events.map(e=>`${new Date(e.at).toLocaleTimeString("zh-CN")} ${e.message}`).join("\n");
+            details.append(summary,log);row.append(details);
+          }
+          for (const video of job.videos || []) {
+            const p = document.createElement("p");
+            p.className = "video";
+            const a = document.createElement("a");
+            a.textContent = video.title;
+            a.href = video.url;
+            a.target = "_blank";
+            a.rel = "noreferrer noopener";
+            p.append(
+              a,
+              document.createElement("br"),
+              document.createTextNode(video.note),
+            );
+            row.append(p);
+          }
+          box.append(row);
+        }
+      }
+      async function load() {
+        if (loading || busy) return;
+        loading = true;
+        $("save").disabled = true;
+        $("refresh").disabled = true;
+        if (timer) clearTimeout(timer);
+        timer = null;
+        try {
+          const d = await api("/api/bilibili-chat/status");
+          const n = d.native;
+          $("connection").textContent = !n.available
+            ? "B站后台未连接"
+            : !n.loggedIn
+              ? n.loginReason || "请先登录B站"
+              : !n.environmentReady
+                ? "B站已登录，运行环境尚未就绪"
+                : !n.enabled
+                  ? "B站已登录，B站功能总开关已关闭"
+                  : "B站已登录，环境已就绪";
+          $("usage").textContent =
+            `今日聊天联动 ${d.usage.rounds || 0}/${d.config.dailyRounds} 轮 · 主动分享 ${d.usage.feedback || 0}/${d.config.feedbackDailyMax} 次 · 分享视频 ${d.usage.sharedVideos || 0}/${d.config.sharedVideoDailyMax} 个` +
+            (d.storageError ? " · 联动记录保存失败，请检查本机目录权限" : "");
+          if (!dirty) {
+            revision = d.config.revision;
+            for (const key of bools) $(key).checked = d.config[key];
+            for (const key of nums) $(key).value = d.config[key];
+            $("feedbackProbability").value = Math.round(
+              d.config.feedbackProbability * 100,
+            );
+          }
+          $("fields").disabled = false;
+          $("cancel").disabled =
+            !d.active && !d.queued?.length && !d.jobs.some((j) => j.feedbackState === "scheduled");
+          renderJobs(d.jobs);
+          if (
+            (d.active || d.queued?.length ||
+              d.jobs.some((j) =>
+                ["scheduled", "claimed"].includes(j.feedbackState),
+              )) &&
+            visible()
+          )
+            timer = setTimeout(
+              () => load().catch((e) => ($("notice").textContent = e.message)),
+              5000,
+            );
+        } catch (e) {
+          $("notice").textContent = e.message;
+        } finally {
+          loading = false;
+          $("save").disabled = false;
+          $("refresh").disabled = false;
+        }
+      }
+      $("settings").addEventListener("input", () => (dirty = true));
+      $("settings").onsubmit = async (event) => {
+        event.preventDefault();
+        if (busy || loading) return;
+        const value = { revision };
+        for (const key of bools) value[key] = $(key).checked;
+        for (const key of nums) value[key] = Number($(key).value);
+        value.feedbackProbability =
+          Number($("feedbackProbability").value) / 100;
+        busy = true;
+        $("fields").disabled = true;
+        try {
+          await api("/api/bilibili-chat/config", value);
+          dirty = false;
+          $("notice").textContent = "联动设置已保存。";
+        } catch (e) {
+          $("notice").textContent = e.message;
+          if (e.status === 409) {
+            dirty = false;
+            $("notice").textContent += "，已重新载入最新设置，请重新修改。";
+          }
+        } finally {
+          busy = false;
+          await load();
+        }
+      };
+      $("cancel").onclick = async () => {
+        if (busy || loading) return;
+        busy = true;
+        $("fields").disabled = true;
+        try {
+          const d = await api("/api/bilibili-chat/cancel", {});
+          $("notice").textContent = d.message;
+        } catch (e) {
+          $("notice").textContent = e.message;
+        } finally {
+          busy = false;
+          await load();
+        }
+      };
+      $("refresh").onclick = () => load();
+      $("native").onclick = () => {
+        try {
+          parent.document
+            .querySelector('#mainNav [data-view="bilibili"]')
+            .click();
+        } catch {
+          $("notice").textContent = "请从后台左侧打开 B站鱼塘扫码登录。";
+        }
+      };
+      document.addEventListener("visibilitychange", visibilityChanged);
+      window.addEventListener("pagehide", () => {
+        if (timer) clearTimeout(timer);
+        observer?.disconnect();
+        viewObserver?.disconnect();
+      });
+      void load();
+    </script>
+  
+
+</body></html>

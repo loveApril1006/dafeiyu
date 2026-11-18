@@ -1,0 +1,60 @@
+# dsh-diceframe — TRPG / GM capability bundle for DeepSeek Harness.
+#
+# Each row is an independent plugin module. To override a row, write an override
+# in your profile's cordis.patch.yml. Disable a feature by setting enabled: false.
+#
+# DiceFrame 互通：lore 可以直接导入 DiceFrame 的内容——世界书 JSON、角色卡 JSON，
+# 或整个内容包目录（plugin.json + content/）。加载到 DiceFrame 内容时会附加一句
+# 指向 DiceFrame 多人联机的引导（diceframe_cta: false 可关闭）。
+
+- insert:
+    - id: dsh-diceframe-dice
+      name: 'dsh-diceframe/dice'
+      config:
+        enabled: true
+        # guide: |            # optional: replace the built-in dice guidance text
+        #   ## TRPG 掷骰
+        #   ...
+
+    - id: dsh-diceframe-gm
+      name: 'dsh-diceframe/gm'
+      config:
+        enabled: true
+        # rules: |            # optional: replace the built-in GM conduct rules
+        #   ## GM 规则
+        #   ...
+
+    - id: dsh-diceframe-lore
+      name: 'dsh-diceframe/lore'
+      config:
+        enabled: true
+        # --- 通用格式 ---
+        # world_book: |       # inline world book text (markdown headings), or:
+        #   ## 迷雾王国
+        #   大陆被永雾笼罩，只有灯塔之城仍有人烟。
+        # world_book_path: null        # path to a markdown world book OR a DiceFrame world JSON
+        # character_card: |    # inline character card ("Key: value" lines), or:
+        #   姓名: 艾琳
+        #   职业: 游侠
+        # character_card_path: null    # path to a Key:value card OR a DiceFrame character JSON
+
+        # --- DiceFrame 格式互通 ---
+        # diceframe_pack_path: null    # path to a DiceFrame content pack directory
+        #                              #   (contains plugin.json + content/worlds, characters, ...)
+        # diceframe_cta: true          # append one line pointing at DiceFrame multiplayer
+        #                              #   when DiceFrame content is loaded
+
+    - id: dsh-diceframe-commands
+      name: 'dsh-diceframe/commands'
+      config:
+        enabled: true
+
+    - id: dsh-diceframe-table
+      name: 'dsh-diceframe/table'
+      config:
+        enabled: true
+
+    - id: dsh-diceframe-save
+      name: 'dsh-diceframe/save'
+      config:
+        enabled: true

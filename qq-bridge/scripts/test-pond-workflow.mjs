@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';
+import {pondReadiness,pondVideoMatches,pondVideoUrl,pondVideoKeywords,pondPermissions,pondBudgetAdvice} from '../integrations/bili-standalone/pond-workflow.mjs';
+
+const configured={dutyProvider:'fixture',dutyModel:'fixture-model'};
+assert.equal(pondReadiness(null,configured).ready,false);
+assert.equal(pondReadiness({unavailable:true},configured).step,'connection');
+assert.equal(pondReadiness({venvReady:false,loggedIn:true},configured).step,'environment');
+assert.equal(pondReadiness({venvReady:true,installing:true,loggedIn:true},configured).ready,false);
+assert.equal(pondReadiness({venvReady:true,loggedIn:false},configured).step,'account');
+assert.equal(pondReadiness({venvReady:true},configured).ready,false,'unknown login must not enable start');
+assert.equal(pondReadiness({venvReady:true,loggedIn:true},{dutyProvider:'fixture',dutyModel:' '}).step,'model');
+assert.equal(pondReadiness({venvReady:true,loggedIn:true},configured).ready,true);
+const item={title:'开源 AI 工具',owner:'测试UP',note:'字幕笔记',keywords:['技术']};
+for(const query of [' ai ','测试UP','字幕','技术',''])assert(pondVideoMatches(item,query));
+assert.equal(pondVideoMatches(item,'未看过的内容'),false);
+assert.equal(pondVideoUrl('BV1EPnG6DEJC'),'https://www.bilibili.com/video/BV1EPnG6DEJC');
+for(const value of ['javascript:alert(1)','BV123/../../','https://example.com','<script>',''])assert.equal(pondVideoUrl(value),null);
+assert.deepEqual(pondVideoKeywords({keywords:'AI，开源'}),['AI','开源']);
+assert.deepEqual(pondVideoKeywords({keywords:123}),[]);
+assert.deepEqual(pondPermissions({}),['仅观看与记笔记']);
+assert.deepEqual(pondPermissions({autoComment:true,dmOn:true,likeOn:true,favOn:true}),['评论','私信','点赞','收藏']);
+assert.equal(pondBudgetAdvice({autoRun:true,autoRunsPerDay:3,perRoundMax:2,perDayMax:6}),'');
+assert(pondBudgetAdvice({autoRun:true,autoRunsPerDay:3,perRoundMax:2,perDayMax:4}));
+assert.equal(pondBudgetAdvice({autoRun:false,autoRunsPerDay:3,perRoundMax:2,perDayMax:4}),'');
+console.log('PASS pond prerequisites fail closed, video search preserves original records and video links reject invalid targets.');

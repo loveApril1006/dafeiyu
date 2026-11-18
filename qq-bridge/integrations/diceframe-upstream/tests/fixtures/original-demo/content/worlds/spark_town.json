@@ -1,0 +1,27 @@
+{
+  "world_id": "spark_town_world",
+  "world_name": "星火镇",
+  "description": "一座建在火山山脊上的小镇，靠地热取暖，夜里的灯花像落在地上的星星。",
+  "language": "zh-CN",
+  "suggested_difficulty": "standard",
+  "world_setting": "星火镇住着熔炉匠、灯匠与巡山人。镇子底下沉睡着一座古老的熔炉，据说能点亮愿望，但每点亮一次，山脊就会裂开一道缝。",
+  "starter_scene": "你在镇口的旅店放下行李，窗外是漫山遍野的灯花。老板娘说：『今晚有巡山人带回来一件怪东西，你要不要去看看？』",
+  "starter_lorebook": [
+    {
+      "id": "spark_lampflower",
+      "name": "灯花",
+      "type": "location",
+      "keywords": ["灯花", "地热", "星火镇"],
+      "content": "一种只在火山地热带上生长的发光植物，花瓣入夜后如火星般闪烁。镇民把它们挂在屋檐下当灯。",
+      "tier": "core"
+    },
+    {
+      "id": "spark_old_furnace",
+      "name": "古老熔炉",
+      "type": "puzzle",
+      "keywords": ["熔炉", "愿望", "山脊"],
+      "content": "沉睡在镇子地下的古代熔炉。传说点亮它一次就能实现一个愿望，代价是山脊裂开一道新的缝。",
+      "tier": "core"
+    }
+  ]
+}

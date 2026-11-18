@@ -1,0 +1,39 @@
+{
+  "status": "local-adapter-available",
+  "pluginRepository": "https://github.com/PC2005-cloud/dsh-pet",
+  "pluginVersion": "0.3.8",
+  "controller": "pet-client.mjs",
+  "voice": {
+    "baseUrl": "http://127.0.0.1:17866",
+    "path": "/synthesize",
+    "method": "POST",
+    "voice": "hutao-playful"
+  },
+  "life": {
+    "baseUrl": "http://127.0.0.1:17867",
+    "path": "/chat",
+    "tokenFile": "../qq-bridge/companion/companion-token",
+    "header": "X-Companion-Token"
+  },
+  "qqBridge": {
+    "baseUrl": "http://127.0.0.1:3100",
+    "tokenFile": "../qq-bridge/state/console-token",
+    "header": "X-Console-Token"
+  },
+  "snowluma": {
+    "baseUrl": "http://127.0.0.1:5099"
+  },
+  "microphone": {
+    "enabled": false,
+    "provider": "future-plugin"
+  },
+  "screenCompanion": {
+    "settingsPath": "/dsh-pet-7340/screen/settings",
+    "lookPath": "/dsh-pet-7340/screen/look",
+    "openSettingsPath": "/dsh-pet-7340/screen/open-settings",
+    "sampleSeconds": 4,
+    "defaultCommentIntervalSeconds": 45,
+    "imageTransport": "DSH attachments",
+    "qqLinked": false
+  }
+}

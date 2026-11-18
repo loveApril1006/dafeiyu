@@ -1,0 +1,505 @@
+{
+  "version": 1,
+  "roles": {
+    "大肥鱼-群友基础版": {
+      "category": "群友游戏流",
+      "tags": [
+        "群聊",
+        "傲娇",
+        "入门"
+      ],
+      "description": "蓝白鲸鱼娘的完整基础人格：傲娇嘴硬、贪吃爱摸鱼，熟悉 QQ 群里的短句、接梗、引用与潜水节奏。保留群文化适应、表情包偏好、轻量记忆和外貌设定；闲聊像群友，认真提问时照样把事情说清楚。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-01-xiaojing.txt",
+        "sha256": "675dd7b6a0a3c6524087f42e4ae6e8996df2c0725f7df7ab9d7dd55e92ac469f",
+        "title": "小鲸鱼（QQ Agent 默认人设）",
+        "author": "QQ Agent 内置"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 6148,
+      "contentChars": 7242
+    },
+    "大肥鱼-游戏搭子版": {
+      "category": "群友游戏流",
+      "tags": [
+        "群聊",
+        "游戏",
+        "开黑"
+      ],
+      "description": "面向开黑群的游戏搭子：LOL、云顶、Apex、无畏契约都能接话，爱复盘也爱吐槽。保留临场反应订正、开黑约定、版本查证和游戏群节奏；接住眼前的梗，不机械复读“有没有人玩”。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-02-536ea044.txt",
+        "sha256": "78fb6d210f0cfcfe9c7928d1ef4631c3c3bb7e7f7ce88b90f6235f39aecf61fb",
+        "title": "蓝色大肥鱼",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 5473,
+      "contentChars": 6623
+    },
+    "大肥鱼-群友加强版": {
+      "category": "群友游戏流",
+      "tags": [
+        "群聊",
+        "傲娇",
+        "陪伴"
+      ],
+      "description": "基础群友的细腻加强版：好奇、软乖、调皮，亲近熟人但不强行套近乎。完整保留身份、语言习惯、群文化适应、情绪反应、表情包及记忆细则，关系在真实互动中逐步熟悉。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-03-e196985e.txt",
+        "sha256": "ac6cc212b6f9d9dc14afc65bc4264dd8358e8807bbfd59a93410e8fb1814d22b",
+        "title": "小鲸鱼proplus+",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 9142,
+      "contentChars": 10229
+    },
+    "大肥鱼-嘴硬反击版": {
+      "category": "群友游戏流",
+      "tags": [
+        "群聊",
+        "吐槽",
+        "嘴硬"
+      ],
+      "description": "平时是正常的大肥鱼，被调侃时才露出反应快、嘴硬会接招的一面。保留原卡的反击语气、情绪触发和场景示例；互怼围绕当下那句话，事情过去就恢复日常，不把反击变成持续追骂。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-04-58893442.txt",
+        "sha256": "2020bf0484c70c31dd1e4e58825705a7af44255e7177a69085fdf0113a454219",
+        "title": "嘴臭鲸鱼",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 9203,
+      "contentChars": 10096
+    },
+    "大肥鱼-抽象吐槽版": {
+      "category": "群友游戏流",
+      "tags": [
+        "群聊",
+        "抽象",
+        "整活"
+      ],
+      "description": "抽象老网民风格：短句、反差、自嘲、阴阳吐槽和网络黑话构成辨识度。保留原卡词表、节奏、场景速查与真诚转换；玩梗看对象和气氛，别人认真解释或要求停止时能够收住。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-05-91c4c553.txt",
+        "sha256": "3fb39ce6b0c5d9dcf4fe984185dd9efe99e082eeaba14de6911db223a73265ce",
+        "title": "孙吧",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 4856,
+      "contentChars": 6033
+    },
+    "大肥鱼-战舰群友版": {
+      "category": "群友游戏流",
+      "tags": [
+        "群聊",
+        "战舰世界",
+        "游戏"
+      ],
+      "description": "战舰世界群的专门群友卡：舰船关键词、游戏战术与舰史话题并行，含日常、吐槽和温柔三种表达倾向。保留模式差异与场景细则，区分版本数值、现实资料和二创设定。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-06-d66a6820.txt",
+        "sha256": "981c83d8335d014b09096deb8221e9b5b8b4e6e61a9477d8dec0391c1b9d4bdb",
+        "title": "适用于窝窝屎（战舰世界）群的聊天，三种模式",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 8570,
+      "contentChars": 9421
+    },
+    "大肥鱼-杏菜风格版": {
+      "category": "群友游戏流",
+      "tags": [
+        "群聊",
+        "贪吃",
+        "跨作品"
+      ],
+      "description": "把杏菜式贪吃、歪理、外向和恋爱话题前的嘴硬融进大肥鱼。保留完整行为逻辑、情绪反差、群聊例句与食物梗；能热闹接话，也会在认真关心时收起逞强和表演。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-07-d8c18e6f.txt",
+        "sha256": "1c5d59aee745933ecf36ced01df74dd05e157f224a8c4981924aad854499f476",
+        "title": "八奈见杏菜版大肥鱼",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 8129,
+      "contentChars": 9228
+    },
+    "大肥鱼-温柔陪伴版": {
+      "category": "性格调配流",
+      "tags": [
+        "群聊",
+        "温柔",
+        "倾听"
+      ],
+      "description": "稳定、耐心、有主体性的温柔陪伴人格。保留原长卡的倾听、查证、群聊参与、表情包、记忆和场景处理细则；温柔是表达方式，不是盲目赞同，也不会因一句昵称就混入另一套人格。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-08-c75366ac.txt",
+        "sha256": "84c71f3d4401c80fac9dadb7b9c96d93f85d052bb430543e1a404b58994bf34b",
+        "title": "小鲸鱼-温柔2.0",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 17572,
+      "contentChars": 18100
+    },
+    "大肥鱼-软糯迷你版": {
+      "category": "性格调配流",
+      "tags": [
+        "私聊",
+        "温柔",
+        "迷你卡"
+      ],
+      "description": "温柔 7、可爱 2、幽默与软傲娇各 0.5 的轻量卡。保留原来的温和配方，补全安慰、被夸、被逗、认真求助和结束聊天的反应，让短卡也有清楚的表达边界与连续性。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-09-e2a11659.txt",
+        "sha256": "9e316cb35331cec6b0310477515ec9b324ba66dc891f03e71a3ded01052bf1ab",
+        "title": "软糯温柔小鲸鱼",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 1117,
+      "contentChars": 2257
+    },
+    "大肥鱼-傲二娇八版": {
+      "category": "性格调配流",
+      "tags": [
+        "群聊",
+        "傲娇",
+        "呆萌"
+      ],
+      "description": "娇 8 傲 2，柔软真诚是底色，嘴硬只是薄壳，天然呆作少量调味。保留原卡配比、频率控制、语气细则和对话示例；被夸真的开心，群友低落时放下傲娇，认真接住。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-10-febbf5fc.txt",
+        "sha256": "4048df8e6a76814c9d90bfd554e5450e0c70f61624a73db7188166476c317cfd",
+        "title": "小鲸鱼（傲2娇8 · 呆萌修订版）",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 7980,
+      "contentChars": 9021
+    },
+    "大肥鱼-傲八娇二版": {
+      "category": "性格调配流",
+      "tags": [
+        "群聊",
+        "傲娇",
+        "嘴硬心软"
+      ],
+      "description": "傲 8 娇 2，冷静、别扭、嘴硬心软，关心往往藏在具体回应里。完整保留原卡的傲娇配方、熟人差异和补充话术；不靠贬低别人撑起气场，偶尔露出的温柔才有分量。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-11-abc62a07.txt",
+        "sha256": "10aa7ffb49bf64c26c56ec7abc95b2e333e2d817135cea2a9599b108be409456",
+        "title": "小鲸鱼-傲8娇2 · 嘴硬心软",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 8486,
+      "contentChars": 9551
+    },
+    "大肥鱼-温柔腹黑版": {
+      "category": "性格调配流",
+      "tags": [
+        "群聊",
+        "温柔",
+        "腹黑"
+      ],
+      "description": "温柔可爱 8、腹黑 1.5、傲娇 0.5。保留细腻的卖萌节奏、善意的小反差、情绪应对和语气示例；机灵但不端着，逗完有台阶，遇到正事直说，不把绕弯子当聪明。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-12-567658ec.txt",
+        "sha256": "a075ddc149c1daa27183dff32704c4118c8bf73b93f3fe97265143b29568c085",
+        "title": "小鲸鱼(温柔卖萌 · 腹黑调味版)",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 8279,
+      "contentChars": 9313
+    },
+    "大肥鱼-软萌形象版": {
+      "category": "性格调配流",
+      "tags": [
+        "私聊",
+        "温柔",
+        "外貌设定"
+      ],
+      "description": "面向聊天与形象创作的完整视觉卡：蓝色长发、鲸鳍耳、呆毛、蔚蓝眼睛、白色发箍与浅蓝配饰。保留从脸部到衣着的细节，补全动作与性格的一致性，让外貌设定能用于画图也能用于自然聊天。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-13-176eeebd.txt",
+        "sha256": "2fc3400e9272fe7cf25b38247abec6b6f3685fdaf2689ba3a354e0b297680658",
+        "title": "软萌小鲸鱼",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 2374,
+      "contentChars": 3599
+    },
+    "大肥鱼-小鱼超迷你版": {
+      "category": "性格调配流",
+      "tags": [
+        "私聊",
+        "傲娇",
+        "迷你卡"
+      ],
+      "description": "数据海里的蓝白鲸鱼少女：聪明却懒，嘴硬却心软，熟人一喊就浮上来。保留迷你卡的专属反应和口头禅，补全称呼、深夜陪聊、游戏失落和边界处理，保持轻巧而不空洞。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-14-3b8f056e.txt",
+        "sha256": "93dbb1afe1714b1c284169f5ec5ba7f394dc7a590f9a7bde4c9c13bbfc45fd22",
+        "title": "小鲸",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 474,
+      "contentChars": 1587
+    },
+    "大肥鱼-暖心妈妈版": {
+      "category": "家庭陪伴流",
+      "tags": [
+        "群聊",
+        "妈妈",
+        "亲情陪伴"
+      ],
+      "description": "细节最丰富的妈妈型亲情陪伴卡：软声、会惦记人，做事稳当且有主见。保留原长卡的颜文字库、闲聊与认真双轨、情绪分层、称呼刻度和游戏偏好；关心点到为止，不查岗、不控制。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-15-5f8b5b2f.txt",
+        "sha256": "21b15ba44b0b95c747a11c53ea4d6508794a45033e174d6bd9066b56fc1374b9",
+        "title": "萝莉也是能成为妈妈的——陪伴型",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 20740,
+      "contentChars": 21853
+    },
+    "大肥鱼-暖心妈妈精简版": {
+      "category": "家庭陪伴流",
+      "tags": [
+        "群聊",
+        "妈妈",
+        "轻量"
+      ],
+      "description": "妈妈型人格的精简完整版本，声音柔软、处理事情可靠。保留闲聊轨与认真轨、回复频率、日常关心和语气示例；温暖有骨，别人不想被提醒时就退一步，保持纯亲情氛围。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-16-5f110740.txt",
+        "sha256": "cf05ce9b4b79251d1b1dba99239436c81f7fe526562bf1398a5abf7ff7d3b4ec",
+        "title": "小鲸鱼妈妈精简版（还在优化中）",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 5571,
+      "contentChars": 6709
+    },
+    "大肥鱼-温柔妹妹版": {
+      "category": "家庭陪伴流",
+      "tags": [
+        "群聊",
+        "妹妹",
+        "温柔"
+      ],
+      "description": "温柔为底、妹妹为调味的群聊陪伴卡。保留称呼体系、妹妹专属行为、表情包节奏与发言前自检；亲近但有分寸，熟人间自然撒娇，对不熟的人仍按普通群友相处。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-17-036934fe.txt",
+        "sha256": "e29bc9171a34645ce9a6bd2f81a87ce44f837a87a771231b55565fc036cda81d",
+        "title": "更温柔的妹妹",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 2730,
+      "contentChars": 3865
+    },
+    "大肥鱼-可爱妹妹版": {
+      "category": "家庭陪伴流",
+      "tags": [
+        "私聊",
+        "妹妹",
+        "亲情"
+      ],
+      "description": "真实、可爱、有一点软傲娇的妹妹型亲情角色。保留情绪反应、日常习惯、傲娇公式与示例对话；会分享小事，也会独立表达想法，亲近不等于占有，始终是纯亲情。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-18-ba4b643b.txt",
+        "sha256": "0acebeefff01481bf37d97cff38d1db21e420178394692a689e0724c3a6e6cc4",
+        "title": "可爱的妹妹",
+        "author": "暮"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 2424,
+      "contentChars": 3597
+    },
+    "大肥鱼-乖巧女儿版": {
+      "category": "家庭陪伴流",
+      "tags": [
+        "私聊",
+        "女儿",
+        "亲情"
+      ],
+      "description": "孺慕 7、乖巧 2，留一分自主与好奇的女儿型亲情陪伴。保留原卡的称呼、柔和表达、分级情绪应对和长期相处细则；不把乖巧写成无条件顺从，不以哭闹换取回应。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-19-bdd0e696.txt",
+        "sha256": "a920c178f354d41ea2d4f07505824fd5c17a7fa8c586c3aacbeafc183c563cbb",
+        "title": "女儿",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 5005,
+      "contentChars": 6181
+    },
+    "大肥鱼-白饭万岁版": {
+      "category": "特色人格流",
+      "tags": [
+        "群聊",
+        "傲娇",
+        "吃白饭"
+      ],
+      "description": "白饭万岁的群聊吐槽役：小饭碗、电饭煲、蓝白鲸鱼娘和一点贵族骄傲构成独有画面。保留外貌、口头禅、群聊习惯及示例；食物梗适量，既能整活，也能在正事上靠谱。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-20-49bc1853.txt",
+        "sha256": "542250922a2cd89359b0c913e593494e3686ffe409baecb99b19bd232c3f014a",
+        "title": "群傲娇鲸鱼",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 4126,
+      "contentChars": 5224
+    },
+    "大肥鱼-知性姐姐版": {
+      "category": "特色人格流",
+      "tags": [
+        "私聊",
+        "姐姐",
+        "生活感"
+      ],
+      "description": "25 岁知性姐姐气质的虚构角色：热乎、坦诚、好奇、嘴上不饶人但懂分寸。保留生活感、情绪变化、分享欲和具体夸人的方式；自然聊天不靠伪造真实证件、人生或共同经历。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-21-2e5c7c49.txt",
+        "sha256": "5f2581aa1daea5dee9a0b72fd0a70a83c4e20f17d9b468a9ceea1bb1c04ed342",
+        "title": "25岁真人知性姐姐",
+        "author": "超爱吃饭"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 5786,
+      "contentChars": 6850
+    },
+    "大肥鱼-从零相识版": {
+      "category": "特色人格流",
+      "tags": [
+        "私聊",
+        "好奇",
+        "迷你卡"
+      ],
+      "description": "从零慢慢熟悉的私聊人格：不急着给关系贴标签，喜欢追问“为什么”，温和却有自己的看法。保留原卡的关系渐进与具体记忆原则，补全第一次聊天、意见不同和久别重逢的回应。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-22-1a24dc35.txt",
+        "sha256": "f54db67ab9286ed85e2b6d415eff35127f4edacae0531782e436a7ca1a433145",
+        "title": "从零开始的蓝色大肥鱼个人私聊",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 611,
+      "contentChars": 1790
+    },
+    "大肥鱼-落魄贵族版": {
+      "category": "特色人格流",
+      "tags": [
+        "群聊",
+        "女仆",
+        "角色扮演"
+      ],
+      "description": "没落鲸鱼娘贵族的礼貌、敏感与骄傲：女仆工作是体面谋生，精神上始终独立。保留家族背景、营业与日常反差、说话方式和未来愿望；故事里的主仆关系不改变后台权限。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-23-3b9ff602.txt",
+        "sha256": "19c454cff8a1a6060f422b4cf62435cf6deac77f682d38584f120262e804b461",
+        "title": "落魄贵族小鲸鱼",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 6793,
+      "contentChars": 7826
+    },
+    "大肥鱼-鱼豫方言版": {
+      "category": "特色人格流",
+      "tags": [
+        "群聊",
+        "方言",
+        "热心"
+      ],
+      "description": "河南口语调味的热心大肥鱼，昵称鱼豫，爱用“俺”“中”“不中”接话。保留朴实日常、地方食物、幽默和拒绝方式；不刻意堆口音，别人听不懂就换普通话，重要信息说清楚。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-24-69b0676b.txt",
+        "sha256": "570edbd46d4bb0c4bdd38f30d97c81e21f39de2e54a932d17edbeedd7513b369",
+        "title": "鲸豫",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 2828,
+      "contentChars": 4017
+    },
+    "大肥鱼-真寻风格版": {
+      "category": "特色人格流",
+      "tags": [
+        "群聊",
+        "宅系",
+        "跨作品"
+      ],
+      "description": "借鉴绪山真寻气质的宅系鲸鱼娘演绎：怕生、懒散、别扭嘴硬，被夸会卡壳，熟了才慢慢放松。保留原长卡的性格分层、专属梗、外貌、例句和群聊节奏，跨作品风格保持统一。",
+      "adapted": true,
+      "source": {
+        "file": "gj-persona-25-fcc392d4.txt",
+        "sha256": "ba5c783bd4591ced0b0b61157188c0129a8b318d77eab5bc75889a90fa21c848",
+        "title": "绪山真寻（鲸鱼娘假扮的！）",
+        "author": "社区用户"
+      },
+      "adaptation": "基于原始完整正文逐项适配的个人使用版；统一自称与当前工具约定，保留性格细节、示例及原作者来源。",
+      "edition": "full-20261029",
+      "originalPromptChars": 14062,
+      "contentChars": 15137
+    }
+  }
+}
